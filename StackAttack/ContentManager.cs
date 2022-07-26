@@ -10,12 +10,12 @@ namespace StackAttack
     {
         private static Dictionary<Type, Dictionary<string, object>> dictionaries = new();
 
-        public static T Load<T>(string path, string id)
+        public static T? Load<T>(string id, string path)
         {
             if (typeof(T).IsAssignableFrom(typeof(ILoadable<T>)))
             {
                 Logger.Log(Logger.Levels.Error, $"{typeof(T).Name}_{id} is Not Loadable.");
-                return default;
+                return default; // hm? ten warning :D "Possible null reference return"... JA CHCEM NULL :D.. aj tak s dá :D
             }
 
             if (Activator.CreateInstance<T>() is not ILoadable<T> obj)
@@ -58,6 +58,24 @@ namespace StackAttack
             dictionaries[typeof(T)].Remove(id);
         }
 
+        public static void RemoveAll()
+        {
+            for (int typeI = dictionaries.Keys.Count-1; typeI >= 0; typeI--)
+            {
+                Type type = dictionaries.Keys.ElementAt(typeI);
+                for (int keyI = dictionaries[type].Count -1; keyI >= 0; keyI--)
+                {
+                    string key = dictionaries[type].Keys.ElementAt(keyI);
+                    if (type.IsAssignableFrom(typeof(IDisposable)))
+                    {
+                        ((IDisposable)dictionaries[type][key]).Dispose();
+                        dictionaries[type].Remove(key);
+                    }
+                    dictionaries.Remove(type);
+                }
+            }
+        }
+
         public static void Update<T>(string id, T content)
         {
             if (!dictionaries.ContainsKey(typeof(T)) || !dictionaries[typeof(T)].ContainsKey(id))
@@ -94,6 +112,28 @@ namespace StackAttack
                 return;
             }
             dictionaries[typeof(T)].Add(id, content);
+        }
+
+        public static List<string> GetKeys<T>()
+        {
+            List<string> keys = new();
+
+            if (dictionaries.ContainsKey(typeof(T)))
+            {
+                foreach (string key in dictionaries[typeof(T)].Keys)
+                {
+                    keys.Add(key);
+                }
+            }
+
+            return keys;
+        }
+
+        public static bool ContainsKey<T>(string key)
+        {
+            List<string> keys = new();
+
+            return dictionaries.ContainsKey(typeof(T)) && dictionaries[typeof(T)].ContainsKey(key);
         }
 
         public static T Get<T>(string id)

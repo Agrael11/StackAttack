@@ -14,7 +14,7 @@ namespace StackAttack
         public static Levels FileLogAt = Levels.Warn;
         public static string LogFile = "current.log";
         private static string KeepLog = "";
-        public static bool KeepOld = true;
+        public static bool KeepOld = false;
         public static int Repeat = 3;
         private static int Repeated = 0;
         private static string LastLog = "";

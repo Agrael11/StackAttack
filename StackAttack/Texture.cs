@@ -6,7 +6,19 @@ namespace StackAttack
 {
     internal class Texture : IDisposable, ILoadable<Texture>
     {
-        public string ID = "NullTexture";
+        public struct TextureDefinition 
+        {
+            public string TextureID { get; set; }
+            public string FileName { get; set; }
+
+            public TextureDefinition(string textureID, string fileName)
+            {
+                TextureID = textureID;
+                FileName = fileName;
+            }
+        }
+
+        //public string ID = "NullTexture";
         private int _handle;
         public int Handle { get { return _handle; } }
         private int _width = 0;
@@ -19,26 +31,37 @@ namespace StackAttack
         public TextureMinFilter TextureMinFilter { get; set; } = TextureMinFilter.Nearest;
         public TextureMagFilter TextureMagFilter { get; set; } = TextureMagFilter.Nearest;
 
-        public Texture? Load(string Path)
+        public Texture()
+        {
+
+        }
+        public Texture(int handle, int width, int height)
+        {
+            _handle = handle;
+            _width = width;
+            _height = height;
+        }
+
+        public Texture? Load(string path) 
         {
             Image<Rgba32> image;
             try
             {
-                image = Image.Load<Rgba32>(Path);
+                image = Image.Load<Rgba32>(path);
             }
             catch (Exception ex)
             {
                 Logger.Log(Logger.Levels.Warn, ex.Message);
                 return null;
             }
-            Texture texture = new()
-            {
-                _width = image.Width,
-                _height = image.Height,
-                _pixels = new byte[4 * image.Width * image.Height]
-            };
-            image.CopyPixelDataTo(texture._pixels);
-            image.Dispose();
+            //senk you, actually let me change the code a litle
+            _width = image.Width;
+            _height = image.Height;
+            _pixels = new byte[4 * image.Width * image.Height];
+        
+            image.CopyPixelDataTo(_pixels);
+            
+            //GL.ActiveTexture(TextureUnit.Texture0);
             _handle = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, _handle);
 
@@ -54,7 +77,8 @@ namespace StackAttack
 
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, _width, _height, 0,
                 PixelFormat.Rgba, PixelType.UnsignedByte, _pixels);
-            return texture;
+            image.Dispose();
+            return this; //načo vytvárať iný? :D tiez som si vravel :D, to je ešte ako som to predtým mal static, keď som nemal ten interface aha
         }
 
         public void Reload()
@@ -89,8 +113,9 @@ namespace StackAttack
 
         public void UseTexture(TextureUnit unit = TextureUnit.Texture0)
         {
+
             GL.ActiveTexture(unit);
-            GL.BindTexture(TextureTarget.Texture2D, _handle);
+            GL.BindTexture(TextureTarget.Texture2D, _handle); //len som chcel pozrieť, či to tam má dáta :D
         }
 
         public void Dispose()

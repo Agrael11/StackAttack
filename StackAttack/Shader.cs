@@ -1,4 +1,5 @@
 ﻿using OpenTK.Graphics.OpenGL4;
+using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,19 @@ namespace StackAttack
 {
     public class Shader :IDisposable, ILoadable<Shader>
     {
+        public struct ShaderDefinition
+        {
+            public string FileName { get; set; }
+            public string ShaderID { get; set; }
+
+            public ShaderDefinition(string shaderID, string fileName)
+            {
+                FileName = fileName;
+                ShaderID = shaderID;
+            }
+        }
+
+
         public int Handle { get; private set; }
 
         public Shader? Load(string Path)
@@ -72,8 +86,8 @@ namespace StackAttack
             GL.DeleteBuffer(VertexShader);
             GL.DeleteBuffer(FragmentShader);
 
-            Shader shader = new Shader() { Handle = handle };
-            return shader;
+            Handle = handle;
+            return this;
         }
 
         public int GetAttribLocation(string attrib)
@@ -90,6 +104,12 @@ namespace StackAttack
         {
             int location = GL.GetUniformLocation(Handle, name);
             GL.Uniform1(location, value);
+        }
+
+        public void SetMatrix4(string name, ref Matrix4 value)
+        {
+            int location = GL.GetUniformLocation(Handle, name);
+            GL.UniformMatrix4(location, true, ref value);
         }
 
         public void Dispose()
