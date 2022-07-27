@@ -15,10 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Shaders\renderTextureShader.vert">
+    <None Update="Shaders\desaturated.vert">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Shaders\renderTextureShader.frag">
+    <None Update="Shaders\desaturated.frag">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Shaders\baseShader.frag">

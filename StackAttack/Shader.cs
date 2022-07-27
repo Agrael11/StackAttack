@@ -102,12 +102,21 @@ namespace StackAttack
 
         public void SetInt(string name, int value)
         {
+            UseShader();
+            int location = GL.GetUniformLocation(Handle, name);
+            GL.Uniform1(location, value);
+        }
+
+        public void SetFloat(string name, float value)
+        {
+            UseShader();
             int location = GL.GetUniformLocation(Handle, name);
             GL.Uniform1(location, value);
         }
 
         public void SetMatrix4(string name, ref Matrix4 value)
         {
+            UseShader();
             int location = GL.GetUniformLocation(Handle, name);
             GL.UniformMatrix4(location, true, ref value);
         }

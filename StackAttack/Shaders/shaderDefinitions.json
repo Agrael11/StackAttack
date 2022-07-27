@@ -1,1 +1,10 @@
-[{"FileName":"Shaders/baseShader","ShaderID":"BaseShader"},{"FileName":"Shaders/renderTextureShader","ShaderID":"RenderShader"}]
+[
+  {
+    "FileName": "Shaders/baseShader",
+    "ShaderID": "BaseShader"
+  },
+  {
+    "FileName": "Shaders/desaturated",
+    "ShaderID": "Desaturated"
+  }
+]

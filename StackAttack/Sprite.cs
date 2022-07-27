@@ -145,7 +145,7 @@ namespace StackAttack
 
         public void Draw(Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
-            Shader shaderReference = ContentManager.Get<Shader>("BaseShader");
+            Shader shaderReference = ContentManager.Get<Shader>(ShaderID);
             shaderReference.UseShader();
 
             float realX = position.X / (Game.ViewportWidth/2f);

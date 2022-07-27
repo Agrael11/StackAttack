@@ -11,7 +11,7 @@ namespace StackAttack
     internal class RenderTexture
     {
         public string Name { get; set; }
-        public string Shader { get; set; }
+        public string Shader { get { return Sprite.ShaderID; } set { Sprite.ShaderID = value; } }
         public int Width { get; set; }
         public int Height { get; set; }
         private int frameBuffer;
@@ -22,7 +22,6 @@ namespace StackAttack
         {
             Width = width;
             Height = height;
-            Shader = shader;
             Name = "renderTexture_" + name;
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -48,7 +47,7 @@ namespace StackAttack
             DrawBuffersEnum[] DrawBuffers = { DrawBuffersEnum.ColorAttachment0 };
             GL.DrawBuffers(1, DrawBuffers);
             ContentManager.Add(Name, new Texture(renderTexture, width, height));
-            ContentManager.Add(Name, new Sprite(Name, Shader, new Vector2i(0, 0), new Vector2i(width, height)));
+            ContentManager.Add(Name, new Sprite(Name, shader, new Vector2i(0, 0), new Vector2i(width, height)));
         }
 
         public void Begin()

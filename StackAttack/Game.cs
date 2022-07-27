@@ -17,42 +17,43 @@ namespace StackAttack
         public static int ViewportHeight { get; set; } = 64;
         public static int WindowWidth { get; set; } = 512;
         public static int WindowHeight { get; set; } = 512;
+        public static bool Fullscreen = false;
 
         public string BGMap =
             "0000000000000000\n" +
-            "0111101111122000\n" +
-            "0111101111220000\n" +
-            "0111111112200000\n" +
-            "0111101122000000\n" +
-            "0111101220000000\n" +
-            "0000002220000000\n" +
-            "1111112220000000\n" +
-            "1111112220000000\n" +
-            "0001001220000000\n" +
-            "0111101120000000\n" +
+            "0111101111111111\n" +
+            "0111101111111111\n" +
+            "0111111111111111\n" +
             "0111101110000000\n" +
-            "0111101110000000\n" +
-            "0111101110000000\n" +
-            "0111101110000000\n" +
+            "0111101110333330\n" +
+            "0000001110333330\n" +
+            "2222221110333330\n" +
+            "2222221113333330\n" +
+            "0002001110333330\n" +
+            "0222201110333330\n" +
+            "0222201110000000\n" +
+            "0222201110333330\n" +
+            "0222201113333330\n" +
+            "0222201110333330\n" +
             "0000000000000000";
 
         public string FGMap =
-            "1111111111112200\n" +
-            "1000010000000000\n" +
-            "1000010000000000\n" +
-            "3009040000000000\n" +
-            "1000010000000000\n" +
-            "1000010002000000\n" +
-            "1111110002000000\n" +
-            "000000A002000000\n" +
-            "0000000005000000\n" +
-            "1114110002000000\n" +
-            "1000010002000000\n" +
-            "1000010002000000\n" +
-            "1000010001000000\n" +
-            "1000010006000000\n" +
-            "1070018001000000\n" +
-            "1111111111000000";
+            "1111122222222222\n" +
+            "1000020000000002\n" +
+            "1000020000000002\n" +
+            "4009050000000002\n" +
+            "1000020003333333\n" +
+            "1000020003000003\n" +
+            "1222220003000003\n" +
+            "000000A003000003\n" +
+            "0000000005000003\n" +
+            "1115110003000003\n" +
+            "1000010003000003\n" +
+            "1000010003333333\n" +
+            "1000010003000003\n" +
+            "1000010006000003\n" +
+            "1080017003000003\n" +
+            "1111112223333333";
         public string[,] Background = new string[16, 16];
         public string[,] Walls = new string[16, 16];
 
@@ -64,6 +65,11 @@ namespace StackAttack
         List<Texture.TextureDefinition> textureDefinitions = new();
         List<Sprite.SpriteDefinition> spriteDefinitions = new();
         List<Tile.TileDefinition> tileDefinitions = new();
+
+
+        int texturePosition = 32; 
+        float desaturation = 0.85f;
+        float brightness = 0.6f;
 
         private void LoadDefinitions()
         {
@@ -103,6 +109,15 @@ namespace StackAttack
             File.WriteAllText(path, result);
         }
 
+        protected override void OnResize(ResizeEventArgs e)
+        {
+            if (!Fullscreen)
+            {
+                Size = new Vector2i(WindowWidth, WindowHeight);
+                base.OnResize(e);
+            }
+        }
+
         protected override void OnLoad()
         {
 
@@ -113,40 +128,43 @@ namespace StackAttack
                     switch (BGMap.Split('\n')[y][x])
                     {
                         case '1':
-                            Background[x, y] = "DarkGroundTile";
+                            Background[x, y] = "BlueFloor";
                             break;
                         case '2':
-                            Background[x, y] = "GroundTile";
+                            Background[x, y] = "GreenFloor";
+                            break;
+                        case '3':
+                            Background[x, y] = "WoodFloor";
                             break;
                     }
                     switch (FGMap.Split('\n')[y][x])
                     {
                         case '1':
-                            Walls[x, y] = "DarkWoodTile";
+                            Walls[x, y] = "WoodWall";
                             break;
                         case '2':
-                            Walls[x, y] = "WoodTile";
+                            Walls[x, y] = "BrickWall";
                             break;
                         case '3':
-                            Walls[x, y] = "DarkExit";
+                            Walls[x, y] = "StoneWall";
                             break;
                         case '4':
-                            Walls[x, y] = "DarkDoor";
+                            Walls[x, y] = "Exit";
                             break;
                         case '5':
-                            Walls[x, y] = "Door";
+                            Walls[x, y] = "BlueDoor";
                             break;
                         case '6':
-                            Walls[x, y] = "DarkGoldDoor";
+                            Walls[x, y] = "GoldDoor";
                             break;
                         case '7':
-                            Walls[x, y] = "DarkChest";
+                            Walls[x, y] = "Key";
                             break;
                         case '8':
-                            Walls[x, y] = "DarkKey";
+                            Walls[x, y] = "Chest";
                             break;
                         case '9':
-                            Walls[x, y] = "DarkEnemy";
+                            Walls[x, y] = "Enemy";
                             break;
                         case 'A':
                             Walls[x, y] = "Player";
@@ -166,11 +184,15 @@ namespace StackAttack
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             renderTexture = new RenderTexture(64, 64, "BaseShader", "");
+            renderTexture2 = new RenderTexture(64, 64, "Desaturated", "");
+            
+            Logger.Log(Logger.Levels.Info, "Saturation Demo Keyboard info:\nD & A - Move Desat Shader Preview\nW - Increase Saturation\nS - Decrease Saturation\nNumpad Plus - Increase Brightness\nNumpad Minus - Decrease Brightness\nDefault Values: " + $"TexturePosition: {texturePosition}, Desaturation: {desaturation:0.##} / Saturation: {(1 - desaturation):0.##}, Brightness: {brightness:0.##}");
 
             base.OnLoad();
         }
 
         RenderTexture renderTexture;
+        RenderTexture renderTexture2;
 
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
@@ -194,23 +216,58 @@ namespace StackAttack
 
         protected override void OnRenderFrame(FrameEventArgs args)
         {
-            renderTexture.Begin();
+            if (KeyboardState.IsKeyDown(Keys.D))
+            {
+                texturePosition++;
+                if (texturePosition > 64) texturePosition = 64;
+            }
+            else if (KeyboardState.IsKeyDown(Keys.A))
+            {
+                texturePosition--;
+                if (texturePosition < 0) texturePosition = 0;
+            }
+            else if (KeyboardState.IsKeyDown(Keys.S))
+            {
+                desaturation += 0.01f;
+                if (desaturation > 1) desaturation = 1;
+            }
+            else if (KeyboardState.IsKeyDown(Keys.W))
+            {
+                desaturation -= 0.01f;
+                if (desaturation < 0) desaturation = 0;
+            }
+            else if (KeyboardState.IsKeyDown(Keys.KeyPadAdd))
+            {
+                brightness += 0.01f;
+                if (brightness > 10) brightness = 10;
+            }
+            else if (KeyboardState.IsKeyDown(Keys.KeyPadSubtract))
+            {
+                brightness -= 0.01f;
+                if (brightness < 0) brightness = 0;
+            }
             rotato = (rotato + 0.1f) % (float)Math.Tau;
+            string info = $"TexturePosition: {texturePosition}, Desaturation: {desaturation:0.##} / Saturation: {(1-desaturation):0.##}, Brightness: {brightness:0.##}";
+            this.Title = info;
+            if (KeyboardState.IsKeyReleased(Keys.W) || KeyboardState.IsKeyReleased(Keys.S) || KeyboardState.IsKeyReleased(Keys.A) || KeyboardState.IsKeyReleased(Keys.D) || KeyboardState.IsKeyReleased(Keys.KeyPadAdd) || KeyboardState.IsKeyReleased(Keys.KeyPadSubtract))
+            {
+                Logger.Log(Logger.Levels.Info, info);
+            }
+            renderTexture.Begin();
             GL.ClearColor(0f, 0f, 0f, 0f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
-
             for (int y = 0; y <16; y++)
             {
                 for (int x = 0; x < 16; x++)
                 {
                     string tileID = Background[x, y];
-                    if (!string.IsNullOrWhiteSpace(tileID))
+                    if (!string.IsNullOrWhiteSpace(tileID) && !tileID.Contains("Dark"))
                     {
                         Tile.Draw(tileID, new Vector2i(x * 4, y * 4), 0, false, false);
                     }
 
                     tileID = Walls[x, y];
-                    if (!string.IsNullOrWhiteSpace(tileID))
+                    if (!string.IsNullOrWhiteSpace(tileID) && !tileID.Contains("Dark"))
                     {
                         if (tileID == "Player")
                         {
@@ -228,7 +285,11 @@ namespace StackAttack
             GL.ClearColor(0f, 0f, 0f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            renderTexture.Sprite.Draw(new Vector2i(0, 0), 0, false, true);
+            ContentManager.Get<Shader>("Desaturated").SetFloat("brightness", brightness);
+            ContentManager.Get<Shader>("Desaturated").SetFloat("desaturation", desaturation);
+
+            Sprite.DrawTexture(renderTexture.Sprite.TextureID, new Vector2i(0, 0), new Vector2i(texturePosition, 64), "Desaturated", new Vector2i(0, 0), new Vector2i(texturePosition, 64));
+            Sprite.DrawTexture(renderTexture.Sprite.TextureID, new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64), "BaseShader", new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64));
 
             Context.SwapBuffers();
             base.OnRenderFrame(args);
