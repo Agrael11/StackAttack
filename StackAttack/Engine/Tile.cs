@@ -38,6 +38,7 @@ namespace StackAttack.Engine
         public string ShaderID { get { return sprite.ShaderID; } set { sprite.ShaderID = value; } }
         public Vector2i Location { get { return sprite.Location; } set { sprite.Location = value; } }
         public Vector2i Size { get { return sprite.Size; } set { sprite.Size = value; } }
+        public Rectanglei Rectangle { get { return new Rectanglei(Location.X*4,Location.Y*4, Size); } set { Location = new(value.X / 4, value.Y / 4); Size = value.Size; } }
 
         public Tile(string textureID, string shaderID, Vector2i location, Vector2i size)
         {

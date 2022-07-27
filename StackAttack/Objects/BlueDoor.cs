@@ -1,5 +1,6 @@
 ﻿using OpenTK.Windowing.Common;
 using StackAttack.Engine;
+using StackAttack.Engine.Helpers;
 using StackAttack.Engine.Map;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace StackAttack.Objects
 {
     internal class BlueDoor : GameObject
     {
-        private int DefaultTimer = 0;
-        private int Timer = 100;
-        public bool IsOpen = false;
+        private int DefaultTimer = 100;
+        private int Timer = 0;
+        public bool IsOpen = true;
         private TileData tile;
 
         public BlueDoor() : base(0,0,0,Headings.North, null, "")
@@ -26,11 +27,9 @@ namespace StackAttack.Objects
             Init();
         }
 
-        private void Init()
+        internal void Init()
         {
-            Close();
-            Timer = Random.Shared.Next(50, 200);
-            DefaultTimer = Timer;
+            TryClose();
         }
 
         public override GameObject CreateNew(int x, int y, float rotation, Headings heading, Game? game, string spriteID)
@@ -52,18 +51,23 @@ namespace StackAttack.Objects
 
         public override void Update(FrameEventArgs args)
         {
-            Timer--;
             if (Timer == 0)
             {
-                Timer = DefaultTimer;
                 if (IsOpen)
                 {
-                    Close();
+                    if (TryClose())
+                    {
+                        Timer--;
+                    }
+                    else
+                    {
+                        Timer = DefaultTimer/10;
+                    }
                 }
-                else
-                {
-                    Open();
-                }
+            }
+            else if (Timer > 0)
+            {
+                Timer--;
             }
         }
 
@@ -74,16 +78,49 @@ namespace StackAttack.Objects
 
             Parent.Foreground.Tiles.Remove(tile);
             IsOpen = true;
+            Timer = DefaultTimer;
         }
 
-        public void Close()
+        public bool TryClose()
         {
             if (Parent is null)
-                return;
+                return false;
+
+            if (Parent.player is null)
+                return false;
+
+            (bool result, Sprite? meSprite) = ContentManager.Get<Sprite>(Parent.player.SpriteID);
+            if (!result || meSprite is null)
+                return false;
+
+            (result, Sprite? playerSprite) = ContentManager.Get<Sprite>(Parent.player.SpriteID);
+            if (!result || playerSprite is null)
+                return false;
+
+            if (new Rectanglei(Parent.player.Location, playerSprite.Size).Intersects(new Rectanglei(Location, meSprite.Size)))
+            {
+                return false;
+            }
+
+            foreach (GameObject gameObject in Parent.gameObjects)
+            {
+                if (gameObject == this)
+                    continue;
+
+                (result, Sprite? objectSprite) = ContentManager.Get<Sprite>(Parent.player.SpriteID);
+                if (!result || objectSprite is null)
+                    return false;
+
+                if (new Rectanglei(gameObject.Location, objectSprite.Size).Intersects(new Rectanglei(Location, meSprite.Size)))
+                {
+                    return false;
+                }
+            }
 
             tile = new Engine.Map.TileData(SpriteID, X/4, Y/4, (float)((int)Heading * 90));
             Parent.Foreground.Tiles.Add(tile);
             IsOpen = false;
+            return true;
         }
     }
 }

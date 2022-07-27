@@ -46,9 +46,19 @@ namespace StackAttack.Engine.Helpers
             Size = size;
         }
 
-        public static bool Intersect(Rectanglei rectangle1, Rectanglei rectangle2)
+        public static bool Intersects(Rectanglei rectangle1, Rectanglei rectangle2)
         {
-            return (rectangle1.X < rectangle2.X2 && rectangle1.X2 > rectangle2.X && rectangle1.Y < rectangle1.Y2 && rectangle1.Y2 > rectangle1.Y);
+            return (rectangle1.X < rectangle2.X2 && rectangle1.X2 > rectangle2.X && rectangle1.Y < rectangle2.Y2 && rectangle1.Y2 > rectangle2.Y);
+        }
+
+        public  bool Intersects(Rectanglei rectangle)
+        {
+            return (X < rectangle.X2 && X2 > rectangle.X && Y < rectangle.Y2 && Y2 > rectangle.Y);
+        }
+
+        public override string ToString()
+        {
+            return $"{X}x{Y} {Width}x{Height}";
         }
     }
 }

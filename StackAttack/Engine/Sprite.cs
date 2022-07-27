@@ -37,6 +37,7 @@ namespace StackAttack.Engine
         public string ShaderID { get; set; }
         public Vector2i Location { get; set; }
         public Vector2i Size { get; set; }
+        public Rectanglei Rectangle { get { return new Rectanglei(Location, Size); }}
 
         private int VertexBufferObject;
         private int ElementBufferObject;

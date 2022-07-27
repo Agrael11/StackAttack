@@ -20,7 +20,7 @@ namespace StackAttack
         public static int WindowWidth { get; set; } = 512;
         public static int WindowHeight { get; set; } = 512;
         public static bool Fullscreen = false;
-
+        
         List<Shader.ShaderDefinition> shaderDefinitions = new();
         List<Texture.TextureDefinition> textureDefinitions = new();
         List<Sprite.SpriteDefinition> spriteDefinitions = new();
@@ -29,8 +29,11 @@ namespace StackAttack
         RenderTexture renderTexture = new();
 
         public List<GameObject> gameObjects { get; set; } = new();
+        public GameObject? player { get; set; }
         public TileMap Background { get; set; } = new();
         public TileMap Foreground { get; set; } = new();
+
+        public int Score { get; set; } = 0;
 
         public Game(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
@@ -121,7 +124,7 @@ namespace StackAttack
                     gameObjects.Add(returnObject.CreateNew(objectData.ObjectX, objectData.ObjectY, 0, objectData.Heading, this, objectData.SpriteID));
                 }
             }
-            gameObjects.Add(new Objects.Player(level.PlayerStartData.PlayerX, level.PlayerStartData.PlayerY, 0, level.PlayerStartData.Heading, this, level.PlayerStartData.SpriteID));
+            player = new Objects.Player(level.PlayerStartData.PlayerX, level.PlayerStartData.PlayerY, 0, level.PlayerStartData.Heading, this, level.PlayerStartData.SpriteID);
 
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
@@ -133,17 +136,12 @@ namespace StackAttack
 
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
-            KeyboardState input = KeyboardState.GetSnapshot();
-            if (input.IsKeyDown(Keys.Escape))
-            {
-                Close();
-                return;
-            }
-            
             foreach (GameObject gameObject in gameObjects)
             {
                 gameObject.Update(args);
             }
+
+            player.Update(args);
 
             base.OnUpdateFrame(args);
         }
@@ -182,6 +180,8 @@ namespace StackAttack
                 gameObject.Draw(args);
             }
 
+            player.Draw(args);
+
             renderTexture.End();
             GL.ClearColor(0f, 0f, 0f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
@@ -199,6 +199,11 @@ namespace StackAttack
         {
             ContentManager.RemoveAll();
             base.OnUnload();
+        }
+
+        public void ShowInventory(bool score = false, bool key = false, bool enemies = false)
+        {
+            //TODO
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using OpenTK.Windowing.Common;
+﻿using OpenTK.Mathematics;
+using OpenTK.Windowing.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,13 @@ namespace StackAttack.Engine
 
         public int X { get; set; }
         public int Y { get; set; }
+        public Vector2i Location
+        {
+            get
+            {
+                return new Vector2i(X, Y);
+            }
+        }
         public float Rotation { get; set; }
         public Headings Heading { get; set; }
         public string SpriteID { get; set; } = "";
