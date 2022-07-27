@@ -1,5 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
+using StackAttack.Engine.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,11 @@ namespace StackAttack.Engine
             sprite.Draw(position, Size, rotation, horizontalFlip, verticalFlip);
         }
 
+        public void Draw(Rectanglei rectangle, float rotation, bool horizontalFlip = false, bool verticalFlip = false)
+        {
+            sprite.Draw(rectangle.Location, rectangle.Size, rotation, horizontalFlip, verticalFlip);
+        }
+
         public void Draw(Vector2i position, Vector2i size, float rotation, bool horizontalFlip = false, bool verticalFlip = false)
         {
             sprite.Draw(position, size, rotation, horizontalFlip, verticalFlip);
@@ -68,6 +74,15 @@ namespace StackAttack.Engine
                 return;
 
             tileResult.sprite.Draw(position, tileResult.Size, rotation, horizontalFlip, verticalFlip);
+        }
+
+        public static void Draw(string tileID, Rectanglei dstRectangle, float rotation, bool horizontalFlip = false, bool verticalFlip = false)
+        {
+            (bool returnResult, Tile? tileResult) = ContentManager.Get<Tile>(tileID);
+            if (!returnResult || tileResult is null)
+                return;
+
+            tileResult.sprite.Draw(dstRectangle.Location, dstRectangle.Size, rotation, horizontalFlip, verticalFlip);
         }
 
         public static void Draw(string tileID, Vector2i position, Vector2i size, float rotation, bool horizontalFlip = false, bool verticalFlip = false)

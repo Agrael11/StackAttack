@@ -1,5 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
+using StackAttack.Engine.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -163,6 +164,11 @@ namespace StackAttack.Engine
             Draw(position, Size, rotation, horizontalFlip, verticalFlip);
         }
 
+        public void Draw(Rectanglei dstRectangle, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
+        {
+            Draw(dstRectangle.Location, dstRectangle.Size, rotation, horizontalFlip, verticalFlip);
+        }
+
         public void Draw(Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
             (bool returnResult, Texture? textureResult) = ContentManager.Get<Texture>(TextureID);
@@ -216,6 +222,15 @@ namespace StackAttack.Engine
             spriteResult.Draw(position, rotation, horizontalFlip, verticalFlip);
         }
 
+        public static void Draw(string spriteID, Rectanglei dstRectangle, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
+        {
+            (bool returnResult, Sprite? spriteResult) = ContentManager.Get<Sprite>(spriteID);
+            if (!returnResult || spriteResult is null)
+                return;
+
+            spriteResult.Draw(dstRectangle.Location, dstRectangle.Size, rotation, horizontalFlip, verticalFlip);
+        }
+
         public static void Draw(string spriteID, Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
             (bool returnResult, Sprite? spriteResult) = ContentManager.Get<Sprite>(spriteID);
@@ -225,7 +240,14 @@ namespace StackAttack.Engine
             spriteResult.Draw(position, size, rotation, horizontalFlip, verticalFlip);
         }
 
-        public static void DrawTexture(string textureID, Vector2i sourcePosition, Vector2i sourceSize, string shaderID, Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
+        public static void DrawTexture(string textureID, string shaderID, Rectanglei sourceRectangle, Rectanglei destinationRectangle, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
+        {
+            Sprite tempSprite = new Sprite(textureID, shaderID, sourceRectangle.Location, sourceRectangle.Size);
+            tempSprite.Draw(destinationRectangle.Location, destinationRectangle.Size, rotation, horizontalFlip, verticalFlip);
+            tempSprite.Dispose();
+        }
+
+        public static void DrawTexture(string textureID, string shaderID, Vector2i sourcePosition, Vector2i sourceSize, Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
             Sprite tempSprite = new Sprite(textureID, shaderID, sourcePosition, sourceSize);
             tempSprite.Draw(position, size, rotation, horizontalFlip, verticalFlip);

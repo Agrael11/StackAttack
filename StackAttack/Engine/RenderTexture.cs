@@ -36,6 +36,11 @@ namespace StackAttack.Engine
         public (bool returnResult, Texture? textureResult) Texture => ContentManager.Get<Texture>(Name);
         public (bool returnResult, Sprite? spriteResult) Sprite => ContentManager.Get<Sprite>(Name);
 
+        public RenderTexture()
+        {
+            Name = "";
+        }
+
         public RenderTexture(int width, int height, string shader, string name = "")
         {
             Width = width;
