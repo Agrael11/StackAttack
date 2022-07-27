@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StackAttack
+namespace StackAttack.Engine.Helpers
 {
     public interface ILoadable<T>
     {

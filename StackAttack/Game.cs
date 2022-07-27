@@ -5,6 +5,8 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using StackAttack.Engine;
+using StackAttack.Engine.Helpers;
 
 namespace StackAttack
 {
@@ -184,7 +186,6 @@ namespace StackAttack
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             renderTexture = new RenderTexture(64, 64, "BaseShader", "");
-            renderTexture2 = new RenderTexture(64, 64, "Desaturated", "");
             
             Logger.Log(Logger.Levels.Info, "Saturation Demo Keyboard info:\nD & A - Move Desat Shader Preview\nW - Increase Saturation\nS - Decrease Saturation\nNumpad Plus - Increase Brightness\nNumpad Minus - Decrease Brightness\nDefault Values: " + $"TexturePosition: {texturePosition}, Desaturation: {desaturation:0.##} / Saturation: {(1 - desaturation):0.##}, Brightness: {brightness:0.##}");
 
@@ -192,7 +193,6 @@ namespace StackAttack
         }
 
         RenderTexture renderTexture;
-        RenderTexture renderTexture2;
 
         protected override void OnUpdateFrame(FrameEventArgs args)
         {
@@ -288,8 +288,8 @@ namespace StackAttack
             ContentManager.Get<Shader>("Desaturated").SetFloat("brightness", brightness);
             ContentManager.Get<Shader>("Desaturated").SetFloat("desaturation", desaturation);
 
-            Sprite.DrawTexture(renderTexture.Sprite.TextureID, new Vector2i(0, 0), new Vector2i(texturePosition, 64), "Desaturated", new Vector2i(0, 0), new Vector2i(texturePosition, 64));
-            Sprite.DrawTexture(renderTexture.Sprite.TextureID, new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64), "BaseShader", new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64));
+            Sprite.DrawTexture(renderTexture.Sprite.TextureID, new Vector2i(0, 0), new Vector2i(texturePosition, 64), "Desaturated", new Vector2i(0, 0), new Vector2i(texturePosition, 64), 0, false, true);
+            Sprite.DrawTexture(renderTexture.Sprite.TextureID, new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64), "BaseShader", new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64), 0, false, true);
 
             Context.SwapBuffers();
             base.OnRenderFrame(args);

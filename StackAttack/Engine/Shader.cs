@@ -1,14 +1,15 @@
 ﻿using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
+using StackAttack.Engine.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StackAttack
+namespace StackAttack.Engine
 {
-    public class Shader :IDisposable, ILoadable<Shader>
+    public class Shader : IDisposable, ILoadable<Shader>
     {
         public struct ShaderDefinition
         {

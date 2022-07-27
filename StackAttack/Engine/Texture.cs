@@ -1,12 +1,13 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using StackAttack.Engine.Helpers;
 
-namespace StackAttack
+namespace StackAttack.Engine
 {
     internal class Texture : IDisposable, ILoadable<Texture>
     {
-        public struct TextureDefinition 
+        public struct TextureDefinition
         {
             public string TextureID { get; set; }
             public string FileName { get; set; }
@@ -42,7 +43,7 @@ namespace StackAttack
             _height = height;
         }
 
-        public Texture? Load(string path) 
+        public Texture? Load(string path)
         {
             Image<Rgba32> image;
             try
@@ -58,9 +59,10 @@ namespace StackAttack
             _width = image.Width;
             _height = image.Height;
             _pixels = new byte[4 * image.Width * image.Height];
-        
+
+
+
             image.CopyPixelDataTo(_pixels);
-            
             //GL.ActiveTexture(TextureUnit.Texture0);
             _handle = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, _handle);

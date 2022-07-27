@@ -1,10 +1,11 @@
-﻿using System;
+﻿using StackAttack.Engine.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StackAttack
+namespace StackAttack.Engine
 {
     internal static class ContentManager
     {

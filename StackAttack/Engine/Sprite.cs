@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StackAttack
+namespace StackAttack.Engine
 {
     internal class Sprite : IDisposable
     {
@@ -109,11 +109,11 @@ namespace StackAttack
             Texture textureReference = ContentManager.Get<Texture>(TextureID);
             float myX1 = Location.X / (float)textureReference.Width;
             float myY1 = Location.Y / (float)textureReference.Height;
-            float myX2 = myX1 + (Size.X / (float)textureReference.Width);
-            float myY2 = myY1 + (Size.Y / (float)textureReference.Height);
+            float myX2 = myX1 + Size.X / (float)textureReference.Width;
+            float myY2 = myY1 + Size.Y / (float)textureReference.Height;
 
-             float[] vertices =
-            {
+            float[] vertices =
+           {
                 1f, 1f, 0.0f, myX2, myY1, //top right
                 1f, 0f, 0.0f, myX2, myY2, //bottom right
                 0f, 0f, 0.0f, myX1, myY2, //bottom left
@@ -148,18 +148,18 @@ namespace StackAttack
             Shader shaderReference = ContentManager.Get<Shader>(ShaderID);
             shaderReference.UseShader();
 
-            float realX = position.X / (Game.ViewportWidth/2f);
+            float realX = position.X / (Game.ViewportWidth / 2f);
             realX -= 1;
 
-            float realY = position.Y / (Game.ViewportHeight/2f);
+            float realY = position.Y / (Game.ViewportHeight / 2f);
             realY = 2 - realY;
             realY -= 2;
 
-            float realWidth = size.X / (Game.ViewportWidth/2f);
-            float realHeight = size.Y / (Game.ViewportHeight/2f);
+            float realWidth = size.X / (Game.ViewportWidth / 2f);
+            float realHeight = size.Y / (Game.ViewportHeight / 2f);
 
             Matrix4 translate = Matrix4.CreateTranslation(realX, realY, 0);
-            Matrix4 rotationM = Matrix4.CreateTranslation(-0.5f, -0.5f, 0) * Matrix4.CreateRotationZ((float)Math.Tau-rotation) * Matrix4.CreateTranslation(0.5f, 0.5f, 0);
+            Matrix4 rotationM = Matrix4.CreateTranslation(-0.5f, -0.5f, 0) * Matrix4.CreateRotationZ((float)Math.Tau - rotation) * Matrix4.CreateTranslation(0.5f, 0.5f, 0);
             Matrix4 scale = Matrix4.CreateTranslation(0, -1, 0) * Matrix4.CreateScale(realWidth, realHeight, 1f);
             if (horizontalFlip)
             {

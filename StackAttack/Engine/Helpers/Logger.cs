@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StackAttack
+namespace StackAttack.Engine.Helpers
 {
     internal static class Logger
     {
@@ -73,7 +73,7 @@ namespace StackAttack
                 string log = "";
                 if (File.Exists(LogFile))
                 {
-                    log =File.ReadAllText(LogFile);
+                    log = File.ReadAllText(LogFile);
                 }
                 log += $"{str}\n";
                 File.WriteAllText(LogFile, log);

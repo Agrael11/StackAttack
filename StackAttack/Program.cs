@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Windowing.Desktop;
+using StackAttack.Engine.Helpers;
 
 namespace StackAttack
 {
