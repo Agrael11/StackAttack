@@ -7,6 +7,7 @@ using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 using StackAttack.Engine;
 using StackAttack.Engine.Helpers;
+using StackAttack.Engine.Map;
 
 namespace StackAttack
 {
@@ -21,44 +22,6 @@ namespace StackAttack
         public static int WindowHeight { get; set; } = 512;
         public static bool Fullscreen = false;
 
-        public string BGMap =
-            "0000000000000000\n" +
-            "0111101111111111\n" +
-            "0111101111111111\n" +
-            "0111111111111111\n" +
-            "0111101110000000\n" +
-            "0111101110333330\n" +
-            "0000001110333330\n" +
-            "2222221110333330\n" +
-            "2222221113333330\n" +
-            "0002001110333330\n" +
-            "0222201110333330\n" +
-            "0222201110000000\n" +
-            "0222201110333330\n" +
-            "0222201113333330\n" +
-            "0222201110333330\n" +
-            "0000000000000000";
-
-        public string FGMap =
-            "1111122222222222\n" +
-            "1000020000000002\n" +
-            "1000020000000002\n" +
-            "4009050000000002\n" +
-            "1000020003333333\n" +
-            "1000020003000003\n" +
-            "1222220003000003\n" +
-            "000000A003000003\n" +
-            "0000000005000003\n" +
-            "1115110003000003\n" +
-            "1000010003000003\n" +
-            "1000010003333333\n" +
-            "1000010003000003\n" +
-            "1000010006000003\n" +
-            "1080017003000003\n" +
-            "1111112223333333";
-        public string[,] Background = new string[16, 16];
-        public string[,] Walls = new string[16, 16];
-
         public Game(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
         }
@@ -67,7 +30,8 @@ namespace StackAttack
         List<Texture.TextureDefinition> textureDefinitions = new();
         List<Sprite.SpriteDefinition> spriteDefinitions = new();
         List<Tile.TileDefinition> tileDefinitions = new();
-
+        List<GameObject> gameObjects = new();
+        LevelData level;
 
         int texturePosition = 32; 
         float desaturation = 0.85f;
@@ -94,20 +58,33 @@ namespace StackAttack
             {
                 ContentManager.Add(spriteDefinition.SpriteID, new Sprite(spriteDefinition.TextureID, spriteDefinition.ShaderID, new Vector2i(spriteDefinition.X, spriteDefinition.Y), new Vector2i(spriteDefinition.Width, spriteDefinition.Height)));
             }
+
+#pragma warning disable CS8619 // Nullability of reference types in value doesn't match target type.
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+            IEnumerable<GameObject> gameObjectTypes = typeof(GameObject).Assembly.GetTypes()
+                .Where(t => t.IsSubclassOf(typeof(GameObject)) && !t.IsAbstract)
+                .Select(t => (GameObject)Activator.CreateInstance(t));
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning restore CS8619 // Nullability of reference types in value doesn't match target type.
+            foreach (GameObject gameObjectType in gameObjectTypes)
+            {
+                ContentManager.Add<GameObject>(gameObjectType.GetType().Name, gameObjectType);
+            }
+
         }
 
-        private void LoadDefintionData<T>(string path, ref List<T> data)
+        private void LoadDefinitionData<T>(string path, ref T data)
         {
             string input = File.ReadAllText(path);
-            List<T>? output = System.Text.Json.JsonSerializer.Deserialize<List<T>>(input);
+            T? output = System.Text.Json.JsonSerializer.Deserialize<T>(input);
             if (output == null)
                 return;
             data = output;
         }
 
-        private void SaveDefintionData<T>(string path, List<T> data)
+        private void SaveDefintionData<T>(string path, T data)
         {
-            string result = System.Text.Json.JsonSerializer.Serialize(data, typeof(List<T>), new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            string result = System.Text.Json.JsonSerializer.Serialize(data, typeof(T), new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, result);
         }
 
@@ -122,65 +99,22 @@ namespace StackAttack
 
         protected override void OnLoad()
         {
-
-            for (int y = 0; y < 16; y++)
+            LoadDefinitionData("Shaders/shaderDefinitions.json", ref shaderDefinitions);
+            LoadDefinitionData("Textures/textureDefinitions.json", ref textureDefinitions);
+            LoadDefinitionData("Textures/spriteDefinitions.json", ref spriteDefinitions);
+            LoadDefinitionData("Textures/tileDefinitions.json", ref tileDefinitions);
+            LoadDefinitionData("Levels/AlphaLevel.json", ref level);
+            LoadDefinitions();
+            
+            foreach (GameObjectStartData objectData in level.GameObjectStartDatas)
             {
-                for (int x = 0; x < 16; x++)
+                (bool returnResult, GameObject? returnObject) = ContentManager.Get<GameObject>(objectData.GameObjectTypeID);
+                if (returnResult == true && returnObject is not null)
                 {
-                    switch (BGMap.Split('\n')[y][x])
-                    {
-                        case '1':
-                            Background[x, y] = "BlueFloor";
-                            break;
-                        case '2':
-                            Background[x, y] = "GreenFloor";
-                            break;
-                        case '3':
-                            Background[x, y] = "WoodFloor";
-                            break;
-                    }
-                    switch (FGMap.Split('\n')[y][x])
-                    {
-                        case '1':
-                            Walls[x, y] = "WoodWall";
-                            break;
-                        case '2':
-                            Walls[x, y] = "BrickWall";
-                            break;
-                        case '3':
-                            Walls[x, y] = "StoneWall";
-                            break;
-                        case '4':
-                            Walls[x, y] = "Exit";
-                            break;
-                        case '5':
-                            Walls[x, y] = "BlueDoor";
-                            break;
-                        case '6':
-                            Walls[x, y] = "GoldDoor";
-                            break;
-                        case '7':
-                            Walls[x, y] = "Key";
-                            break;
-                        case '8':
-                            Walls[x, y] = "Chest";
-                            break;
-                        case '9':
-                            Walls[x, y] = "Enemy";
-                            break;
-                        case 'A':
-                            Walls[x, y] = "Player";
-                            break;
-                    }
-
+                    gameObjects.Add(returnObject.CreateNew(objectData.ObjectX, objectData.ObjectY, 0, objectData.Heading));
                 }
             }
-
-            LoadDefintionData("Shaders/shaderDefinitions.json", ref shaderDefinitions);
-            LoadDefintionData("Textures/textureDefinitions.json", ref textureDefinitions);
-            LoadDefintionData("Textures/spriteDefinitions.json", ref spriteDefinitions);
-            LoadDefintionData("Textures/tileDefinitions.json", ref tileDefinitions);
-            LoadDefinitions();
+            gameObjects.Add(new Objects.Player(level.PlayerStartData.PlayerX, level.PlayerStartData.PlayerY, 0, level.PlayerStartData.Heading, level.PlayerStartData.SpriteID));
 
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
@@ -201,21 +135,6 @@ namespace StackAttack
             {
                 Close();
             };
-
-            base.OnUpdateFrame(args);
-        }
-
-        public static void SetViewport(int x, int y, int width, int height, int renderWidth, int renderHeight)
-        {
-            GL.Viewport(x, y, width, height);
-            ViewportWidth = renderWidth;
-            ViewportHeight = renderHeight;
-            ViewportX = x;
-            ViewportY = y;
-        }
-
-        protected override void OnRenderFrame(FrameEventArgs args)
-        {
             if (KeyboardState.IsKeyDown(Keys.D))
             {
                 texturePosition++;
@@ -247,49 +166,66 @@ namespace StackAttack
                 if (brightness < 0) brightness = 0;
             }
             rotato = (rotato + 0.1f) % (float)Math.Tau;
-            string info = $"TexturePosition: {texturePosition}, Desaturation: {desaturation:0.##} / Saturation: {(1-desaturation):0.##}, Brightness: {brightness:0.##}";
-            this.Title = info;
+            string info = $"TexturePosition: {texturePosition}, Desaturation: {desaturation:0.##} / Saturation: {(1 - desaturation):0.##}, Brightness: {brightness:0.##}";
             if (KeyboardState.IsKeyReleased(Keys.W) || KeyboardState.IsKeyReleased(Keys.S) || KeyboardState.IsKeyReleased(Keys.A) || KeyboardState.IsKeyReleased(Keys.D) || KeyboardState.IsKeyReleased(Keys.KeyPadAdd) || KeyboardState.IsKeyReleased(Keys.KeyPadSubtract))
             {
                 Logger.Log(Logger.Levels.Info, info);
             }
+
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObject.Update(args);
+            }
+
+            base.OnUpdateFrame(args);
+        }
+
+        public static void SetViewport(int x, int y, int width, int height, int renderWidth, int renderHeight)
+        {
+            GL.Viewport(x, y, width, height);
+            ViewportWidth = renderWidth;
+            ViewportHeight = renderHeight;
+            ViewportX = x;
+            ViewportY = y;
+        }
+
+        protected override void OnRenderFrame(FrameEventArgs args)
+        {
             renderTexture.Begin();
             GL.ClearColor(0f, 0f, 0f, 0f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
-            for (int y = 0; y <16; y++)
+            
+            foreach (TileData tile in level.Background._tiles)
             {
-                for (int x = 0; x < 16; x++)
-                {
-                    string tileID = Background[x, y];
-                    if (!string.IsNullOrWhiteSpace(tileID) && !tileID.Contains("Dark"))
-                    {
-                        Tile.Draw(tileID, new Vector2i(x * 4, y * 4), 0, false, false);
-                    }
-
-                    tileID = Walls[x, y];
-                    if (!string.IsNullOrWhiteSpace(tileID) && !tileID.Contains("Dark"))
-                    {
-                        if (tileID == "Player")
-                        {
-                            Tile.Draw(tileID, new Vector2i(x * 4, y * 4), rotato, false, false);
-                        }
-                        else
-                        {
-                            Tile.Draw(tileID, new Vector2i(x * 4, y * 4), (y == 9&&x==3)?(float)(Math.PI/2):0, false, false);
-                        }
-                    }
-                }
+                Tile.Draw(tile.TileID, new Vector2i(tile.TileX*4, tile.TileY*4), tile.GetTileRotationRad());
+            }
+            
+            foreach (TileData tile in level.Foreground._tiles)
+            {
+                Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4, tile.TileY * 4), tile.GetTileRotationRad());
+            }
+            
+            foreach (GameObject gameObject in gameObjects)
+            {
+                gameObject.Draw(args);
             }
 
             renderTexture.End();
             GL.ClearColor(0f, 0f, 0f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            ContentManager.Get<Shader>("Desaturated").SetFloat("brightness", brightness);
-            ContentManager.Get<Shader>("Desaturated").SetFloat("desaturation", desaturation);
+            (bool returnResult, Shader? returnShader) = ContentManager.Get<Shader>("Desaturated");
+            if (returnResult == true && returnShader is not null)
+            { 
+                returnShader.SetFloat("brightness", brightness);
+                returnShader.SetFloat("desaturation", desaturation);
+            }
 
-            Sprite.DrawTexture(renderTexture.Sprite.TextureID, new Vector2i(0, 0), new Vector2i(texturePosition, 64), "Desaturated", new Vector2i(0, 0), new Vector2i(texturePosition, 64), 0, false, true);
-            Sprite.DrawTexture(renderTexture.Sprite.TextureID, new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64), "BaseShader", new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64), 0, false, true);
+            if (renderTexture.Sprite.returnResult && renderTexture.Sprite.spriteResult is not null)
+            {
+                Sprite.DrawTexture(renderTexture.Sprite.spriteResult.TextureID, new Vector2i(0, 0), new Vector2i(texturePosition, 64), "Desaturated", new Vector2i(0, 0), new Vector2i(texturePosition, 64), 0, false, true);
+                Sprite.DrawTexture(renderTexture.Sprite.spriteResult.TextureID, new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64), "BaseShader", new Vector2i(texturePosition, 0), new Vector2i(64 - texturePosition, 64), 0, false, true);
+            }
 
             Context.SwapBuffers();
             base.OnRenderFrame(args);

@@ -11,12 +11,30 @@ namespace StackAttack.Engine
     internal class RenderTexture
     {
         public string Name { get; set; }
-        public string Shader { get { return Sprite.ShaderID; } set { Sprite.ShaderID = value; } }
+        public string Shader 
+        {
+            get
+            {
+                if (Sprite.returnResult == false || Sprite.spriteResult is null)
+                {
+                    return "";
+                }
+                return Sprite.spriteResult.ShaderID;
+            } 
+            set 
+            {
+                if (Sprite.returnResult == false || Sprite.spriteResult is null)
+                {
+                    return;
+                }
+                Sprite.spriteResult.ShaderID = value;
+            }
+        }
         public int Width { get; set; }
         public int Height { get; set; }
         private int frameBuffer;
-        public Texture Texture => ContentManager.Get<Texture>(Name);
-        public Sprite Sprite => ContentManager.Get<Sprite>(Name);
+        public (bool returnResult, Texture? textureResult) Texture => ContentManager.Get<Texture>(Name);
+        public (bool returnResult, Sprite? spriteResult) Sprite => ContentManager.Get<Sprite>(Name);
 
         public RenderTexture(int width, int height, string shader, string name = "")
         {

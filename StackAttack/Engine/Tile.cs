@@ -63,14 +63,20 @@ namespace StackAttack.Engine
 
         public static void Draw(string tileID, Vector2i position, float rotation, bool horizontalFlip = false, bool verticalFlip = false)
         {
-            Tile tile = ContentManager.Get<Tile>(tileID);
-            tile.sprite.Draw(position, tile.Size, rotation, horizontalFlip, verticalFlip);
+            (bool returnResult, Tile? tileResult) = ContentManager.Get<Tile>(tileID);
+            if (!returnResult || tileResult is null)
+                return;
+
+            tileResult.sprite.Draw(position, tileResult.Size, rotation, horizontalFlip, verticalFlip);
         }
 
         public static void Draw(string tileID, Vector2i position, Vector2i size, float rotation, bool horizontalFlip = false, bool verticalFlip = false)
         {
-            Tile tile = ContentManager.Get<Tile>(tileID);
-            tile.sprite.Draw(position, size, rotation, horizontalFlip, verticalFlip);
+            (bool returnResult, Tile? tileResult) = ContentManager.Get<Tile>(tileID);
+            if (!returnResult || tileResult is null)
+                return;
+
+            tileResult.sprite.Draw(position, size, rotation, horizontalFlip, verticalFlip);
         }
     }
 }

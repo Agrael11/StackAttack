@@ -30,8 +30,9 @@ namespace StackAttack
                     GL.Enable(EnableCap.DebugOutputSynchronous);
                     game.Run();
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Logger.Log(Logger.Levels.Fatal, ex.Message);
                     Environment.Exit(-1);
                 }
             }

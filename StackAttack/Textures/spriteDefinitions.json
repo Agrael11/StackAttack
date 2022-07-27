@@ -1,11 +1,47 @@
 [
   {
-    "X": 0,
+    "X": 24,
     "Y": 0,
-    "Width": 64,
-    "Height": 64,
-    "TextureID": "TempCircle",
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
     "ShaderID": "BaseShader",
-    "SpriteID": "TempCircle"
+    "SpriteID": "Exit"
+  },
+  {
+    "X": 8,
+    "Y": 4,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "SpriteID": "Key"
+  },
+  {
+    "X": 28,
+    "Y": 0,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "SpriteID": "Chest"
+  },
+  {
+    "X": 12,
+    "Y": 4,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "SpriteID": "Player"
+  },
+  {
+    "X": 16,
+    "Y": 4,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "SpriteID": "Enemy"
   }
 ]

@@ -54,24 +54,6 @@
     "TileID": "WoodFloor"
   },
   {
-    "X": 24,
-    "Y": 0,
-    "Width": 4,
-    "Height": 4,
-    "TextureID": "IdeaV1",
-    "ShaderID": "BaseShader",
-    "TileID": "Exit"
-  },
-  {
-    "X": 28,
-    "Y": 0,
-    "Width": 4,
-    "Height": 4,
-    "TextureID": "IdeaV1",
-    "ShaderID": "BaseShader",
-    "TileID": "Chest"
-  },
-  {
     "X": 0,
     "Y": 4,
     "Width": 4,
@@ -88,32 +70,5 @@
     "TextureID": "IdeaV1",
     "ShaderID": "BaseShader",
     "TileID": "GoldDoor"
-  },
-  {
-    "X": 8,
-    "Y": 4,
-    "Width": 4,
-    "Height": 4,
-    "TextureID": "IdeaV1",
-    "ShaderID": "BaseShader",
-    "TileID": "Key"
-  },
-  {
-    "X": 12,
-    "Y": 4,
-    "Width": 4,
-    "Height": 4,
-    "TextureID": "IdeaV1",
-    "ShaderID": "BaseShader",
-    "TileID": "Player"
-  },
-  {
-    "X": 16,
-    "Y": 4,
-    "Width": 4,
-    "Height": 4,
-    "TextureID": "IdeaV1",
-    "ShaderID": "BaseShader",
-    "TileID": "Enemy"
   }
 ]

@@ -11,18 +11,18 @@ namespace StackAttack.Engine
     {
         private static Dictionary<Type, Dictionary<string, object>> dictionaries = new();
 
-        public static T? Load<T>(string id, string path)
+        public static (bool returnState, T? returnObject) Load<T>(string id, string path)
         {
             if (typeof(T).IsAssignableFrom(typeof(ILoadable<T>)))
             {
                 Logger.Log(Logger.Levels.Error, $"{typeof(T).Name}_{id} is Not Loadable.");
-                return default; // hm? ten warning :D "Possible null reference return"... JA CHCEM NULL :D.. aj tak s dá :D
+                return (false, default);
             }
 
             if (Activator.CreateInstance<T>() is not ILoadable<T> obj)
             {
                 Logger.Log(Logger.Levels.Error, $"{typeof(T).Name}_{id} - Type needs constructor with no arguments.");
-                return default;
+                return (false, default);
             }
 
             if (!dictionaries.ContainsKey(typeof(T)))
@@ -33,16 +33,16 @@ namespace StackAttack.Engine
             if (dictionaries[typeof(T)].ContainsKey(id))
             {
                 Logger.Log(Logger.Levels.Error, $"{typeof(T).Name}_{id} is already loaded.");
-                return default;
+                return (false, default);
             }
             T? newObject = obj.Load(path);
             if (newObject is null)
             {
                 Logger.Log(Logger.Levels.Warn, $"{typeof(T).Name}_{id} failed to load.");
-                return default;
+                return (false, default);
             }
             dictionaries[typeof(T)].Add(id, newObject);
-            return newObject;
+            return (true, newObject);
         }
 
         public static void Remove<T>(string id)
@@ -137,35 +137,24 @@ namespace StackAttack.Engine
             return dictionaries.ContainsKey(typeof(T)) && dictionaries[typeof(T)].ContainsKey(key);
         }
 
-        public static T Get<T>(string id)
+        public static (bool returnStatus, T? returnObject) Get<T>(string id)
         {
             if (!dictionaries.ContainsKey(typeof(T)) || !dictionaries[typeof(T)].ContainsKey(id))
             {
-                T? empty = Activator.CreateInstance<T>();
                 if (typeof(T) == typeof(Texture))
                 {
                     Logger.Log(Logger.Levels.Warn, $"{typeof(T).Name}_{id} is not loaded.");
                     if (!dictionaries.ContainsKey(typeof(T)) || !dictionaries[typeof(T)].ContainsKey("Error"))
                     {
-                        Logger.Log(Logger.Levels.Error, $"{typeof(T).Name}_Empty is not loaded.");
-                        if (empty is null)
-                        {
-                            Logger.Log(Logger.Levels.Fatal, $"{typeof(T).Name}_{id} - cannot default.");
-                            throw new Exception("This will never happen.");
-                        }
-                        return empty;
+                        Logger.Log(Logger.Levels.Error, $"{typeof(T).Name} Error texture is not loaded.");
+                        return (false, default);
                     }
-                    return (T)dictionaries[typeof(T)]["Error"];
+                    return (false, (T)dictionaries[typeof(T)]["Error"]);
                 }
                 Logger.Log(Logger.Levels.Error, $"{typeof(T).Name}_{id} is not loaded.");
-                if (empty is null)
-                {
-                    Logger.Log(Logger.Levels.Fatal, $"{typeof(T).Name}_{id} - cannot default.");
-                    throw new Exception("This will never happen.");
-                }
-                return empty;
+                return (false, default);
             }
-            return (T)dictionaries[typeof(T)][id];
+            return (true, (T)dictionaries[typeof(T)][id]);
         }
     }
 }

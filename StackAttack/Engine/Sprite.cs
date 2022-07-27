@@ -42,6 +42,7 @@ namespace StackAttack.Engine
         private int VertexArrayObject;
         private int indiciesLength = -1;
 
+
         public Sprite(string textureID, string shaderID, Vector2i location, Vector2i size)
         {
             TextureID = textureID;
@@ -49,13 +50,17 @@ namespace StackAttack.Engine
             Location = location;
             Size = size;
 
+            (bool returnResult, Shader? shaderResult) = ContentManager.Get<Shader>(shaderID);
+            if (!returnResult || shaderResult is null)
+                return;
+
             VertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(VertexArrayObject);
 
             GenerateVertexElementBuffers();
 
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
-            int texCoordLocation = ContentManager.Get<Shader>(shaderID).GetAttribLocation("aTexCoord");
+            int texCoordLocation = shaderResult.GetAttribLocation("aTexCoord");
             GL.EnableVertexAttribArray(texCoordLocation);
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false,
                 5 * sizeof(float), 3 * sizeof(float));
@@ -67,16 +72,22 @@ namespace StackAttack.Engine
             TextureID = textureID;
             ShaderID = shaderID;
             Location = location;
-            Texture textureReference = ContentManager.Get<Texture>(textureID);
-            Size = new Vector2i(textureReference.Width - location.X, textureReference.Height - location.Y);
+            (bool returnResult, Texture? textureResult) = ContentManager.Get<Texture>(textureID);
+            if (!returnResult || textureResult is null)
+                return;
+            (returnResult, Shader? shaderResult) = ContentManager.Get<Shader>(shaderID);
+            if (!returnResult || shaderResult is null)
+                return;
 
+            Size = new Vector2i(textureResult.Width - location.X, textureResult.Height - location.Y);
+            
             VertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(VertexArrayObject);
 
             GenerateVertexElementBuffers();
 
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
-            int texCoordLocation = ContentManager.Get<Shader>(shaderID).GetAttribLocation("aTexCoord");
+            int texCoordLocation = shaderResult.GetAttribLocation("aTexCoord");
             GL.EnableVertexAttribArray(texCoordLocation);
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false,
                 5 * sizeof(float), 3 * sizeof(float));
@@ -88,8 +99,15 @@ namespace StackAttack.Engine
             TextureID = textureID;
             ShaderID = shaderID;
             Location = new Vector2i(0, 0);
-            Texture textureReference = ContentManager.Get<Texture>(textureID);
-            Size = new Vector2i(textureReference.Width, textureReference.Height);
+            
+            (bool returnResult, Texture? textureResult) = ContentManager.Get<Texture>(textureID);
+            if (!returnResult || textureResult is null)
+                return;
+            (returnResult, Shader? shaderResult) = ContentManager.Get<Shader>(shaderID);
+            if (!returnResult || shaderResult is null)
+                return;
+
+            Size = new Vector2i(textureResult.Width, textureResult.Height);
 
             VertexArrayObject = GL.GenVertexArray();
             GL.BindVertexArray(VertexArrayObject);
@@ -97,7 +115,7 @@ namespace StackAttack.Engine
             GenerateVertexElementBuffers();
 
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
-            int texCoordLocation = ContentManager.Get<Shader>(shaderID).GetAttribLocation("aTexCoord");
+            int texCoordLocation = shaderResult.GetAttribLocation("aTexCoord");
             GL.EnableVertexAttribArray(texCoordLocation);
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false,
                 5 * sizeof(float), 3 * sizeof(float));
@@ -106,11 +124,13 @@ namespace StackAttack.Engine
 
         protected void GenerateVertexElementBuffers()
         {
-            Texture textureReference = ContentManager.Get<Texture>(TextureID);
-            float myX1 = Location.X / (float)textureReference.Width;
-            float myY1 = Location.Y / (float)textureReference.Height;
-            float myX2 = myX1 + Size.X / (float)textureReference.Width;
-            float myY2 = myY1 + Size.Y / (float)textureReference.Height;
+            (bool returnResult, Texture? textureResult) = ContentManager.Get<Texture>(TextureID);
+            if (!returnResult || textureResult is null)
+                return;
+            float myX1 = Location.X / (float)textureResult.Width;
+            float myY1 = Location.Y / (float)textureResult.Height;
+            float myX2 = myX1 + Size.X / (float)textureResult.Width;
+            float myY2 = myY1 + Size.Y / (float)textureResult.Height;
 
             float[] vertices =
            {
@@ -145,8 +165,14 @@ namespace StackAttack.Engine
 
         public void Draw(Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
-            Shader shaderReference = ContentManager.Get<Shader>(ShaderID);
-            shaderReference.UseShader();
+            (bool returnResult, Texture? textureResult) = ContentManager.Get<Texture>(TextureID);
+            if (!returnResult || textureResult is null)
+                return;
+            (returnResult, Shader? shaderResult) = ContentManager.Get<Shader>(ShaderID);
+            if (!returnResult || shaderResult is null)
+                return;
+
+            shaderResult.UseShader();
 
             float realX = position.X / (Game.ViewportWidth / 2f);
             realX -= 1;
@@ -172,10 +198,10 @@ namespace StackAttack.Engine
             scale *= Matrix4.CreateTranslation(0, 1, 0);
             Matrix4 transform = rotationM * scale * translate;
 
-            shaderReference.SetMatrix4("transform", ref transform);
+            shaderResult.SetMatrix4("transform", ref transform);
+            shaderResult.SetInt("texture1", 0);
 
-            shaderReference.SetInt("texture1", 0);
-            ContentManager.Get<Texture>(TextureID).UseTexture();
+            textureResult.UseTexture();
             GL.BindVertexArray(VertexArrayObject);
             GL.DrawElements(PrimitiveType.Triangles, indiciesLength, DrawElementsType.UnsignedInt, 0);
 
@@ -183,14 +209,20 @@ namespace StackAttack.Engine
 
         public static void Draw(string spriteID, Vector2i position, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
-            Sprite sprite = ContentManager.Get<Sprite>(spriteID);
-            sprite.Draw(position, rotation, horizontalFlip, verticalFlip);
+            (bool returnResult, Sprite? spriteResult) = ContentManager.Get<Sprite>(spriteID);
+            if (!returnResult || spriteResult is null)
+                return;
+
+            spriteResult.Draw(position, rotation, horizontalFlip, verticalFlip);
         }
 
         public static void Draw(string spriteID, Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
-            Sprite sprite = ContentManager.Get<Sprite>(spriteID);
-            sprite.Draw(position, size, rotation, horizontalFlip, verticalFlip);
+            (bool returnResult, Sprite? spriteResult) = ContentManager.Get<Sprite>(spriteID);
+            if (!returnResult || spriteResult is null)
+                return;
+
+            spriteResult.Draw(position, size, rotation, horizontalFlip, verticalFlip);
         }
 
         public static void DrawTexture(string textureID, Vector2i sourcePosition, Vector2i sourceSize, string shaderID, Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
