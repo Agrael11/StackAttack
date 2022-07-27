@@ -47,5 +47,10 @@ namespace StackAttack.Engine.Map
         {
             return HashCode.Combine(TileID, TileX, TileY, TileRotationDeg);
         }
+
+        public TileData Clone()
+        {
+            return new TileData(TileID, TileX, TileY, TileRotationDeg);
+        }
     }
 }

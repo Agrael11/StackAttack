@@ -13,17 +13,19 @@ namespace StackAttack.Engine.Map
 
         }
 
-        public GameObjectStartData(string gameObjectTypeID, int objectX, int objectY, Headings heading)
+        public GameObjectStartData(string gameObjectTypeID, int objectX, int objectY, Headings heading, string spriteID)
         {
             GameObjectTypeID = gameObjectTypeID;
             ObjectX = objectX;
             ObjectY = objectY;
             Heading = heading;
+            SpriteID = spriteID;
         }
 
         public string GameObjectTypeID { get; set; } = "";
         public int ObjectX { get; set; } = 0;
         public int ObjectY { get; set; } = 0;
         public Headings Heading { get; set; } = Headings.North;
+        public string SpriteID { get; set; } = "";
     }
 }

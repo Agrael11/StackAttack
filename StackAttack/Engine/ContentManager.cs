@@ -64,7 +64,7 @@ namespace StackAttack.Engine
             for (int typeI = dictionaries.Keys.Count-1; typeI >= 0; typeI--)
             {
                 Type type = dictionaries.Keys.ElementAt(typeI);
-                for (int keyI = dictionaries[type].Count -1; keyI >= 0; keyI--)
+                for (int keyI = dictionaries[type].Count - 1; keyI >= 0; keyI--)
                 {
                     string key = dictionaries[type].Keys.ElementAt(keyI);
                     if (type.IsAssignableFrom(typeof(IDisposable)))
@@ -72,8 +72,9 @@ namespace StackAttack.Engine
                         ((IDisposable)dictionaries[type][key]).Dispose();
                         dictionaries[type].Remove(key);
                     }
-                    dictionaries.Remove(type);
+                    dictionaries[type].Remove(key);
                 }
+                dictionaries.Remove(type);
             }
         }
 

@@ -9,7 +9,25 @@
     "SpriteID": "Exit"
   },
   {
-    "X": 8,
+    "X": 4,
+    "Y": 4,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "SpriteID": "BlueDoor"
+  },
+  {
+    "X": 12,
+    "Y": 4,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "SpriteID": "GoldDoor"
+  },
+  {
+    "X": 16,
     "Y": 4,
     "Width": 4,
     "Height": 4,
@@ -27,7 +45,7 @@
     "SpriteID": "Chest"
   },
   {
-    "X": 12,
+    "X": 20,
     "Y": 4,
     "Width": 4,
     "Height": 4,
@@ -36,7 +54,7 @@
     "SpriteID": "Player"
   },
   {
-    "X": 16,
+    "X": 24,
     "Y": 4,
     "Width": 4,
     "Height": 4,

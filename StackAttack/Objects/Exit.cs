@@ -8,19 +8,20 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Objects
 {
-    internal class Player : GameObject
+    internal class Exit : GameObject
     {
-        public Player() : base(0,0,0,Headings.North, null, "")
+        public Exit() : base(0,0,0,Headings.North, null, "")
         {
         }
 
-        public Player(int x, int y, float rotation, Headings heading, Game? game, string spriteID) : base(x, y, rotation, heading, game, spriteID)
+        public Exit(int x, int y, float rotation, Headings heading, Game? game, string spriteID) : base(x, y, rotation, heading, game, spriteID)
         {
         }
 
         public override GameObject CreateNew(int x, int y, float rotation, Headings heading, Game? game, string spriteID)
         {
-            return new Player(x, y, rotation, heading, game, spriteID);
+            //throw new NotImplementedException();
+            return new Exit(x, y, rotation, heading, game, spriteID);
         }
 
         public override void Draw(FrameEventArgs args)

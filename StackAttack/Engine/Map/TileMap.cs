@@ -10,10 +10,22 @@ namespace StackAttack.Engine.Map
     {
         public int X { get; set; } = 0;
         public int Y { get; set; } = 0;
-        public List<TileData> _tiles { get; set; } = new();
+        public List<TileData> Tiles { get; set; } = new();
 
         public TileMap()
         {
+        }
+
+        public TileMap Clone()
+        {
+            TileMap tiles = new TileMap();
+            tiles.X = X;
+            tiles.Y = Y;
+            foreach (TileData tileData in Tiles)
+            {
+                tiles.Tiles.Add(tileData.Clone());
+            }
+            return tiles;
         }
     }
 }

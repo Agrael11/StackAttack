@@ -4,7 +4,7 @@
   "Background": {
     "X": 0,
     "Y": 0,
-    "_tiles": [
+    "Tiles": [
       {
         "TileID": "BlueFloor",
         "TileX": 1,
@@ -1000,7 +1000,7 @@
   "Foreground": {
     "X": 0,
     "Y": 0,
-    "_tiles": [
+    "Tiles": [
       {
         "TileID": "WoodWall",
         "TileX": 0,
@@ -1579,49 +1579,57 @@
       "GameObjectTypeID": "BlueDoor",
       "ObjectX": 20,
       "ObjectY": 12,
-      "Heading": 0
+      "Heading": 0,
+      "SpriteID":  "BlueDoor"
     },
     {
       "GameObjectTypeID": "BlueDoor",
       "ObjectX": 36,
       "ObjectY": 32,
-      "Heading": 0
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
     },
     {
       "GameObjectTypeID": "BlueDoor",
       "ObjectX": 12,
       "ObjectY": 36,
-      "Heading": 1
+      "Heading": 1,
+      "SpriteID": "BlueDoor"
     },
     {
       "GameObjectTypeID": "GoldDoor",
       "ObjectX": 36,
       "ObjectY": 52,
-      "Heading": 0
+      "Heading": 0,
+      "SpriteID": "GoldDoor"
     },
     {
       "GameObjectTypeID": "Exit",
       "ObjectX": 0,
       "ObjectY": 12,
-      "Heading": 1
+      "Heading": 1,
+      "SpriteID": "Exit"
     },
     {
       "GameObjectTypeID": "Enemy",
       "ObjectX": 12,
       "ObjectY": 12,
-      "Heading": 1
+      "Heading": 1,
+      "SpriteID": "Enemy"
     },
     {
       "GameObjectTypeID": "Chest",
       "ObjectX": 8,
       "ObjectY": 56,
-      "Heading": 0
+      "Heading": 0,
+      "SpriteID": "Chest"
     },
     {
       "GameObjectTypeID": "Key",
       "ObjectX": 24,
       "ObjectY": 56,
-      "Heading": 0
+      "Heading": 0,
+      "SpriteID": "Key"
     }
   ],
   "NextLevel": "AlphaLevel.json"
