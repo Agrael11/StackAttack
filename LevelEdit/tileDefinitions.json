@@ -1,0 +1,74 @@
+[
+  {
+    "X": 0,
+    "Y": 0,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "TileID": "WoodWall"
+  },
+  {
+    "X": 4,
+    "Y": 0,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "TileID": "BrickWall"
+  },
+  {
+    "X": 8,
+    "Y": 0,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "TileID": "StoneWall"
+  },
+  {
+    "X": 12,
+    "Y": 0,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "TileID": "BlueFloor"
+  },
+  {
+    "X": 16,
+    "Y": 0,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "TileID": "GreenFloor"
+  },
+  {
+    "X": 20,
+    "Y": 0,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "TileID": "WoodFloor"
+  },
+  {
+    "X": 0,
+    "Y": 4,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "TileID": "BlueDoor"
+  },
+  {
+    "X": 8,
+    "Y": 4,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "TileID": "GoldDoor"
+  }
+]

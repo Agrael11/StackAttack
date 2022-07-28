@@ -3,10 +3,124 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LevelEdit"
+        xmlns:local="clr-namespace:LevelEdit" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="600">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width ="195"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Column="1" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Reflect">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="1" CenterX="1" ScaleX="1" ScaleY="0.1"/>
+                            <SkewTransform CenterX="1" CenterY="1"/>
+                            <RotateTransform Angle="45" CenterX="1" CenterY="1"/>
+                            <TranslateTransform X="0"/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFA400AD" Offset="0.01"/>
+                    <GradientStop Color="#FFF100FF" Offset="1"/>
+                </LinearGradientBrush>
+            </ScrollViewer.Background>
+            <WindowsFormsHost x:Name="EditorHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="256" Height="256">
+                <wf:PictureBox x:Name="Editor" MouseDown="Editor_MouseDown" MouseMove="Editor_MouseMove" MouseEnter="Editor_MouseEnter" MouseLeave="Editor_MouseLeave" MouseUp="Editor_MouseUp"/>
+            </WindowsFormsHost>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="1" Grid.Row="3" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Reflect">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="1" CenterX="1" ScaleX="1" ScaleY="0.1"/>
+                            <SkewTransform CenterX="1" CenterY="1"/>
+                            <RotateTransform Angle="45" CenterX="1" CenterY="1"/>
+                            <TranslateTransform X="0"/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFA400AD" Offset="0.01"/>
+                    <GradientStop Color="#FFF100FF" Offset="1"/>
+                </LinearGradientBrush>
+            </ScrollViewer.Background>
+            <WindowsFormsHost x:Name="PreviewImageHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="256" Height="256">
+                <wf:PictureBox x:Name="PreviewImage"/>
+            </WindowsFormsHost>
+        </ScrollViewer>
+        <Grid Grid.Column="3" Grid.Row="1" Grid.RowSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="0.6*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="28"/>
+                <RowDefinition/>
+                <RowDefinition Height="28"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row ="0" Content="Level Width" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Row ="0" Grid.Column="2" x:Name="WidthTextBox" Text="16" VerticalContentAlignment="Center" PreviewKeyDown="NumericTextBox_PreviewKeyDown" LostFocus="NumericTextbox_LostFocus" GotFocus="NumericTextBox_GotFocus"/>
+            <Label Grid.Row="2" Content="Level Height" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBox Grid.Row ="2" Grid.Column="2" x:Name="HeightTextBox" Text="16" VerticalContentAlignment="Center" PreviewKeyDown="NumericTextBox_PreviewKeyDown" LostFocus="NumericTextbox_LostFocus" GotFocus="NumericTextBox_GotFocus"/>
+            <Label Grid.Row="4" Content="Tile" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row ="4" Grid.Column="2" SelectedIndex="0" x:Name="TileComboBox">
+                <ComboBoxItem Content="WoodWall"/>
+                <ComboBoxItem Content="BrickWall"/>
+                <ComboBoxItem Content="StoneWall"/>
+                <ComboBoxItem Content="GreenFloor"/>
+                <ComboBoxItem Content="BlueFloor"/>
+                <ComboBoxItem Content="WoodFloor"/>
+            </ComboBox>
+            <Label Grid.Row="6" Content="Object" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row ="6" Grid.Column="2" SelectedIndex="0" x:Name="ObjectComboBox">
+                <ComboBoxItem Content="BlueDoor"/>
+                <ComboBoxItem Content="GoldDoor"/>
+                <ComboBoxItem Content="Key"/>
+                <ComboBoxItem Content="Exit"/>
+                <ComboBoxItem Content="Chest"/>
+                <ComboBoxItem Content="Enemy"/>
+            </ComboBox>
+            <Label Grid.Row="8" Content="Heading" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row ="8" Grid.Column="2" SelectedIndex="0" x:Name="HeadingComboBox">
+                <ComboBoxItem Content="North"/>
+                <ComboBoxItem Content="South"/>
+                <ComboBoxItem Content="East"/>
+                <ComboBoxItem Content="West"/>
+            </ComboBox>
+            <Label Grid.Row="10" Content="Layer" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row ="10" Grid.Column="2" SelectedIndex="0" x:Name="LayerComboBox" SelectionChanged="LayerComboBox_SelectionChanged">
+                <ComboBoxItem Content="Background"/>
+                <ComboBoxItem Content="Foreground"/>
+                <ComboBoxItem Content="Objects"/>
+            </ComboBox>
+            <Button Grid.Row ="12" Grid.Column="2" Content="Place Player" x:Name="PlacePlayerButton" HorizontalAlignment="Right" Width="111" Click="PlacePlayerButton_Click"/>
+            <Button Grid.Row ="14" Grid.Column="0" Content="Load" x:Name="LoadButton" Click="LoadButton_Click"/>
+            <Button Grid.Row ="14" Grid.Column="2" Content="Save" x:Name="SaveButton" Click="SaveButton_Click"/>
+        </Grid>
 
     </Grid>
 </Window>
