@@ -10,5 +10,9 @@
   {
     "FileName": "Shaders/lineShader",
     "ShaderID": "Line"
+  },
+  {
+    "FileName": "Shaders/maskShader",
+    "ShaderID": "Mask"
   }
 ]

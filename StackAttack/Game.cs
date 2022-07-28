@@ -11,10 +11,12 @@ using StackAttack.Engine.Map;
 
 namespace StackAttack
 {
-    class Game : GameWindow
+    public class Game : GameWindow
     {
         public static int ViewportX { get; set; } = 0;
         public static int ViewportY { get; set; } = 0;
+        public int CameraX { get; set; } = 0;
+        public int CameraY { get; set; } = 0;
         public static int ViewportWidth { get; set; } = 64;
         public static int ViewportHeight { get; set; } = 64;
         public static int WindowWidth { get; set; } = 512;
@@ -28,6 +30,7 @@ namespace StackAttack
         LevelData level = new();
         RenderTexture rayCastRenderTexture = new();
         RenderTexture gameRenderTexture = new();
+        RenderTexture tempRenderTexture = new();
         RenderTexture memoryRenderTexture = new();
 
         public List<GameObject> gameObjects { get; set; } = new();
@@ -83,7 +86,7 @@ namespace StackAttack
             Foreground = level.Foreground.Clone();
         }
 
-        private void LoadDefinitionData<T>(string path, ref T data)
+        public static void LoadDefinitionData<T>(string path, ref T data)
         {
             string input = File.ReadAllText(path);
             T? output = System.Text.Json.JsonSerializer.Deserialize<T>(input);
@@ -93,7 +96,7 @@ namespace StackAttack
         }
 
 #if DEBUG
-        private void SaveDefintionData<T>(string path, T data)
+        public static void SaveDefintionData<T>(string path, T data)
         {
             string result = System.Text.Json.JsonSerializer.Serialize(data, typeof(T), new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, result);
@@ -132,7 +135,8 @@ namespace StackAttack
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
             gameRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
-            memoryRenderTexture = new RenderTexture(level.LevelWidth*4, level.LevelWidth*4, "Desaturated", "");
+            tempRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
+            memoryRenderTexture = new RenderTexture(level.LevelWidth*4, level.LevelHeight*4, "Desaturated", "");
             rayCastRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
 
             base.OnLoad();
@@ -181,7 +185,7 @@ namespace StackAttack
             return (true, new Vector2(Px, Py));
         }
 
-        public void CastRay(Vector2 sourcePosition, float angle, GameObject source, params Type[] TargetTypes)
+        public (bool result, GameObject? resultObject, TileData? tile) CastRay(Vector2 sourcePosition, float angle, GameObject source, TileMap collisionMap, List<GameObject> gameObjects, bool draw, params Type[] TargetTypes)
         {
             Vector2 angleVector = Extensions.FromAngle(angle, 32);
             Vector2 destinationPosition = new Vector2(sourcePosition.X + angleVector.X, sourcePosition.Y + angleVector.Y);
@@ -189,10 +193,11 @@ namespace StackAttack
 
 
             float closest = float.MaxValue;
+            TileData? closestTile = null;
 
-            foreach (TileData tile in Foreground.Tiles)
+            foreach (TileData tile in collisionMap.Tiles)
             {
-                Rectangle colR = tile.Rectangle;
+                Rectangle colR = tile.GetRectangle();
                 var result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X, colR.Y, colR.Y2);
                 if (result.intersects)
                 {
@@ -200,6 +205,7 @@ namespace StackAttack
                     {
                         closest = result.point.Distance(sourcePosition);
                         destinationPosition = result.point;
+                        closestTile = tile;
                     }
                 }
                 result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X2, colR.X2, colR.Y, colR.Y2);
@@ -209,6 +215,7 @@ namespace StackAttack
                     {
                         closest = result.point.Distance(sourcePosition);
                         destinationPosition = result.point;
+                        closestTile = tile;
                     }
                 }
                 result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y, colR.Y);
@@ -218,6 +225,7 @@ namespace StackAttack
                     {
                         closest = result.point.Distance(sourcePosition);
                         destinationPosition = result.point;
+                        closestTile = tile;
                     }
                 }
                 result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y2, colR.Y2);
@@ -227,9 +235,12 @@ namespace StackAttack
                     {
                         closest = result.point.Distance(sourcePosition);
                         destinationPosition = result.point;
+                        closestTile = tile;
                     }
                 }
             }
+
+            GameObject? closestObject = null;
 
             if (TargetTypes is not null && (TargetTypes.Length > 0))
             {
@@ -249,6 +260,7 @@ namespace StackAttack
                         {
                             closest = result.point.Distance(sourcePosition);
                             destinationPosition = result.point;
+                            closestObject = gameObject;
                         }
                     }
                     result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X2, colR.X2, colR.Y, colR.Y2);
@@ -258,6 +270,7 @@ namespace StackAttack
                         {
                             closest = result.point.Distance(sourcePosition);
                             destinationPosition = result.point;
+                            closestObject = gameObject;
                         }
                     }
                     result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y, colR.Y);
@@ -267,6 +280,7 @@ namespace StackAttack
                         {
                             closest = result.point.Distance(sourcePosition);
                             destinationPosition = result.point;
+                            closestObject = gameObject;
                         }
                     }
                     result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y2, colR.Y2);
@@ -276,65 +290,151 @@ namespace StackAttack
                         {
                             closest = result.point.Distance(sourcePosition);
                             destinationPosition = result.point;
+                            closestObject = gameObject;
                         }
                     }
                 }
             }
 
-            Line.Draw(new(sourcePosition.X, sourcePosition.Y), new(destinationPosition.X, destinationPosition.Y), 1f);
+            if (draw) Line.Draw(new(sourcePosition.X - CameraX, sourcePosition.Y - CameraY), new(destinationPosition.X - CameraX, destinationPosition.Y - CameraY), 1f);
+
+            if (closestObject is null)
+            {
+                if (closestTile is null)
+                {
+                    return (false, null, null);
+                }
+                return (true, null, closestTile);
+            }
+            return (true, closestObject, null);
         }
 
         protected override void OnRenderFrame(FrameEventArgs args)
         {
-            Title = $"{args.Time:0.##} / {(1 / args.Time):0.##}";
+
             if (IsExiting)
             {
                 return;
             }
+
+            if (player is null)
+                return;
+
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+
+            CameraX = player.X - 32;
+            CameraY = player.Y - 32;
+
+            if (CameraX < 0) CameraX = 0;
+            if (CameraY < 0) CameraY = 0;
+
+            if (CameraX + ViewportWidth > level.LevelWidth * 4) CameraX = level.LevelWidth * 4 - ViewportWidth;
+            if (CameraY + ViewportWidth > level.LevelHeight * 4) CameraY = level.LevelHeight * 4 - ViewportHeight;
+
+            Title = $"{args.Time:0.##} / {(1 / args.Time):0.##} ... {CameraX:0.##}-{CameraY:0.##}";
+
             gameRenderTexture.Begin();
             GL.ClearColor(0f, 0f, 0f, 0f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
             
             foreach (TileData tile in Background.Tiles)
             {
-                Tile.Draw(tile.TileID, new Vector2i(tile.TileX*4, tile.TileY*4), tile.GetTileRotationRad());
+                Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4 - CameraX, tile.TileY * 4 - CameraY), tile.GetTileRotationRad());
             }
             
             foreach (TileData tile in Foreground.Tiles)
             {
-                Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4, tile.TileY * 4), tile.GetTileRotationRad());
+                Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4 - CameraX, tile.TileY * 4 - CameraY), tile.GetTileRotationRad());
             }
             
-            foreach (GameObject gameObject in gameObjects)
+            foreach (GameObject gameObject in this.gameObjects)
             {
                 gameObject.Draw(args);
             }
 
-            if (player is null)
-                return;
+            gameRenderTexture.End();
 
-            player.Draw(args);
+            rayCastRenderTexture.Begin();
+
+            GL.ClearColor(0f, 0f, 0f, 0f);
+            GL.Clear(ClearBufferMask.ColorBufferBit);
 
             Vector2 playerDirection = ((Objects.Player)player).LookingAt;
             playerDirection = new Vector2(playerDirection.X - player.X, playerDirection.Y - player.Y);
             float originalAngle = playerDirection.GetAngle();
 
-            for (float i = -128; i <= 128; i++)
+            TileMap tiles = new();
+            foreach (TileData tile in Foreground.Tiles)
             {
-                float angle = originalAngle + MathHelper.DegreesToRadians(((30 * i) / 128f));
-                CastRay(new Vector2(player.X + 2, player.Y + 2), angle, player);
+                if (new Vector2(tile.TileX * 4, tile.TileY * 4).Distance(player.Location) < 36)
+                {
+                    tiles.Tiles.Add(tile);
+                }
+            }
+            List<GameObject> gameObjects = new();
+            foreach (GameObject go in this.gameObjects)
+            {
+                if (go.Location.Distance(player.Location) < 36)
+                {
+                    gameObjects.Add(go);
+                }
             }
 
-            gameRenderTexture.End();
+            List<TileData> collidedTiles = new List<TileData>();
+
+            for (float i = -32; i <= 32; i++)
+            {
+                float angle = originalAngle + MathHelper.DegreesToRadians(((50 * i) / 32f));
+                var result = CastRay(new Vector2(player.X + 2, player.Y + 2), angle, player, tiles, gameObjects, true);
+                if (result.result && result.tile is not null)
+                {
+                    if (!collidedTiles.Contains(result.tile.Value))
+                    {
+                        collidedTiles.Add(result.tile.Value);
+                    }
+                }
+
+            }
+            rayCastRenderTexture.End();
+
+            tempRenderTexture.Begin();
+
+            GL.ClearColor(0f, 0f, 0f, 0f);
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+
+            if (!rayCastRenderTexture.Sprite.returnResult || rayCastRenderTexture.Sprite.spriteResult is null)
+                return;
+            if (!gameRenderTexture.Sprite.returnResult || gameRenderTexture.Sprite.spriteResult is null)
+                return;
+
+            TwoTextureSprite.DrawTexture(gameRenderTexture.Sprite.spriteResult.TextureID, rayCastRenderTexture.Sprite.spriteResult.TextureID, "Mask", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
+
+            foreach (TileData tile in collidedTiles)
+            {
+                Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4 - CameraX, tile.TileY * 4 - CameraY), tile.GetTileRotationRad());
+            }
+
+            tempRenderTexture.End();
+
+            memoryRenderTexture.Begin();
+
+            if (!tempRenderTexture.Sprite.returnResult || tempRenderTexture.Sprite.spriteResult is null)
+                return;
+
+            Sprite.DrawTexture(tempRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(CameraX, CameraY - 48, 64, 64), 0, false, true);
+
+            memoryRenderTexture.End();
+
             GL.ClearColor(0f, 0f, 0f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            if (gameRenderTexture.Sprite.returnResult && gameRenderTexture.Sprite.spriteResult is not null)
-            {
-                Sprite.DrawTexture(gameRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
-            }
+            if (!memoryRenderTexture.Sprite.returnResult || memoryRenderTexture.Sprite.spriteResult is null)
+                return;
 
-
+            Sprite.DrawTexture(memoryRenderTexture.Sprite.spriteResult.TextureID, "Desaturated", new Rectanglei(CameraX, -(CameraY- 48), 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
+            Sprite.DrawTexture(tempRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
+            player.Draw(args);
 
             Context.SwapBuffers();
             base.OnRenderFrame(args);

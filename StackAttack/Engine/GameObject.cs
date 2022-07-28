@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Engine
 {
-    internal abstract class GameObject
+    public abstract class GameObject
     {
         public struct GameObjectDefinition
         {

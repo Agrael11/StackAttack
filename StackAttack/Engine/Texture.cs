@@ -5,7 +5,7 @@ using StackAttack.Engine.Helpers;
 
 namespace StackAttack.Engine
 {
-    internal class Texture : IDisposable, ILoadable<Texture>
+    public class Texture : IDisposable, ILoadable<Texture>
     {
         public struct TextureDefinition
         {

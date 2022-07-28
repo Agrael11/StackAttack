@@ -55,6 +55,12 @@ namespace StackAttack.Objects
 
         public override void Draw(FrameEventArgs args)
         {
+            if (Parent is null)
+                return;
+
+            int renderX = X - Parent.CameraX;
+            int renderY = Y - Parent.CameraY;
+
             (bool returnState, Sprite? enemySprite) = ContentManager.Get<Sprite>(SpriteID);
             if (returnState == false || enemySprite is null)
                 return;
@@ -71,23 +77,23 @@ namespace StackAttack.Objects
 
             if (angle > Math.PI * 0.125f && angle < Math.PI * 0.375f)
             {
-                enemySpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(X, Y), 0);
+                enemySpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), 0);
             }
             else if (angle > Math.PI * 0.625f && angle < Math.PI * 0.875f)
             {
-                enemySpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(X, Y), (float)(Math.PI / 2));
+                enemySpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), (float)(Math.PI / 2));
             }
             else if (angle > Math.PI * 1.125f && angle < Math.PI * 1.375f)
             {
-                enemySpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(X, Y), (float)Math.PI);
+                enemySpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), (float)Math.PI);
             }
             else if (angle > Math.PI * 1.625f && angle < Math.PI * 1.875f)
             {
-                enemySpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(X, Y), (float)(1.5f * Math.PI));
+                enemySpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), (float)(1.5f * Math.PI));
             }
             else
             {
-                enemySprite.Draw(new OpenTK.Mathematics.Vector2i(X, Y), angle);
+                enemySprite.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), angle);
             }
 
         }

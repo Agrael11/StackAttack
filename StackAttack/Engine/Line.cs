@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Engine
 {
-    internal class Line : IDisposable
+    public class Line : IDisposable
     {
         private static Vector4 _color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
         private static string _shaderID = "Line";

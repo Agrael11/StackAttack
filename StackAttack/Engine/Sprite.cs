@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Engine
 {
-    internal class Sprite : IDisposable
+    public class Sprite : IDisposable
     {
         public struct SpriteDefinition
         {

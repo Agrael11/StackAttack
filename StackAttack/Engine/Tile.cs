@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Engine
 {
-    internal class Tile : IDisposable
+    public class Tile : IDisposable
     {
         public struct TileDefinition
         {

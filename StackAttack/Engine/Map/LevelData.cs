@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Engine.Map
 {
-    internal class LevelData
+    public class LevelData
     {
         public int LevelWidth { get; set; }
         public int LevelHeight { get; set; }

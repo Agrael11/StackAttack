@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Engine
 {
-    internal static class ContentManager
+    public static class ContentManager
     {
         private static Dictionary<Type, Dictionary<string, object>> dictionaries = new();
 

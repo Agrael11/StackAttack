@@ -93,6 +93,7 @@ namespace StackAttack.Engine
 
         public int GetAttribLocation(string attrib)
         {
+            UseShader();
             return GL.GetAttribLocation(Handle, attrib);
         }
 

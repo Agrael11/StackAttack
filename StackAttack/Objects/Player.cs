@@ -55,6 +55,12 @@ namespace StackAttack.Objects
 
         public override void Draw(FrameEventArgs args)
         {
+            if (Parent is null)
+                return;
+
+            int renderX = X - Parent.CameraX;
+            int renderY = Y - Parent.CameraY;
+
             (bool returnState, Sprite? playerSprite) = ContentManager.Get<Sprite>(SpriteID);
             if (returnState == false || playerSprite is null)
                 return;
@@ -70,31 +76,28 @@ namespace StackAttack.Objects
             float angle = new Vector2i(LookingAt.X - X, LookingAt.Y - Y).GetAngle() + (float)(Math.PI/2);
             angle %= (float)Math.Tau;
 
-            if (Parent is null)
-                return;
-
             if (angle > Math.PI * 0.125f && angle < Math.PI * 0.375f)
             {
-                playerSpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(X, Y), 0);
+                playerSpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), 0);
             }
             else if (angle > Math.PI * 0.625f && angle < Math.PI * 0.875f)
             {
-                playerSpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(X, Y), (float)(Math.PI / 2));
+                playerSpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), (float)(Math.PI / 2));
             }
             else if (angle > Math.PI * 1.125f && angle < Math.PI * 1.375f)
             {
-                playerSpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(X, Y), (float)Math.PI);
+                playerSpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), (float)Math.PI);
             }
             else if (angle > Math.PI * 1.625f && angle < Math.PI * 1.875f)
             {
-                playerSpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(X, Y), (float)(1.5f * Math.PI));
+                playerSpriteAngle.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), (float)(1.5f * Math.PI));
             }
             else
             {
-                playerSprite.Draw(new OpenTK.Mathematics.Vector2i(X, Y), angle);
+                playerSprite.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), angle);
             }
 
-            targetSprite.Draw(new Vector2i(LookingAt.X-2, LookingAt.Y-2));
+            targetSprite.Draw(new Vector2i(LookingAt.X-2 - Parent.CameraX, LookingAt.Y-2 - Parent.CameraY));
 
         }
 
@@ -139,7 +142,7 @@ namespace StackAttack.Objects
             int Scale = (XScale > YScale) ? YScale : XScale;
 
             MouseState mouse = Parent.MouseState.GetSnapshot();
-            LookingAt = new((int)(mouse.X / Scale), (int)(mouse.Y / Scale));
+            LookingAt = new((int)(mouse.X / Scale)+Parent.CameraX, (int)(mouse.Y / Scale) + Parent.CameraY);
 
             for (int i = Parent.gameObjects.Count - 1; i >= 0; i--)
             {
@@ -194,7 +197,7 @@ namespace StackAttack.Objects
                         continue;
                     }
 
-                    if (Rectanglei.Intersects(tileData.Rectangle, new Rectanglei(X,Y,returnSprite.Size)))
+                    if (Rectanglei.Intersects(tileData.GetRectangle(), new Rectanglei(X,Y,returnSprite.Size)))
                     {
                         tempX = oldTempX;
                         break;
@@ -212,7 +215,7 @@ namespace StackAttack.Objects
                         continue;
                     }
 
-                    if (Rectanglei.Intersects(tileData.Rectangle, new Rectanglei(X, Y, returnSprite.Size)))
+                    if (Rectanglei.Intersects(tileData.GetRectangle(), new Rectanglei(X, Y, returnSprite.Size)))
                     {
                         tempY = oldTempY;
                         break;

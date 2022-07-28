@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Engine
 {
-    internal class RenderTexture
+    public class RenderTexture
     {
         public string Name { get; set; }
         public string Shader 

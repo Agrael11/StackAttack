@@ -26,10 +26,13 @@ namespace StackAttack.Objects
 
         public override void Draw(FrameEventArgs args)
         {
+            if (Parent is null)
+                return;
+
             (bool returnState, Sprite? returnSprite) = ContentManager.Get<Sprite>(SpriteID);
             if (returnState == true && returnSprite is not null)
             {
-                returnSprite.Draw(new OpenTK.Mathematics.Vector2i(X, Y), (float)((int)Heading * (Math.PI / 2)));
+                returnSprite.Draw(new OpenTK.Mathematics.Vector2i(X - Parent.CameraX, Y - Parent.CameraY), (float)((int)Heading * (Math.PI / 2)));
             }
         }
 

@@ -5,7 +5,7 @@ layout(location = 0) out vec4 FragColor;
 in vec2 texCoord;
 
 uniform float desaturation = 0.85f;
-uniform float brightness = 0.6f;
+uniform float brightness = 0.5f;
 
 uniform sampler2D texture1;
 
