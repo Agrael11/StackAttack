@@ -66,5 +66,20 @@ namespace StackAttack.Engine
         public abstract void Draw(FrameEventArgs args);
 
         public abstract GameObject CreateNew(int x, int y, float rotation, Headings heading, Game parent, string spriteID);
+
+        public override bool Equals(object? obj)
+        {
+            return obj is GameObject @object &&
+                   X == @object.X &&
+                   Y == @object.Y &&
+                   Rotation == @object.Rotation &&
+                   Heading == @object.Heading &&
+                   SpriteID == @object.SpriteID;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y, Rotation, Heading, SpriteID);
+        }
     }
 }

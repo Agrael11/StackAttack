@@ -18,6 +18,12 @@
     <None Update="Levels\AlphaLevel.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Shaders\lineShader.frag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Shaders\lineShader.vert">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Shaders\desaturated.vert">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

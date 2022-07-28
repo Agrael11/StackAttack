@@ -26,7 +26,9 @@ namespace StackAttack
         List<Sprite.SpriteDefinition> spriteDefinitions = new();
         List<Tile.TileDefinition> tileDefinitions = new();
         LevelData level = new();
-        RenderTexture renderTexture = new();
+        RenderTexture rayCastRenderTexture = new();
+        RenderTexture gameRenderTexture = new();
+        RenderTexture memoryRenderTexture = new();
 
         public List<GameObject> gameObjects { get; set; } = new();
         public GameObject? player { get; set; }
@@ -129,8 +131,10 @@ namespace StackAttack
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
 
-            renderTexture = new RenderTexture(64, 64, "BaseShader", "");
-            
+            gameRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
+            memoryRenderTexture = new RenderTexture(level.LevelWidth*4, level.LevelWidth*4, "Desaturated", "");
+            rayCastRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
+
             base.OnLoad();
         }
 
@@ -140,6 +144,9 @@ namespace StackAttack
             {
                 gameObject.Update(args);
             }
+
+            if (player is null)
+                return;
 
             player.Update(args);
 
@@ -155,13 +162,136 @@ namespace StackAttack
             ViewportY = y;
         }
 
+        public (bool intersects, Vector2 point) LinesCollisions(float x1, float x2, float y1, float y2, float x3, float x4, float y3, float y4)
+        {
+            //float D = ((x1 - x2) * (y3 - y4)) - ((y1 - y2) * (x3 - x4));
+            //float Px = ((((x1 * y2) - (y1 * x2)) * (x3 - x4)) - ((x1 - x2) * ((x3 * y4) - (y3 * x4))))/D;
+            //float Py = ((((x1 * y2) - (y1 * x2)) * (y3 - y4)) - ((y1 - y2) * ((x3 * y4) - (y3 * x4))))/D;
+            float D = ((x1 - x2) * (y3 - y4)) - ((y1 - y2) * (x3 - x4));
+            float t = (((x1 - x3) * (y3 - y4)) - ((y1 - y3) * (x3 - x4))) / D;
+            float u = (((x1 - x3) * (y1 - y2)) - ((y1 - y3) * (x1 - x2))) / D;
+            
+            bool intersect = (t >= 0) && (t <= 1) && (u >= 0) && (u <= 1);
+            if (!intersect)
+                return (false, Vector2.Zero);
+
+            float Px = x1 + (t * (x2 - x1));
+            float Py = y1 + (t * (y2- y1));
+
+            return (true, new Vector2(Px, Py));
+        }
+
+        public void CastRay(Vector2 sourcePosition, float angle, GameObject source, params Type[] TargetTypes)
+        {
+            Vector2 angleVector = Extensions.FromAngle(angle, 32);
+            Vector2 destinationPosition = new Vector2(sourcePosition.X + angleVector.X, sourcePosition.Y + angleVector.Y);
+            Rectangle srcR = new Rectangle(sourcePosition, angleVector.X, angleVector.Y);
+
+
+            float closest = float.MaxValue;
+
+            foreach (TileData tile in Foreground.Tiles)
+            {
+                Rectangle colR = tile.Rectangle;
+                var result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X, colR.Y, colR.Y2);
+                if (result.intersects)
+                {
+                    if (result.point.Distance(sourcePosition) < closest)
+                    {
+                        closest = result.point.Distance(sourcePosition);
+                        destinationPosition = result.point;
+                    }
+                }
+                result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X2, colR.X2, colR.Y, colR.Y2);
+                if (result.intersects)
+                {
+                    if (result.point.Distance(sourcePosition) < closest)
+                    {
+                        closest = result.point.Distance(sourcePosition);
+                        destinationPosition = result.point;
+                    }
+                }
+                result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y, colR.Y);
+                if (result.intersects)
+                {
+                    if (result.point.Distance(sourcePosition) < closest)
+                    {
+                        closest = result.point.Distance(sourcePosition);
+                        destinationPosition = result.point;
+                    }
+                }
+                result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y2, colR.Y2);
+                if (result.intersects)
+                {
+                    if (result.point.Distance(sourcePosition) < closest)
+                    {
+                        closest = result.point.Distance(sourcePosition);
+                        destinationPosition = result.point;
+                    }
+                }
+            }
+
+            if (TargetTypes is not null && (TargetTypes.Length > 0))
+            {
+                foreach (GameObject gameObject in gameObjects)
+                {
+                    if (gameObject == source)
+                        continue;
+
+                    if (!TargetTypes.Contains(gameObject.GetType()))
+                        continue;
+
+                    Rectangle colR = new Rectangle(gameObject.Location, new Vector2(4,4));
+                    var result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X, colR.Y, colR.Y2);
+                    if (result.intersects)
+                    {
+                        if (result.point.Distance(sourcePosition) < closest)
+                        {
+                            closest = result.point.Distance(sourcePosition);
+                            destinationPosition = result.point;
+                        }
+                    }
+                    result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X2, colR.X2, colR.Y, colR.Y2);
+                    if (result.intersects)
+                    {
+                        if (result.point.Distance(sourcePosition) < closest)
+                        {
+                            closest = result.point.Distance(sourcePosition);
+                            destinationPosition = result.point;
+                        }
+                    }
+                    result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y, colR.Y);
+                    if (result.intersects)
+                    {
+                        if (result.point.Distance(sourcePosition) < closest)
+                        {
+                            closest = result.point.Distance(sourcePosition);
+                            destinationPosition = result.point;
+                        }
+                    }
+                    result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y2, colR.Y2);
+                    if (result.intersects)
+                    {
+                        if (result.point.Distance(sourcePosition) < closest)
+                        {
+                            closest = result.point.Distance(sourcePosition);
+                            destinationPosition = result.point;
+                        }
+                    }
+                }
+            }
+
+            Line.Draw(new(sourcePosition.X, sourcePosition.Y), new(destinationPosition.X, destinationPosition.Y), 1f);
+        }
+
         protected override void OnRenderFrame(FrameEventArgs args)
         {
+            Title = $"{args.Time:0.##} / {(1 / args.Time):0.##}";
             if (IsExiting)
             {
                 return;
             }
-            renderTexture.Begin();
+            gameRenderTexture.Begin();
             GL.ClearColor(0f, 0f, 0f, 0f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
             
@@ -180,16 +310,31 @@ namespace StackAttack
                 gameObject.Draw(args);
             }
 
+            if (player is null)
+                return;
+
             player.Draw(args);
 
-            renderTexture.End();
+            Vector2 playerDirection = ((Objects.Player)player).LookingAt;
+            playerDirection = new Vector2(playerDirection.X - player.X, playerDirection.Y - player.Y);
+            float originalAngle = playerDirection.GetAngle();
+
+            for (float i = -128; i <= 128; i++)
+            {
+                float angle = originalAngle + MathHelper.DegreesToRadians(((30 * i) / 128f));
+                CastRay(new Vector2(player.X + 2, player.Y + 2), angle, player);
+            }
+
+            gameRenderTexture.End();
             GL.ClearColor(0f, 0f, 0f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            if (renderTexture.Sprite.returnResult && renderTexture.Sprite.spriteResult is not null)
+            if (gameRenderTexture.Sprite.returnResult && gameRenderTexture.Sprite.spriteResult is not null)
             {
-                Sprite.DrawTexture(renderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
+                Sprite.DrawTexture(gameRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             }
+
+
 
             Context.SwapBuffers();
             base.OnRenderFrame(args);

@@ -60,5 +60,15 @@ namespace StackAttack.Engine.Helpers
         {
             return $"{X}x{Y} {Width}x{Height}";
         }
+
+        public static implicit operator Rectangle(Rectanglei source)
+        {
+            return new Rectangle(source.X, source.Y, source.Width, source.Height);
+        }
+
+        public static implicit operator Rectanglei(Rectangle source)
+        {
+            return new Rectanglei((int)source.X, (int)source.Y, (int)source.Width, (int)source.Height);
+        }
     }
 }

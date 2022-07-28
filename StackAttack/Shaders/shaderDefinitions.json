@@ -6,5 +6,9 @@
   {
     "FileName": "Shaders/desaturated",
     "ShaderID": "Desaturated"
+  },
+  {
+    "FileName": "Shaders/lineShader",
+    "ShaderID": "Line"
   }
 ]

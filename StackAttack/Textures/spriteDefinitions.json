@@ -60,6 +60,33 @@
     "Height": 4,
     "TextureID": "IdeaV1",
     "ShaderID": "BaseShader",
+    "SpriteID": "PlayerAngle"
+  },
+  {
+    "X": 28,
+    "Y": 4,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
     "SpriteID": "Enemy"
+  },
+  {
+    "X": 0,
+    "Y": 8,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "SpriteID": "EnemyAngle"
+  },
+  {
+    "X": 4,
+    "Y": 8,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "IdeaV1",
+    "ShaderID": "BaseShader",
+    "SpriteID": "Target"
   }
 ]
