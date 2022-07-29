@@ -68,7 +68,7 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return;
 
             int renderX = X - scene.CameraX;
@@ -121,17 +121,17 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return false;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return false;
 
-            if (scene.player.Location.Distance(Location) < 32)
+            if (scene.Player.Location.Distance(Location) < 32)
             {
                 float lookingAngle = new Vector2(LookingAt.X - X, LookingAt.Y - Y).GetAngle();
                 float playerAngle = new Vector2(gameobject.X - X, gameobject.Y - Y).GetAngle();
                 
                 //if (Math.Abs(playerAngle - lookingAngle) > MathHelper.DegreesToRadians(90) && Math.Abs(playerAngle - lookingAngle) < MathHelper.DegreesToRadians(270)) return false;
 
-                var result = RayCasting.CastRay(new(Location.X+2,Location.Y+2), scene.player.Location, this, scene.Foreground, new() { gameobject }, false, 0, 0, gameobject.GetType());
+                var result = RayCasting.CastRay(new(Location.X+2,Location.Y+2), scene.Player.Location, this, scene.Foreground, new() { gameobject }, false, 0, 0, gameobject.GetType());
                 return (result.result && result.resultObject is not null && result.resultObject.GetType() == gameobject.GetType());
             }
             return false;
@@ -148,11 +148,11 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return;
 
-            bool canSeePlayer = CanSeeObject(scene.player);
-            float playerDistance = new Vector2(Location.X + 2, Location.Y + 2).Distance(scene.player.Location);
+            bool canSeePlayer = CanSeeObject(scene.Player);
+            float playerDistance = new Vector2(Location.X + 2, Location.Y + 2).Distance(scene.Player.Location);
 
             timer--;
             if (timer <= 0)
@@ -164,8 +164,8 @@ namespace StackAttack.Objects
                         if (canSeePlayer)
                         {
                             //If sees player
-                            Target.X = scene.player.X;
-                            Target.Y = scene.player.Y; //LookAtPlayer
+                            Target.X = scene.Player.X;
+                            Target.Y = scene.Player.Y; //LookAtPlayer
                             //Remember player
                             LookingAt.X = Target.X;
                             LookingAt.Y = Target.Y;
@@ -180,17 +180,17 @@ namespace StackAttack.Objects
                         }
                         else if (MemoryState > 0)
                         {
-                            Target.X = scene.player.X;
-                            Target.Y = scene.player.Y; 
-                            LookingAt.X = scene.player.X;
-                            LookingAt.Y = scene.player.Y;
+                            Target.X = scene.Player.X;
+                            Target.Y = scene.Player.Y; 
+                            LookingAt.X = scene.Player.X;
+                            LookingAt.Y = scene.Player.Y;
                             MemoryState--;
                             action = Actions.MoveToPosition;
                         }
                         else
                         {
-                            LookingAt.X = Random.Shared.Next(0, scene.level.LevelWidth);
-                            LookingAt.Y = Random.Shared.Next(0, scene.level.LevelHeight);
+                            LookingAt.X = Random.Shared.Next(0, scene.Level.LevelWidth);
+                            LookingAt.Y = Random.Shared.Next(0, scene.Level.LevelHeight);
                             var castresult = RayCasting.CastRay(new(Location.X+2, Location.Y+2), LookingAt, this, scene.Foreground, new(), false, 0, 0);
                             if (castresult.result == true && castresult.tile is not null)
                             {
@@ -216,8 +216,8 @@ namespace StackAttack.Objects
                         if (canSeePlayer && playerDistance <16)
                         {
                             //If sees player
-                            Target.X = scene.player.X;
-                            Target.Y = scene.player.Y; //LookAtPlayer
+                            Target.X = scene.Player.X;
+                            Target.Y = scene.Player.Y; //LookAtPlayer
                             //Remember player
                             LookingAt.X = Target.X;
                             LookingAt.Y = Target.Y;
@@ -233,8 +233,8 @@ namespace StackAttack.Objects
                             {
                                 Path = null;
                                 //If sees player
-                                Target.X = scene.player.X;
-                                Target.Y = scene.player.Y; //LookAtPlayer
+                                Target.X = scene.Player.X;
+                                Target.Y = scene.Player.Y; //LookAtPlayer
                                                             //Remember player
                                 LookingAt.X = Target.X;
                                 LookingAt.Y = Target.Y;
@@ -309,7 +309,7 @@ namespace StackAttack.Objects
                 }
             }
 
-            foreach (GameObject gameObject in scene.gameObjects)
+            foreach (GameObject gameObject in scene.GameObjects)
             {
                 if (gameObject.GetType() == typeof(BlueDoor))
                 {

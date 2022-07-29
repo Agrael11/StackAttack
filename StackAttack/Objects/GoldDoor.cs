@@ -38,7 +38,7 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return;
 
             if (IsOpen)

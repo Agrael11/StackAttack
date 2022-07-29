@@ -19,7 +19,7 @@ namespace StackAttack
         public static int ViewportHeight { get; set; } = 64;
         public static int WindowWidth { get; set; } = 512;
         public static int WindowHeight { get; set; } = 512;
-        public static bool Fullscreen = false;
+        public static bool Fullscreen { get; set; } = false;
 
         public Scenes.Scene CurrentScene { get; private set; }
 

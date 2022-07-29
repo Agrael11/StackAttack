@@ -10,8 +10,8 @@ namespace StackAttack.Engine
         public static (bool result, GameObject? resultObject, TileData? tile) CastRay(Vector2 sourcePosition, float angle, GameObject source, TileMap collisionMap, List<GameObject> gameObjects, bool draw, int CameraX, int CameraY, params Type[] TargetTypes)
         {
             Vector2 angleVector = ExtensionsAndHelpers.FromAngle(angle, 32);
-            Vector2 destinationPosition = new Vector2(sourcePosition.X + angleVector.X, sourcePosition.Y + angleVector.Y);
-            Rectangle srcR = new Rectangle(sourcePosition, angleVector.X, angleVector.Y);
+            Vector2 destinationPosition = new(sourcePosition.X + angleVector.X, sourcePosition.Y + angleVector.Y);
+            Rectangle srcR = new(sourcePosition, angleVector.X, angleVector.Y);
 
 
             float closest = float.MaxValue;
@@ -74,7 +74,7 @@ namespace StackAttack.Engine
                     if (!TargetTypes.Contains(gameObject.GetType()))
                         continue;
 
-                    Rectangle colR = new Rectangle(gameObject.Location, new Vector2(4, 4));
+                    Rectangle colR = new(gameObject.Location, new Vector2(4, 4));
                     var result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X, colR.Y, colR.Y2);
                     if (result.intersects)
                     {
@@ -133,7 +133,7 @@ namespace StackAttack.Engine
 
         public static (bool result, GameObject? resultObject, TileData? tile) CastRay(Vector2 sourcePosition, Vector2 destinationPosition, GameObject source, TileMap collisionMap, List<GameObject> gameObjects, bool draw, int CameraX, int CameraY, params Type[] TargetTypes)
         {
-            Rectangle srcR = new Rectangle(sourcePosition, destinationPosition.X - sourcePosition.X, destinationPosition.Y - sourcePosition.Y);
+            Rectangle srcR = new(sourcePosition, destinationPosition.X - sourcePosition.X, destinationPosition.Y - sourcePosition.Y);
 
 
             float closest = float.MaxValue;

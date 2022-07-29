@@ -48,7 +48,7 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return;
 
             if (IsOpen)
@@ -94,7 +94,7 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return;
 
             scene.Foreground.Tiles.Remove(tile);
@@ -113,30 +113,30 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return false;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return false;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return false;
 
-            (bool result, Sprite? meSprite) = ContentManager.Get<Sprite>(scene.player.SpriteID);
+            (bool result, Sprite? meSprite) = ContentManager.Get<Sprite>(scene.Player.SpriteID);
             if (!result || meSprite is null)
                 return false;
 
-            (result, Sprite? playerSprite) = ContentManager.Get<Sprite>(scene.player.SpriteID);
+            (result, Sprite? playerSprite) = ContentManager.Get<Sprite>(scene.Player.SpriteID);
             if (!result || playerSprite is null)
                 return false;
 
-            if (new Rectanglei(scene.player.Location, playerSprite.Size).Intersects(new Rectanglei(Location, meSprite.Size)))
+            if (new Rectanglei(scene.Player.Location, playerSprite.Size).Intersects(new Rectanglei(Location, meSprite.Size)))
             {
                 return false;
             }
 
-            foreach (GameObject gameObject in scene.gameObjects)
+            foreach (GameObject gameObject in scene.GameObjects)
             {
                 if (gameObject == this)
                     continue;
 
-                (result, Sprite? objectSprite) = ContentManager.Get<Sprite>(scene.player.SpriteID);
+                (result, Sprite? objectSprite) = ContentManager.Get<Sprite>(scene.Player.SpriteID);
                 if (!result || objectSprite is null)
                     return false;
 

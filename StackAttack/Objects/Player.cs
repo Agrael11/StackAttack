@@ -64,7 +64,7 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return;
 
             int renderX = X - scene.CameraX;
@@ -121,7 +121,7 @@ namespace StackAttack.Objects
             Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
             if (scene is null)
                 return;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return;
 
             KeyboardState input = Parent.KeyboardState.GetSnapshot();
@@ -162,9 +162,9 @@ namespace StackAttack.Objects
             MouseState mouse = Parent.MouseState.GetSnapshot();
             LookingAt = new((int)(mouse.X / Scale)+scene.CameraX, (int)(mouse.Y / Scale) + scene.CameraY);
 
-            for (int i = scene.gameObjects.Count - 1; i >= 0; i--)
+            for (int i = scene.GameObjects.Count - 1; i >= 0; i--)
             {
-                GameObject gameObject = scene.gameObjects[i];
+                GameObject gameObject = scene.GameObjects[i];
                 if (input.IsKeyPressed(Keys.Space))
                 {
                     if (gameObject.Location.Distance(Location) < 8)
@@ -188,14 +188,14 @@ namespace StackAttack.Objects
                     if (gameObject.GetType() == typeof(Key))
                     {
                         hasKey = true;
-                        scene.gameObjects.Remove(gameObject);
+                        scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(false,true);
                         continue;
                     }
                     if (gameObject.GetType() == typeof(Chest))
                     {
                         scene.Score += 100;
-                        scene.gameObjects.Remove(gameObject);
+                        scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(true);
                         continue;
                     }

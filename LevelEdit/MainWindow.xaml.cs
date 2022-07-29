@@ -304,8 +304,7 @@ namespace LevelEdit
 
         private void CheckSaneNumber(ref object sender)
         {
-            TextBox? textBox = sender as TextBox;
-            if (textBox is null)
+            if (sender is not TextBox textBox)
                 return;
 
             int number = int.Parse(textBox.Text);
@@ -480,8 +479,10 @@ namespace LevelEdit
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.Filter = "Json Files (*.json)|*.json";
+            Microsoft.Win32.OpenFileDialog dialog = new()
+            {
+                Filter = "Json Files (*.json)|*.json"
+            };
             if (dialog.ShowDialog() == true)
             {
                 
@@ -503,17 +504,21 @@ namespace LevelEdit
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new Microsoft.Win32.SaveFileDialog();
-            dialog.Filter = "Json Files (*.json)|*.json";
+            Microsoft.Win32.SaveFileDialog dialog = new()
+            {
+                Filter = "Json Files (*.json)|*.json"
+            };
             if (dialog.ShowDialog() == true)
             {
-                LevelData level = new();
-                level.LevelWidth = int.Parse(WidthTextBox.Text);
-                level.LevelHeight = int.Parse(HeightTextBox.Text);
-                level.Foreground = foreground;
-                level.Background = background;
-                level.GameObjectStartDatas = gameObjectStartDatas;
-                level.PlayerStartData = playerStart;
+                LevelData level = new()
+                {
+                    LevelWidth = int.Parse(WidthTextBox.Text),
+                    LevelHeight = int.Parse(HeightTextBox.Text),
+                    Foreground = foreground,
+                    Background = background,
+                    GameObjectStartDatas = gameObjectStartDatas,
+                    PlayerStartData = playerStart
+                };
                 StackAttack.Game.SaveDefintionData(dialog.FileName, level);
             }
         }

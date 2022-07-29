@@ -82,12 +82,12 @@ namespace StackAttack.Engine
             Scenes.GameScene? scene = (Scenes.GameScene)parent.CurrentScene;
             if (scene is null)
                 return;
-            if (scene.player is null)
+            if (scene.Player is null)
                 return;
 
-            if (node.X < 0 || node.X >= scene.level.LevelWidth)
+            if (node.X < 0 || node.X >= scene.Level.LevelWidth)
                 return;
-            if (node.Y < 0 || node.Y >= scene.level.LevelHeight)
+            if (node.Y < 0 || node.Y >= scene.Level.LevelHeight)
                 return;
             foreach (var tile in scene.Foreground.Tiles)
             {
