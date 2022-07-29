@@ -4,7 +4,7 @@
     "Y": 0,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "Exit"
   },
@@ -13,7 +13,7 @@
     "Y": 4,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "BlueDoor"
   },
@@ -22,7 +22,7 @@
     "Y": 4,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "GoldDoor"
   },
@@ -31,7 +31,7 @@
     "Y": 4,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "Key"
   },
@@ -40,7 +40,7 @@
     "Y": 0,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "Chest"
   },
@@ -49,7 +49,7 @@
     "Y": 4,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "Player"
   },
@@ -58,7 +58,7 @@
     "Y": 4,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "PlayerAngle"
   },
@@ -67,7 +67,7 @@
     "Y": 4,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "Enemy"
   },
@@ -76,7 +76,7 @@
     "Y": 8,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "EnemyAngle"
   },
@@ -85,8 +85,26 @@
     "Y": 8,
     "Width": 4,
     "Height": 4,
-    "TextureID": "IdeaV1",
+    "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
     "SpriteID": "Target"
+  },
+  {
+    "X": 8,
+    "Y": 8,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "TilesAndSprites",
+    "ShaderID": "BaseShader",
+    "SpriteID": "HealthPickup"
+  },
+  {
+    "X": 12,
+    "Y": 8,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "TilesAndSprites",
+    "ShaderID": "BaseShader",
+    "SpriteID": "AmmoPickup"
   }
 ]

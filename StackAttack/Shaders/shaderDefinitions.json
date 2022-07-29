@@ -8,6 +8,10 @@
     "ShaderID": "Desaturated"
   },
   {
+    "FileName": "Shaders/superDesaturated",
+    "ShaderID": "SuperDesaturated"
+  },
+  {
     "FileName": "Shaders/lineShader",
     "ShaderID": "Line"
   },

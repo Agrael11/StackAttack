@@ -27,7 +27,7 @@ namespace StackAttack
         List<Texture.TextureDefinition> textureDefinitions = new();
         List<Sprite.SpriteDefinition> spriteDefinitions = new();
         List<Tile.TileDefinition> tileDefinitions = new();
-        LevelData level = new();
+        public LevelData level = new();
         RenderTexture rayCastRenderTexture = new();
         RenderTexture gameRenderTexture = new();
         RenderTexture tempRenderTexture = new();
@@ -114,6 +114,8 @@ namespace StackAttack
 
         protected override void OnLoad()
         {
+            CursorState = CursorState.Hidden;
+            
             LoadDefinitionData("Shaders/shaderDefinitions.json", ref shaderDefinitions);
             LoadDefinitionData("Textures/textureDefinitions.json", ref textureDefinitions);
             LoadDefinitionData("Textures/spriteDefinitions.json", ref spriteDefinitions);
@@ -309,6 +311,128 @@ namespace StackAttack
             return (true, closestObject, null);
         }
 
+        public (bool result, GameObject? resultObject, TileData? tile) CastRay(Vector2 sourcePosition, Vector2 destinationPosition, GameObject source, TileMap collisionMap, List<GameObject> gameObjects, bool draw, params Type[] TargetTypes)
+        {
+            Rectangle srcR = new Rectangle(sourcePosition, destinationPosition.X - sourcePosition.X, destinationPosition.Y - sourcePosition.Y);
+
+
+            float closest = float.MaxValue;
+            TileData? closestTile = null;
+
+            foreach (TileData tile in collisionMap.Tiles)
+            {
+                Rectangle colR = tile.GetRectangle();
+                var result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X, colR.Y, colR.Y2);
+                if (result.intersects)
+                {
+                    if (result.point.Distance(sourcePosition) < closest)
+                    {
+                        closest = result.point.Distance(sourcePosition);
+                        destinationPosition = result.point;
+                        closestTile = tile;
+                    }
+                }
+                result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X2, colR.X2, colR.Y, colR.Y2);
+                if (result.intersects)
+                {
+                    if (result.point.Distance(sourcePosition) < closest)
+                    {
+                        closest = result.point.Distance(sourcePosition);
+                        destinationPosition = result.point;
+                        closestTile = tile;
+                    }
+                }
+                result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y, colR.Y);
+                if (result.intersects)
+                {
+                    if (result.point.Distance(sourcePosition) < closest)
+                    {
+                        closest = result.point.Distance(sourcePosition);
+                        destinationPosition = result.point;
+                        closestTile = tile;
+                    }
+                }
+                result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y2, colR.Y2);
+                if (result.intersects)
+                {
+                    if (result.point.Distance(sourcePosition) < closest)
+                    {
+                        closest = result.point.Distance(sourcePosition);
+                        destinationPosition = result.point;
+                        closestTile = tile;
+                    }
+                }
+            }
+
+            GameObject? closestObject = null;
+
+            if (TargetTypes is not null && (TargetTypes.Length > 0))
+            {
+                foreach (GameObject gameObject in gameObjects)
+                {
+                    if (gameObject == source)
+                        continue;
+
+                    if (!TargetTypes.Contains(gameObject.GetType()))
+                        continue;
+
+                    Rectangle colR = new Rectangle(gameObject.Location, new Vector2(4, 4));
+                    var result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X, colR.Y, colR.Y2);
+                    if (result.intersects)
+                    {
+                        if (result.point.Distance(sourcePosition) < closest)
+                        {
+                            closest = result.point.Distance(sourcePosition);
+                            destinationPosition = result.point;
+                            closestObject = gameObject;
+                        }
+                    }
+                    result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X2, colR.X2, colR.Y, colR.Y2);
+                    if (result.intersects)
+                    {
+                        if (result.point.Distance(sourcePosition) < closest)
+                        {
+                            closest = result.point.Distance(sourcePosition);
+                            destinationPosition = result.point;
+                            closestObject = gameObject;
+                        }
+                    }
+                    result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y, colR.Y);
+                    if (result.intersects)
+                    {
+                        if (result.point.Distance(sourcePosition) < closest)
+                        {
+                            closest = result.point.Distance(sourcePosition);
+                            destinationPosition = result.point;
+                            closestObject = gameObject;
+                        }
+                    }
+                    result = LinesCollisions(srcR.X, srcR.X2, srcR.Y, srcR.Y2, colR.X, colR.X2, colR.Y2, colR.Y2);
+                    if (result.intersects)
+                    {
+                        if (result.point.Distance(sourcePosition) < closest)
+                        {
+                            closest = result.point.Distance(sourcePosition);
+                            destinationPosition = result.point;
+                            closestObject = gameObject;
+                        }
+                    }
+                }
+            }
+
+            if (draw) Line.Draw(new(sourcePosition.X - CameraX, sourcePosition.Y - CameraY), new(destinationPosition.X - CameraX, destinationPosition.Y - CameraY), 1f);
+
+            if (closestObject is null)
+            {
+                if (closestTile is null)
+                {
+                    return (false, null, null);
+                }
+                return (true, null, closestTile);
+            }
+            return (true, closestObject, null);
+        }
+
         protected override void OnRenderFrame(FrameEventArgs args)
         {
 
@@ -372,6 +496,7 @@ namespace StackAttack
                     tiles.Tiles.Add(tile);
                 }
             }
+            
             List<GameObject> gameObjects = new();
             foreach (GameObject go in this.gameObjects)
             {
@@ -383,9 +508,9 @@ namespace StackAttack
 
             List<TileData> collidedTiles = new List<TileData>();
 
-            for (float i = -32; i <= 32; i++)
+            for (float i = -64; i <= 64; i++)
             {
-                float angle = originalAngle + MathHelper.DegreesToRadians(((50 * i) / 32f));
+                float angle = originalAngle + MathHelper.DegreesToRadians(((60 * i) / 64f));
                 var result = CastRay(new Vector2(player.X + 2, player.Y + 2), angle, player, tiles, gameObjects, true);
                 if (result.result && result.tile is not null)
                 {
@@ -432,6 +557,7 @@ namespace StackAttack
             if (!memoryRenderTexture.Sprite.returnResult || memoryRenderTexture.Sprite.spriteResult is null)
                 return;
 
+            Sprite.DrawTexture(gameRenderTexture.Sprite.spriteResult.TextureID, "SuperDesaturated", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             Sprite.DrawTexture(memoryRenderTexture.Sprite.spriteResult.TextureID, "Desaturated", new Rectanglei(CameraX, -(CameraY- 48), 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             Sprite.DrawTexture(tempRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             player.Draw(args);

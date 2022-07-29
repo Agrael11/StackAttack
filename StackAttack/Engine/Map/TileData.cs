@@ -25,16 +25,21 @@ namespace StackAttack.Engine.Map
         public string TileID { get; set; } = "";
         public int TileX { get; set; } = 0;
         public int TileY { get; set; } = 0;
+        private Helpers.Rectanglei? rectangle = null;
 
         public Helpers.Rectanglei GetRectangle()
         {
-            Vector2i Size = new Vector2i(4, 4);
-            (bool returnResult, Tile? returnTile) = ContentManager.Get<Tile>(TileID);
-            if (returnResult && returnTile is not null)
+            if (rectangle is null)
             {
-                Size = returnTile.Size;
+                Vector2i Size = new Vector2i(4, 4);
+                (bool returnResult, Tile? returnTile) = ContentManager.Get<Tile>(TileID);
+                if (returnResult && returnTile is not null)
+                {
+                    Size = returnTile.Size;
+                }
+                rectangle = new Helpers.Rectanglei(TileX * 4, TileY * 4, Size);
             }
-            return new Helpers.Rectanglei(TileX * 4, TileY * 4, Size);
+            return rectangle;
         }
         public float TileRotationDeg { get; set; } = 0;
 

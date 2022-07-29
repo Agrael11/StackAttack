@@ -41,6 +41,20 @@ namespace StackAttack.Engine.Helpers
             return me;
         }
 
+        public static float GetMagnitude(this Vector2i me)
+        {
+            return new Vector2(me.X, me.Y).Length;
+        }
+
+        public static Vector2i SetMagnitude(this Vector2i me, float magnitude)
+        {
+            Vector2 meNew = new Vector2(me.X, me.Y);
+            meNew.Normalize();
+            meNew.X *= magnitude;
+            meNew.Y *= magnitude;
+            return new Vector2i((int)meNew.X, (int)meNew.Y);
+        }
+
         public static Vector2i FromAnglei(float angle, float magnitude = 1)
         {
             Vector2 v = FromAngle(angle, magnitude);

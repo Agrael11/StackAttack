@@ -4,11 +4,7 @@
     "FileName": "Textures/Error.png"
   },
   {
-    "TextureID": "IdeaV1",
-    "FileName": "Textures/IdeaV1.png"
-  },
-  {
-    "TextureID": "TempCircle",
-    "FileName": "Textures/CircleTemp.png"
+    "TextureID": "TilesAndSprites",
+    "FileName": "Textures/TilesAndSprites.png"
   }
 ]

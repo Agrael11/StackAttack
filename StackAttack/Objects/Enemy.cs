@@ -12,17 +12,21 @@ namespace StackAttack.Objects
 {
     internal class Enemy : GameObject
     {
-        private enum Actions { MoveToPosition, LookAround, Engage, Strafe}
+        private enum Actions { MoveToPosition, FollowMemory, LookAround, Engage, Strafe}
 
         public Vector2i LookingAt = new(0, 0);
         public Vector2i Target = new(0, 0);
+        public Vector2i Memory = new(0, 0);
+        List<Dijkstra.Node>? Path = null;
         float speed = 0.25f;
         float tempX;
         float tempY;
         int timer = 20;
         int stater = 0;
+        int steps = 10;
         Actions action = Actions.LookAround;
         string AngledSpriteID = "";
+        int MemoryState = 0;
 
         public Enemy() : base(0,0,0,Headings.North, null, "")
         {
@@ -95,11 +99,38 @@ namespace StackAttack.Objects
             {
                 enemySprite.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), angle);
             }
+        }
 
+        public bool CanSeeObject(GameObject gameobject, bool draw = false)
+        {
+            if (Parent is null)
+                return false;
+            if (Parent.player is null)
+                return false;
+
+            if (Parent.player.Location.Distance(Location) < 32)
+            {
+                float lookingAngle = new Vector2(LookingAt.X - X, LookingAt.Y - Y).GetAngle();
+                float playerAngle = new Vector2(gameobject.X - X, gameobject.Y - Y).GetAngle();
+                
+                //if (Math.Abs(playerAngle - lookingAngle) > MathHelper.DegreesToRadians(90) && Math.Abs(playerAngle - lookingAngle) < MathHelper.DegreesToRadians(270)) return false;
+
+                var result = Parent.CastRay(new(Location.X+2,Location.Y+2), Parent.player.Location, this, Parent.Foreground, new() { gameobject }, draw, gameobject.GetType());
+                return (result.result && result.resultObject is not null && result.resultObject.GetType() == gameobject.GetType());
+            }
+            return false;
         }
 
         public override void Update(FrameEventArgs args)
         {
+            if (Parent is null)
+                return;
+            if (Parent.player is null)
+                return;
+
+            bool canSeePlayer = CanSeeObject(Parent.player);
+            float playerDistance = new Vector2(Location.X + 2, Location.Y + 2).Distance(Parent.player.Location);
+
             timer--;
             if (timer <= 0)
             {
@@ -107,25 +138,43 @@ namespace StackAttack.Objects
                 {
                     case Actions.LookAround:
                         //TOOD: FOV
-                        if (false)
+                        if (canSeePlayer)
                         {
                             //If sees player
-                            Target.X = Random.Shared.Next(0, 0);
-                            Target.Y = Random.Shared.Next(0, 0); //LookAtPlayer
+                            Target.X = Parent.player.X;
+                            Target.Y = Parent.player.Y; //LookAtPlayer
                             //Remember player
+                            LookingAt.X = Target.X;
+                            LookingAt.Y = Target.Y;
+                            Memory.X = Target.X;
+                            Memory.Y = Target.Y;
+                            MemoryState = 1;
                             //Engage
+                            if (playerDistance < 16)
+                                action = Actions.Engage;
+                            else
+                                action = Actions.MoveToPosition;
                         }
-                        else if (false)
+                        else if (MemoryState > 0)
                         {
-                            //Memory
-                            Target.X = Random.Shared.Next(0, 0);
-                            Target.Y = Random.Shared.Next(0, 0); //LookAtMemory
+                            Target.X = Parent.player.X;
+                            Target.Y = Parent.player.Y; 
+                            LookingAt.X = Parent.player.X;
+                            LookingAt.Y = Parent.player.Y;
+                            MemoryState--;
                             action = Actions.MoveToPosition;
                         }
                         else
                         {
-                            LookingAt.X = Random.Shared.Next(0, 64);
-                            LookingAt.Y = Random.Shared.Next(0, 64);
+                            LookingAt.X = Random.Shared.Next(0, Parent.level.LevelWidth);
+                            LookingAt.Y = Random.Shared.Next(0, Parent.level.LevelHeight);
+                            var castresult = Parent.CastRay(new(Location.X+2, Location.Y+2), LookingAt, this, Parent.Foreground, new(), false);
+                            if (castresult.result == true && castresult.tile is not null)
+                            {
+                                LookingAt = new Vector2i(castresult.tile.Value.TileX*4 - X, castresult.tile.Value.TileY*4 - Y);
+                                LookingAt = LookingAt.SetMagnitude(LookingAt.GetMagnitude() * 0.5f);
+                                LookingAt = new Vector2i(X + LookingAt.X, Y + LookingAt.Y);
+                            }
                             stater++;
                             if (stater < 8)
                             {
@@ -138,21 +187,113 @@ namespace StackAttack.Objects
                                 Target.X = LookingAt.X;
                                 Target.Y = LookingAt.Y;
                             }
+                        }
+                        break;
+                    case Actions.MoveToPosition:
+                        if (canSeePlayer && playerDistance <16)
+                        {
+                            //If sees player
+                            Target.X = Parent.player.X;
+                            Target.Y = Parent.player.Y; //LookAtPlayer
+                            //Remember player
+                            LookingAt.X = Target.X;
+                            LookingAt.Y = Target.Y;
+                            Memory.X = Target.X;
+                            Memory.Y = Target.Y;
+                            Path = null;
+                            action = Actions.Engage;
                             break;
                         }
-                    case Actions.MoveToPosition:
-                        //TODO A*
-                        X = Target.X;
-                        Y = Target.Y;
-                        //Rotate in move direction
-                        if (false)
+                        else if (canSeePlayer)
                         {
-                            //Check if sees player, and enter the engage mode
-
+                            if (steps <= 0)
+                            {
+                                Path = null;
+                                //If sees player
+                                Target.X = Parent.player.X;
+                                Target.Y = Parent.player.Y; //LookAtPlayer
+                                                            //Remember player
+                                LookingAt.X = Target.X;
+                                LookingAt.Y = Target.Y;
+                                Memory.X = Target.X;
+                                Memory.Y = Target.Y;
+                                steps = 10;
+                            }
+                            steps--;
                         }
-                        action = Actions.LookAround;
-                        timer = 20;
+                        else
+                        {
+                            steps = 10;
+                        }
+                        if (Path is null)
+                        {
+                            Path = Dijkstra.DoDijkstra(new(Location.X / 4, Location.Y / 4), new(Target.X / 4, Target.Y / 4), Parent);
+                        }    
+                        if (Path is null || Path.Count == 0)
+                        {
+                            Path = null;
+                            action = Actions.LookAround;
+                            timer = 20;
+                            break;
+                        }
+                        Dijkstra.Node targetNode = Path[0];
+                        Vector2i target = new Vector2i(targetNode.X * 4, targetNode.Y * 4);
+                        while (Location == target)
+                        {
+                            Path.RemoveAt(0);
+                            if (Path.Count == 0) break;
+                            targetNode = Path[0];
+                            target = new Vector2i(targetNode.X * 4, targetNode.Y * 4);
+                        }
+                        timer--;
+                        if (timer > 0) 
+                            break; 
+                        if (X > target.X)
+                        {
+                            X--;
+                            timer = 10;
+                            break;
+                        }
+                        if (X < target.X)
+                        {
+                            X++;
+                            timer = 10;
+                            break;
+                        }
+                        if (Y > target.Y)
+                        {
+                            Y--;
+                            timer = 10;
+                            break;
+                        }
+                        if (Y < target.Y)
+                        {
+                            Y++;
+                            timer = 10;
+                            break;
+                        }
                         break;
+                    case Actions.Engage:
+                        if (!canSeePlayer)
+                        {
+                            action = Actions.LookAround;
+                        }
+                        if (playerDistance > 16)
+                        {
+                            action = Actions.MoveToPosition;
+                        }
+                        break;
+                }
+            }
+
+            foreach (GameObject gameObject in Parent.gameObjects)
+            {
+                if (gameObject.GetType() == typeof(BlueDoor))
+                {
+                    if (gameObject.Location.Distance(Location) < 5)
+                    {
+                        ((BlueDoor)gameObject).Open();
+                    }
                 }
             }
         }

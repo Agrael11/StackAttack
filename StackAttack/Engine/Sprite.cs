@@ -13,6 +13,7 @@ namespace StackAttack.Engine
     {
         public struct SpriteDefinition
         {
+
             public int X { get; set; }
             public int Y { get; set; }
             public int Width { get; set; }
@@ -37,6 +38,8 @@ namespace StackAttack.Engine
         public string ShaderID { get; set; }
         public Vector2i Location { get; set; }
         public Vector2i Size { get; set; }
+        internal static (string info, Texture? texture) lastTextute = ("", null);
+        internal static (string info, Shader? shader) lastShader = ("", null);
         public Rectanglei Rectangle { get { return new Rectanglei(Location, Size); }}
 
         private int VertexBufferObject;
@@ -51,6 +54,7 @@ namespace StackAttack.Engine
             ShaderID = shaderID;
             Location = location;
             Size = size;
+            
 
             (bool returnResult, Shader? shaderResult) = ContentManager.Get<Shader>(shaderID);
             if (!returnResult || shaderResult is null)
@@ -172,14 +176,37 @@ namespace StackAttack.Engine
 
         public void Draw(Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
-            (bool returnResult, Texture? textureResult) = ContentManager.Get<Texture>(TextureID);
-            if (!returnResult || textureResult is null)
-                return;
-            (returnResult, Shader? shaderResult) = ContentManager.Get<Shader>(ShaderID);
-            if (!returnResult || shaderResult is null)
-                return;
+            Shader usingShader;
+            Texture usingTexture;
+            bool returnResult;
 
-            shaderResult.UseShader();
+            if (Sprite.lastShader.info == ShaderID && Sprite.lastShader.shader != null)
+            {
+                usingShader = Sprite.lastShader.shader;
+            }
+            else
+            {
+                (returnResult, Shader? resultShader) = ContentManager.Get<Shader>(ShaderID);
+                if (!returnResult || resultShader is null)
+                    return;
+                usingShader = resultShader;
+            }
+
+            if (Sprite.lastTextute.info == TextureID && Sprite.lastTextute.texture!= null)
+            {
+                usingTexture = Sprite.lastTextute.texture;
+            }
+            else
+            {
+                (returnResult, Texture? textureResult) = ContentManager.Get<Texture>(TextureID);
+                if (!returnResult || textureResult is null)
+                    return;
+                usingTexture = textureResult;
+            }
+
+
+
+            usingShader.UseShader();
 
             float realX = position.X / (Game.ViewportWidth / 2f);
             realX -= 1;
@@ -205,10 +232,10 @@ namespace StackAttack.Engine
             scale *= Matrix4.CreateTranslation(0, 1, 0);
             Matrix4 transform = rotationM * scale * translate;
 
-            shaderResult.SetMatrix4("transform", ref transform);
-            shaderResult.SetInt("texture1", 0);
+            usingShader.SetMatrix4("transform", ref transform);
+            usingShader.SetInt("texture1", 0);
 
-            textureResult.UseTexture();
+            usingTexture.UseTexture();
             GL.BindVertexArray(VertexArrayObject);
             GL.DrawElements(PrimitiveType.Triangles, indiciesLength, DrawElementsType.UnsignedInt, 0);
 
