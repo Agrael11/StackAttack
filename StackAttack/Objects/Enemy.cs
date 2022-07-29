@@ -131,7 +131,7 @@ namespace StackAttack.Objects
                 
                 //if (Math.Abs(playerAngle - lookingAngle) > MathHelper.DegreesToRadians(90) && Math.Abs(playerAngle - lookingAngle) < MathHelper.DegreesToRadians(270)) return false;
 
-                var result = Game.CastRay(new(Location.X+2,Location.Y+2), scene.player.Location, this, scene.Foreground, new() { gameobject }, false, 0, 0, gameobject.GetType());
+                var result = RayCasting.CastRay(new(Location.X+2,Location.Y+2), scene.player.Location, this, scene.Foreground, new() { gameobject }, false, 0, 0, gameobject.GetType());
                 return (result.result && result.resultObject is not null && result.resultObject.GetType() == gameobject.GetType());
             }
             return false;
@@ -191,7 +191,7 @@ namespace StackAttack.Objects
                         {
                             LookingAt.X = Random.Shared.Next(0, scene.level.LevelWidth);
                             LookingAt.Y = Random.Shared.Next(0, scene.level.LevelHeight);
-                            var castresult = Game.CastRay(new(Location.X+2, Location.Y+2), LookingAt, this, scene.Foreground, new(), false, 0, 0);
+                            var castresult = RayCasting.CastRay(new(Location.X+2, Location.Y+2), LookingAt, this, scene.Foreground, new(), false, 0, 0);
                             if (castresult.result == true && castresult.tile is not null)
                             {
                                 LookingAt = new Vector2i(castresult.tile.Value.TileX*4 - X, castresult.tile.Value.TileY*4 - Y);

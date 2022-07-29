@@ -57,11 +57,6 @@ namespace StackAttack.Scenes
             parent.CursorState = CursorState.Hidden;
         }
 
-        public void Unload()
-        {
-
-        }
-
         private void LoadDefinitions()
         {
             foreach (var shaderDefinition in shaderDefinitions)
@@ -176,7 +171,7 @@ namespace StackAttack.Scenes
             for (float i = -64; i <= 64; i++)
             {
                 float angle = originalAngle + MathHelper.DegreesToRadians(((60 * i) / 64f));
-                var result = Game.CastRay(new Vector2(player.X + 2, player.Y + 2), angle, player, tiles, gameObjects, true, CameraX, CameraY);
+                var result = RayCasting.CastRay(new Vector2(player.X + 2, player.Y + 2), angle, player, tiles, gameObjects, true, CameraX, CameraY);
                 if (result.result && result.tile is not null)
                 {
                     if (!collidedTiles.Contains(result.tile.Value))
@@ -233,7 +228,7 @@ namespace StackAttack.Scenes
             //TODO
         }
 
-        public override void Dispose()
+        public void Unload()
         {
             shaderDefinitions.Clear();
             textureDefinitions.Clear();
@@ -241,6 +236,11 @@ namespace StackAttack.Scenes
             gameObjects.Clear();
             //level.Dispose();
             ContentManager.RemoveAll();
+        }
+
+        public override void Dispose()
+        {
+            Unload();
         }
     }
 }
