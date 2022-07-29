@@ -41,13 +41,22 @@ namespace StackAttack.Objects
         {
             if (Parent is null)
                 return;
+            if (Parent.CurrentScene is null)
+                return;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return;
+            if (scene.player is null)
+                return;
 
             if (IsOpen)
             {
                 (bool returnState, Sprite? returnSprite) = ContentManager.Get<Sprite>(SpriteID);
                 if (returnState == true && returnSprite is not null)
                 {
-                    returnSprite.Draw(new OpenTK.Mathematics.Vector2i(X - Parent.CameraX, Y - Parent.CameraY), (float)((int)Heading * (Math.PI / 2)));
+                    returnSprite.Draw(new OpenTK.Mathematics.Vector2i(X - scene.CameraX, Y - scene.CameraY), (float)((int)Heading * (Math.PI / 2)));
                 }
             }
         }
@@ -78,8 +87,17 @@ namespace StackAttack.Objects
         {
             if (Parent is null)
                 return;
+            if (Parent.CurrentScene is null)
+                return;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return;
+            if (scene.player is null)
+                return;
 
-            Parent.Foreground.Tiles.Remove(tile);
+            scene.Foreground.Tiles.Remove(tile);
             IsOpen = true;
             Timer = DefaultTimer;
         }
@@ -88,29 +106,37 @@ namespace StackAttack.Objects
         {
             if (Parent is null)
                 return false;
-
-            if (Parent.player is null)
+            if (Parent.CurrentScene is null)
+                return false;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return false;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return false;
+            if (scene.player is null)
+                return false;
+            if (scene.player is null)
                 return false;
 
-            (bool result, Sprite? meSprite) = ContentManager.Get<Sprite>(Parent.player.SpriteID);
+            (bool result, Sprite? meSprite) = ContentManager.Get<Sprite>(scene.player.SpriteID);
             if (!result || meSprite is null)
                 return false;
 
-            (result, Sprite? playerSprite) = ContentManager.Get<Sprite>(Parent.player.SpriteID);
+            (result, Sprite? playerSprite) = ContentManager.Get<Sprite>(scene.player.SpriteID);
             if (!result || playerSprite is null)
                 return false;
 
-            if (new Rectanglei(Parent.player.Location, playerSprite.Size).Intersects(new Rectanglei(Location, meSprite.Size)))
+            if (new Rectanglei(scene.player.Location, playerSprite.Size).Intersects(new Rectanglei(Location, meSprite.Size)))
             {
                 return false;
             }
 
-            foreach (GameObject gameObject in Parent.gameObjects)
+            foreach (GameObject gameObject in scene.gameObjects)
             {
                 if (gameObject == this)
                     continue;
 
-                (result, Sprite? objectSprite) = ContentManager.Get<Sprite>(Parent.player.SpriteID);
+                (result, Sprite? objectSprite) = ContentManager.Get<Sprite>(scene.player.SpriteID);
                 if (!result || objectSprite is null)
                     return false;
 
@@ -121,7 +147,7 @@ namespace StackAttack.Objects
             }
 
             tile = new Engine.Map.TileData(SpriteID, X/4, Y/4, (float)((int)Heading * 90));
-            Parent.Foreground.Tiles.Add(tile);
+            scene.Foreground.Tiles.Add(tile);
             IsOpen = false;
             return true;
         }

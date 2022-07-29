@@ -61,9 +61,18 @@ namespace StackAttack.Objects
         {
             if (Parent is null)
                 return;
+            if (Parent.CurrentScene is null)
+                return;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return;
+            if (scene.player is null)
+                return;
 
-            int renderX = X - Parent.CameraX;
-            int renderY = Y - Parent.CameraY;
+            int renderX = X - scene.CameraX;
+            int renderY = Y - scene.CameraY;
 
             (bool returnState, Sprite? enemySprite) = ContentManager.Get<Sprite>(SpriteID);
             if (returnState == false || enemySprite is null)
@@ -101,21 +110,28 @@ namespace StackAttack.Objects
             }
         }
 
-        public bool CanSeeObject(GameObject gameobject, bool draw = false)
+        public bool CanSeeObject(GameObject gameobject)
         {
             if (Parent is null)
                 return false;
-            if (Parent.player is null)
+            if (Parent.CurrentScene is null)
+                return false;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return false;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return false;
+            if (scene.player is null)
                 return false;
 
-            if (Parent.player.Location.Distance(Location) < 32)
+            if (scene.player.Location.Distance(Location) < 32)
             {
                 float lookingAngle = new Vector2(LookingAt.X - X, LookingAt.Y - Y).GetAngle();
                 float playerAngle = new Vector2(gameobject.X - X, gameobject.Y - Y).GetAngle();
                 
                 //if (Math.Abs(playerAngle - lookingAngle) > MathHelper.DegreesToRadians(90) && Math.Abs(playerAngle - lookingAngle) < MathHelper.DegreesToRadians(270)) return false;
 
-                var result = Parent.CastRay(new(Location.X+2,Location.Y+2), Parent.player.Location, this, Parent.Foreground, new() { gameobject }, draw, gameobject.GetType());
+                var result = Game.CastRay(new(Location.X+2,Location.Y+2), scene.player.Location, this, scene.Foreground, new() { gameobject }, false, 0, 0, gameobject.GetType());
                 return (result.result && result.resultObject is not null && result.resultObject.GetType() == gameobject.GetType());
             }
             return false;
@@ -125,11 +141,18 @@ namespace StackAttack.Objects
         {
             if (Parent is null)
                 return;
-            if (Parent.player is null)
+            if (Parent.CurrentScene is null)
+                return;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return;
+            if (scene.player is null)
                 return;
 
-            bool canSeePlayer = CanSeeObject(Parent.player);
-            float playerDistance = new Vector2(Location.X + 2, Location.Y + 2).Distance(Parent.player.Location);
+            bool canSeePlayer = CanSeeObject(scene.player);
+            float playerDistance = new Vector2(Location.X + 2, Location.Y + 2).Distance(scene.player.Location);
 
             timer--;
             if (timer <= 0)
@@ -141,8 +164,8 @@ namespace StackAttack.Objects
                         if (canSeePlayer)
                         {
                             //If sees player
-                            Target.X = Parent.player.X;
-                            Target.Y = Parent.player.Y; //LookAtPlayer
+                            Target.X = scene.player.X;
+                            Target.Y = scene.player.Y; //LookAtPlayer
                             //Remember player
                             LookingAt.X = Target.X;
                             LookingAt.Y = Target.Y;
@@ -157,18 +180,18 @@ namespace StackAttack.Objects
                         }
                         else if (MemoryState > 0)
                         {
-                            Target.X = Parent.player.X;
-                            Target.Y = Parent.player.Y; 
-                            LookingAt.X = Parent.player.X;
-                            LookingAt.Y = Parent.player.Y;
+                            Target.X = scene.player.X;
+                            Target.Y = scene.player.Y; 
+                            LookingAt.X = scene.player.X;
+                            LookingAt.Y = scene.player.Y;
                             MemoryState--;
                             action = Actions.MoveToPosition;
                         }
                         else
                         {
-                            LookingAt.X = Random.Shared.Next(0, Parent.level.LevelWidth);
-                            LookingAt.Y = Random.Shared.Next(0, Parent.level.LevelHeight);
-                            var castresult = Parent.CastRay(new(Location.X+2, Location.Y+2), LookingAt, this, Parent.Foreground, new(), false);
+                            LookingAt.X = Random.Shared.Next(0, scene.level.LevelWidth);
+                            LookingAt.Y = Random.Shared.Next(0, scene.level.LevelHeight);
+                            var castresult = Game.CastRay(new(Location.X+2, Location.Y+2), LookingAt, this, scene.Foreground, new(), false, 0, 0);
                             if (castresult.result == true && castresult.tile is not null)
                             {
                                 LookingAt = new Vector2i(castresult.tile.Value.TileX*4 - X, castresult.tile.Value.TileY*4 - Y);
@@ -193,8 +216,8 @@ namespace StackAttack.Objects
                         if (canSeePlayer && playerDistance <16)
                         {
                             //If sees player
-                            Target.X = Parent.player.X;
-                            Target.Y = Parent.player.Y; //LookAtPlayer
+                            Target.X = scene.player.X;
+                            Target.Y = scene.player.Y; //LookAtPlayer
                             //Remember player
                             LookingAt.X = Target.X;
                             LookingAt.Y = Target.Y;
@@ -210,8 +233,8 @@ namespace StackAttack.Objects
                             {
                                 Path = null;
                                 //If sees player
-                                Target.X = Parent.player.X;
-                                Target.Y = Parent.player.Y; //LookAtPlayer
+                                Target.X = scene.player.X;
+                                Target.Y = scene.player.Y; //LookAtPlayer
                                                             //Remember player
                                 LookingAt.X = Target.X;
                                 LookingAt.Y = Target.Y;
@@ -286,7 +309,7 @@ namespace StackAttack.Objects
                 }
             }
 
-            foreach (GameObject gameObject in Parent.gameObjects)
+            foreach (GameObject gameObject in scene.gameObjects)
             {
                 if (gameObject.GetType() == typeof(BlueDoor))
                 {

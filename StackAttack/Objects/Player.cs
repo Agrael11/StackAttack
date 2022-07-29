@@ -57,9 +57,18 @@ namespace StackAttack.Objects
         {
             if (Parent is null)
                 return;
+            if (Parent.CurrentScene is null)
+                return;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return;
+            if (scene.player is null)
+                return;
 
-            int renderX = X - Parent.CameraX;
-            int renderY = Y - Parent.CameraY;
+            int renderX = X - scene.CameraX;
+            int renderY = Y - scene.CameraY;
 
             (bool returnState, Sprite? playerSprite) = ContentManager.Get<Sprite>(SpriteID);
             if (returnState == false || playerSprite is null)
@@ -97,13 +106,22 @@ namespace StackAttack.Objects
                 playerSprite.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), angle);
             }
 
-            targetSprite.Draw(new Vector2i(LookingAt.X-2 - Parent.CameraX, LookingAt.Y-2 - Parent.CameraY));
+            targetSprite.Draw(new Vector2i(LookingAt.X-2 - scene.CameraX, LookingAt.Y-2 - scene.CameraY));
 
         }
 
         public override void Update(FrameEventArgs args)
         {
             if (Parent is null)
+                return;
+            if (Parent.CurrentScene is null)
+                return;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return;
+            if (scene.player is null)
                 return;
 
             KeyboardState input = Parent.KeyboardState.GetSnapshot();
@@ -142,11 +160,11 @@ namespace StackAttack.Objects
             int Scale = (XScale > YScale) ? YScale : XScale;
 
             MouseState mouse = Parent.MouseState.GetSnapshot();
-            LookingAt = new((int)(mouse.X / Scale)+Parent.CameraX, (int)(mouse.Y / Scale) + Parent.CameraY);
+            LookingAt = new((int)(mouse.X / Scale)+scene.CameraX, (int)(mouse.Y / Scale) + scene.CameraY);
 
-            for (int i = Parent.gameObjects.Count - 1; i >= 0; i--)
+            for (int i = scene.gameObjects.Count - 1; i >= 0; i--)
             {
-                GameObject gameObject = Parent.gameObjects[i];
+                GameObject gameObject = scene.gameObjects[i];
                 if (input.IsKeyPressed(Keys.Space))
                 {
                     if (gameObject.Location.Distance(Location) < 8)
@@ -170,15 +188,15 @@ namespace StackAttack.Objects
                     if (gameObject.GetType() == typeof(Key))
                     {
                         hasKey = true;
-                        Parent.gameObjects.Remove(gameObject);
-                        Parent.ShowInventory(false,true);
+                        scene.gameObjects.Remove(gameObject);
+                        scene.ShowInventory(false,true);
                         continue;
                     }
                     if (gameObject.GetType() == typeof(Chest))
                     {
-                        Parent.Score += 100;
-                        Parent.gameObjects.Remove(gameObject);
-                        Parent.ShowInventory(true);
+                        scene.Score += 100;
+                        scene.gameObjects.Remove(gameObject);
+                        scene.ShowInventory(true);
                         continue;
                     }
                 }
@@ -189,7 +207,7 @@ namespace StackAttack.Objects
             {
                 X = (int)tempX;
 
-                foreach (TileData tileData in Parent.Foreground.Tiles)
+                foreach (TileData tileData in scene.Foreground.Tiles)
                 {
                     (bool returnResult, Sprite? returnSprite) = ContentManager.Get<Sprite>(SpriteID);
                     if (returnResult == false || returnSprite is null)
@@ -207,7 +225,7 @@ namespace StackAttack.Objects
                 X = (int)tempX;
                 Y = (int)tempY;
 
-                foreach (TileData tileData in Parent.Foreground.Tiles)
+                foreach (TileData tileData in scene.Foreground.Tiles)
                 {
                     (bool returnResult, Sprite? returnSprite) = ContentManager.Get<Sprite>(SpriteID);
                     if (returnResult == false || returnSprite is null)

@@ -68,18 +68,28 @@ namespace StackAttack.Engine
             return nodes;
         }
 
-        public static void AddIfSafe(Node node, ref List<Node> nodes1, ref List<Node> nodes2, Game data)
+        public static void AddIfSafe(Node node, ref List<Node> nodes1, ref List<Node> nodes2, Game parent)
         {
             foreach (var oldNode in nodes1)
             {
                 if (oldNode.X == node.X && oldNode.Y == node.Y)
                     return;
             }
-            if (node.X < 0 || node.X >= data.level.LevelWidth)
+            if (parent.CurrentScene is null)
                 return;
-            if (node.Y < 0 || node.Y >= data.level.LevelHeight)
+            if (parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
                 return;
-            foreach (var tile in data.Foreground.Tiles)
+            Scenes.GameScene? scene = (Scenes.GameScene)parent.CurrentScene;
+            if (scene is null)
+                return;
+            if (scene.player is null)
+                return;
+
+            if (node.X < 0 || node.X >= scene.level.LevelWidth)
+                return;
+            if (node.Y < 0 || node.Y >= scene.level.LevelHeight)
+                return;
+            foreach (var tile in scene.Foreground.Tiles)
             {
                 if (tile.TileID == "BlueDoor")
                     continue;

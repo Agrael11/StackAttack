@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StackAttack.Engine.Helpers
 {
-    internal static class Extensions
+    public static class ExtensionsAndHelpers
     {
         public static float Distance(this Vector2i me, Vector2i vector)
         {
@@ -67,6 +67,17 @@ namespace StackAttack.Engine.Helpers
             Vector2 v = new((float)Math.Cos(angle), (float)Math.Sin(angle));
             v = v.SetMagnitude(magnitude);
             return v;
+        }
+
+        public static IEnumerable<T> GetAllInherited<T>()
+        {
+#pragma warning disable CS8619 // Nullability of reference types in value doesn't match target type.
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+            return typeof(T).Assembly.GetTypes()
+                .Where(t => t.IsSubclassOf(typeof(T)) && !t.IsAbstract)
+                .Select(t => (T)Activator.CreateInstance(t));
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning restore CS8619 // Nullability of reference types in value doesn't match target type.
         }
     }
 }

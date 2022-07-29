@@ -30,6 +30,15 @@ namespace StackAttack.Objects
         public override void Draw(FrameEventArgs args)
         {
             if (Parent is null)
+                return; 
+            if (Parent.CurrentScene is null)
+                return;
+            if (Parent.CurrentScene.GetType() != typeof(Scenes.GameScene))
+                return;
+            Scenes.GameScene? scene = (Scenes.GameScene)Parent.CurrentScene;
+            if (scene is null)
+                return;
+            if (scene.player is null)
                 return;
 
             if (IsOpen)
@@ -37,7 +46,7 @@ namespace StackAttack.Objects
                 (bool returnState, Sprite? returnSprite) = ContentManager.Get<Sprite>(SpriteID);
                 if (returnState == true && returnSprite is not null)
                 {
-                    returnSprite.Draw(new OpenTK.Mathematics.Vector2i(X - Parent.CameraX, Y - Parent.CameraY), (float)((int)Heading * (Math.PI / 2)));
+                    returnSprite.Draw(new OpenTK.Mathematics.Vector2i(X - scene.CameraX, Y - scene.CameraY), (float)((int)Heading * (Math.PI / 2)));
                 }
             }
         }
