@@ -23,6 +23,11 @@ namespace StackAttack.Objects
         string AngledSpriteID = "";
         string TargetSpriteID = "";
 
+        public bool HasKey()
+        {
+            return hasKey;
+        }
+
         public Player() : base(0,0,0,Headings.North, null, "")
         {
             Init();
@@ -189,14 +194,14 @@ namespace StackAttack.Objects
                     {
                         hasKey = true;
                         scene.GameObjects.Remove(gameObject);
-                        scene.ShowInventory(false,true);
+                        scene.ShowInventory(false,true, false, false);
                         continue;
                     }
                     if (gameObject.GetType() == typeof(Chest))
                     {
-                        scene.Score += 100;
+                        scene.Score += 20;
                         scene.GameObjects.Remove(gameObject);
-                        scene.ShowInventory(true);
+                        scene.ShowInventory(true, false, false, false);
                         continue;
                     }
                 }

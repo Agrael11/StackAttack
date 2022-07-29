@@ -259,6 +259,15 @@ namespace StackAttack.Engine
             spriteResult.Draw(dstRectangle.Location, dstRectangle.Size, rotation, horizontalFlip, verticalFlip);
         }
 
+        public static void Draw(string spriteID, Rectanglei srcRectangle, Rectanglei dstRectangle, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
+        {
+            (bool returnResult, Sprite? spriteResult) = ContentManager.Get<Sprite>(spriteID);
+            if (!returnResult || spriteResult is null)
+                return;
+
+            DrawTexture(spriteResult.TextureID, spriteResult.ShaderID, new Rectanglei(spriteResult.Location.X + srcRectangle.X, spriteResult.Location.Y + srcRectangle.Y, srcRectangle.Size), dstRectangle, rotation, horizontalFlip, verticalFlip);
+        }
+
         public static void Draw(string spriteID, Vector2i position, Vector2i size, float rotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
         {
             (bool returnResult, Sprite? spriteResult) = ContentManager.Get<Sprite>(spriteID);

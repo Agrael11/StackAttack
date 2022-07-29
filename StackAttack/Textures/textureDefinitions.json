@@ -6,5 +6,9 @@
   {
     "TextureID": "TilesAndSprites",
     "FileName": "Textures/TilesAndSprites.png"
+  },
+  {
+    "TextureID": "GUI",
+    "FileName": "Textures/GUI.png"
   }
 ]

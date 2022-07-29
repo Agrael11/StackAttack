@@ -54,6 +54,9 @@
     <None Update="Textures\Error.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Textures\GUI.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Textures\TilesAndSprites.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
