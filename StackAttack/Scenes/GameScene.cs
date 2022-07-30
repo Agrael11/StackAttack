@@ -88,6 +88,17 @@ namespace StackAttack.Scenes
                     if (enemy.Health <= 0)
                     {
                         GameObjects.RemoveAt(i);
+                        EnemiesLeft = GameObjects.Where(t => t.GetType() == typeof(Enemy)).Count();
+                    }
+                }
+                if (GameObjects[i].GetType() == typeof(Exit))
+                {
+                    Exit goe = (Exit)GameObjects[i];
+                    if (Level.Goal == 0) goe.Open();
+                    else if (Level.Goal == 1 && EnemiesLeft == 0)
+                    {
+                        ShowObjective("EXIT IS\nNOW OPEN");
+                        goe.Open();
                     }
                 }
             }
@@ -720,6 +731,10 @@ namespace StackAttack.Scenes
                         Exit goe = (Exit)go;
                         goe.Close();
                         if (Level.Goal == 0) goe.Open();
+                        else if (Level.Goal == 1 && EnemiesLeft == 0)
+                        {
+                            goe.Open();
+                        }
                     }
                 }
             }
