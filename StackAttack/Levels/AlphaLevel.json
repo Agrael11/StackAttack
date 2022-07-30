@@ -1,6 +1,7 @@
 {
   "LevelWidth": 22,
   "LevelHeight": 28,
+  "Goal": 0,
   "Background": {
     "X": 0,
     "Y": 0,
@@ -3900,5 +3901,5 @@
       "SpriteID": "BlueDoor"
     }
   ],
-  "NextLevel": ""
+  "NextLevel": "AlphaLevel"
 }

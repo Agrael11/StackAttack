@@ -1,5 +1,14 @@
 [
   {
+    "X": 24,
+    "Y": 0,
+    "Width": 4,
+    "Height": 4,
+    "TextureID": "TilesAndSprites",
+    "ShaderID": "BaseShader",
+    "TileID": "Exit"
+  },
+  {
     "X": 0,
     "Y": 0,
     "Width": 4,

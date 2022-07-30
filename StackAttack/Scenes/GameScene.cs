@@ -17,6 +17,7 @@ namespace StackAttack.Scenes
         public GameObject? Player { get; set; }
         public TileMap Background { get; set; } = new();
         public TileMap Foreground { get; set; } = new();
+        public string LoadLevel { get; set; } = "";
         private int _hp = 100;
         public int HP { get { return _hp; } set { _hp = value; ShowHealthBar(); } }
         public int EnemiesLeft { get; set; } = 0;
@@ -27,50 +28,21 @@ namespace StackAttack.Scenes
         (int state, int timer) UIEnemy;
         (int state, int timer) UIHealth;
         (int state, int timer) UIAmmo;
-        (int state, int timer) UIText;
+        (int state, int timer, string text) UIObjective;
         const int UIVisibleTimerDefault = 300;
         int UIVisibleTimer = 0;
 
-        private readonly List<Shader.ShaderDefinition> _shaderDefinitions = new();
-        private readonly List<Texture.TextureDefinition> _textureDefinitions = new();
-        private readonly List<Sprite.SpriteDefinition> _spriteDefinitions = new();
-        private readonly List<Tile.TileDefinition> _tileDefinitions = new();
-        private readonly RenderTexture _rayCastRenderTexture = new();
-        private readonly RenderTexture _gameRenderTexture = new();
-        private readonly RenderTexture _tempRenderTexture = new();
-        private readonly RenderTexture _memoryRenderTexture = new();
+        private List<Shader.ShaderDefinition> _shaderDefinitions = new();
+        private List<Texture.TextureDefinition> _textureDefinitions = new();
+        private List<Sprite.SpriteDefinition> _spriteDefinitions = new();
+        private List<Tile.TileDefinition> _tileDefinitions = new();
+        private RenderTexture _rayCastRenderTexture = new();
+        private RenderTexture _gameRenderTexture = new();
+        private RenderTexture _tempRenderTexture = new();
+        private RenderTexture _memoryRenderTexture = new();
 
         public GameScene(Game parent) : base(parent)
         {
-            Game.LoadDefinitionData("Shaders/shaderDefinitions.json", ref _shaderDefinitions);
-            Game.LoadDefinitionData("Textures/textureDefinitions.json", ref _textureDefinitions);
-            Game.LoadDefinitionData("Textures/spriteDefinitions.json", ref _spriteDefinitions);
-            Game.LoadDefinitionData("Textures/tileDefinitions.json", ref _tileDefinitions);
-            Game.LoadDefinitionData("Levels/AlphaLevel.json", ref Level);
-            LoadDefinitions();
-
-            foreach (GameObjectStartData objectData in Level.GameObjectStartDatas)
-            {
-                (bool returnResult, GameObject? returnObject) = ContentManager.Get<GameObject>(objectData.GameObjectTypeID);
-                if (returnResult == true && returnObject is not null)
-                {
-                    GameObjects.Add(returnObject.CreateNew(objectData.ObjectX, objectData.ObjectY, 0, objectData.Heading, Parent, objectData.SpriteID));
-                }
-            }
-            Player = new Objects.Player(Level.PlayerStartData.PlayerX, Level.PlayerStartData.PlayerY, 0, Level.PlayerStartData.Heading, Parent, Level.PlayerStartData.SpriteID);
-
-            GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
-
-            _gameRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
-            _tempRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
-            _memoryRenderTexture = new RenderTexture(Level.LevelWidth * 4, Level.LevelHeight * 4, "Desaturated", "");
-            _rayCastRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
-
-            parent.CursorState = CursorState.Hidden;
-
-            ShowHealthBar();
-            ShowInventory(true, true, true, true);
         }
 
         private void LoadDefinitions()
@@ -159,17 +131,26 @@ namespace StackAttack.Scenes
 
             foreach (TileData tile in Background.Tiles)
             {
-                Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4 - CameraX, tile.TileY * 4 - CameraY), tile.GetTileRotationRad());
+                if (tile.GetRealLocation().Distance(Player.Location) < 92)
+                {
+                    Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4 - CameraX, tile.TileY * 4 - CameraY), tile.GetTileRotationRad());
+                }
             }
 
             foreach (TileData tile in Foreground.Tiles)
             {
-                Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4 - CameraX, tile.TileY * 4 - CameraY), tile.GetTileRotationRad());
+                if (tile.GetRealLocation().Distance(Player.Location) < 92)
+                {
+                    Tile.Draw(tile.TileID, new Vector2i(tile.TileX * 4 - CameraX, tile.TileY * 4 - CameraY), tile.GetTileRotationRad());
+                }
             }
 
             foreach (GameObject gameObject in this.GameObjects)
             {
-                gameObject.Draw(args);
+                if (gameObject.Location.Distance(Player.Location) < 92)
+                {
+                    gameObject.Draw(args);
+                }
             }
 
             _gameRenderTexture.End();
@@ -252,15 +233,13 @@ namespace StackAttack.Scenes
             if (!_memoryRenderTexture.Sprite.returnResult || _memoryRenderTexture.Sprite.spriteResult is null)
                 return;
 
-            Sprite.DrawTexture(_gameRenderTexture.Sprite.spriteResult.TextureID, "SuperDesaturated", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
+            //swSprite.DrawTexture(_gameRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             Sprite.DrawTexture(_memoryRenderTexture.Sprite.spriteResult.TextureID, "Desaturated", new Rectanglei(CameraX, -(CameraY - 48), 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             Sprite.DrawTexture(_tempRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
 
             Player.Draw(args);
 
             //Blood
-
-            //Enemies Do Anim
 
             if (UIVisibleTimer > 0)
             {
@@ -349,7 +328,7 @@ namespace StackAttack.Scenes
 
             if (UIKey.state > 0)
             {
-                if (((Player)Player).HasKey() || true)
+                if (((Player)Player).HasKey())
                 {
                     x = 2;
                     y = Game.ViewportHeight - 14;
@@ -427,6 +406,44 @@ namespace StackAttack.Scenes
                 DrawText(ToDraw, x, y);
             }
 
+            if (UIObjective.state > 0)
+            {
+                x = 0;
+                y = 9;
+
+                if (UIObjective.state == 1)
+                {
+                    UIObjective.timer++;
+                    x = 0 + (int)(Game.ViewportWidth * ((50 - UIObjective.timer) / 50f));
+                    if (UIObjective.timer >= 50)
+                    {
+                        UIObjective.timer = UIVisibleTimerDefault-30;
+                        UIObjective.state = 2;
+                    }
+                }
+                if (UIObjective.state == 2)
+                {
+                    UIObjective.timer -= 1;
+                    x = 0;
+                    if (UIObjective.timer == 0)
+                    {
+                        UIObjective.timer = 50;
+                        UIObjective.state = 3;
+                    }
+                }
+                if (UIObjective.state == 3)
+                {
+                    UIObjective.timer--;
+                    x = 0 - (int)(Game.ViewportWidth * ((50 - UIObjective.timer) / 50f));
+                    if (UIObjective.timer <= 0)
+                    {
+                        UIObjective.timer = 0;
+                        UIObjective.state = 0;
+                    }
+                }
+                DrawText(UIObjective.text, x, y, 12);
+            }
+
 
             if (UIHealth.state != 0)
             {
@@ -498,7 +515,9 @@ namespace StackAttack.Scenes
             }
         }
 
-        private void DrawText(string text, int x, int y)
+        private void DrawText(string text, int x, int y) => DrawText(text, x, y, 11);
+
+        private static void DrawText(string text, int x, int y, int widthoverride)
         {
             text = text.ToUpper();
             int rx = 0;
@@ -533,7 +552,7 @@ namespace StackAttack.Scenes
                     Sprite.Draw(fontID, new Rectanglei(0, 0, 5, 5), new Rectanglei(x + rx * 5, y + ry * 7, 5, 5));
                 }
                 rx++;
-                if ((rx > 11) || (text[i] == '\n'))
+                if ((rx > widthoverride) || (text[i] == '\n'))
                 {
                     rx = 0;
                     ry++;
@@ -611,6 +630,20 @@ namespace StackAttack.Scenes
             }
         }
 
+        public void ShowObjective(string text)
+        {
+            UIObjective.text = text;
+            if (UIObjective.state != 2 && UIObjective.state != 1)
+            {
+                UIObjective.state = 1;
+                UIObjective.timer = 0;
+            }
+            else if (UIHealth.state == 2)
+            {
+                UIObjective.timer = UIVisibleTimerDefault;
+            }
+        }
+
         public void ShowHitAnimation()
         {
 
@@ -629,6 +662,56 @@ namespace StackAttack.Scenes
         public override void Dispose()
         {
             Unload();
+        }
+
+        public override void Init()
+        {
+            if (string.IsNullOrWhiteSpace(LoadLevel))
+                Logger.Log(Logger.Levels.Fatal, "Wrong Level Specified");
+            Game.LoadDefinitionData("Shaders/shaderDefinitions.json", ref _shaderDefinitions);
+            Game.LoadDefinitionData("Textures/textureDefinitions.json", ref _textureDefinitions);
+            Game.LoadDefinitionData("Textures/spriteDefinitions.json", ref _spriteDefinitions);
+            Game.LoadDefinitionData("Textures/tileDefinitions.json", ref _tileDefinitions);
+            Game.LoadDefinitionData("Levels/" + LoadLevel + ".json", ref Level);
+            LoadDefinitions();
+
+            foreach (GameObjectStartData objectData in Level.GameObjectStartDatas)
+            {
+                (bool returnResult, GameObject? returnObject) = ContentManager.Get<GameObject>(objectData.GameObjectTypeID);
+                if (returnResult == true && returnObject is not null)
+                {
+                    GameObject go = returnObject.CreateNew(objectData.ObjectX, objectData.ObjectY, 0, objectData.Heading, Parent, objectData.SpriteID);
+                    GameObjects.Add(go);
+                    if (go.GetType() == typeof(Exit))
+                    {
+                        Exit goe = (Exit)go;
+                        goe.Close();
+                        if (Level.Goal == 0) goe.Open();
+                    }
+                }
+            }
+            Player = new Objects.Player(Level.PlayerStartData.PlayerX, Level.PlayerStartData.PlayerY, 0, Level.PlayerStartData.Heading, Parent, Level.PlayerStartData.SpriteID);
+
+            GL.Enable(EnableCap.Blend);
+            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
+
+            _gameRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
+            _tempRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
+            _memoryRenderTexture = new RenderTexture(Level.LevelWidth * 4, Level.LevelHeight * 4, "Desaturated", "");
+            _rayCastRenderTexture = new RenderTexture(64, 64, "BaseShader", "");
+
+            Parent.CursorState = CursorState.Hidden;
+
+            ShowHealthBar();
+            ShowInventory(true, true, true, true);
+            string objective = "FIND THE EXIT";
+            switch (Level.Goal)
+            {
+                case 0: objective = "FIND THE EXIT"; break;
+                case 1: objective = "KILL ALL\nENEMIES"; break;
+                case 2: objective = "FIND ALL\nTREASURE"; break;
+            }
+            ShowObjective("OBJECTIVE:\n"+ objective);
         }
     }
 }

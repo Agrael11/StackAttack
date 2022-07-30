@@ -15,5 +15,6 @@ namespace StackAttack.Engine.Map
         public PlayerStartData PlayerStartData { get; set; }
         public List<GameObjectStartData> GameObjectStartDatas { get; set; } = new();
         public string NextLevel { get; set; } = "";
+        public int Goal { get; set; } = 0;
     }
 }

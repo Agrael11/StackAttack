@@ -11,6 +11,8 @@ namespace StackAttack.Scenes
             Parent = parent;
         }
 
+        public abstract void Init();
+
         public abstract void Update(FrameEventArgs args);
 
         public abstract void Draw(FrameEventArgs args);

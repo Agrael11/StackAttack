@@ -1,13 +1,8 @@
-﻿using OpenTK;
-using OpenTK.Graphics;
-using OpenTK.Graphics.OpenGL4;
+﻿using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
-using OpenTK.Windowing.GraphicsLibraryFramework;
 using StackAttack.Engine;
-using StackAttack.Engine.Helpers;
-using StackAttack.Engine.Map;
 
 namespace StackAttack
 {
@@ -26,6 +21,8 @@ namespace StackAttack
         public Game(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
             CurrentScene = new Scenes.GameScene(this);
+            ((Scenes.GameScene)CurrentScene).LoadLevel = "AlphaLevel";
+            CurrentScene.Init();
         }
 
         public static void LoadDefinitionData<T>(string path, ref T data)

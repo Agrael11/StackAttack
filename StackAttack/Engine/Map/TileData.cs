@@ -27,6 +27,11 @@ namespace StackAttack.Engine.Map
         public int TileY { get; set; } = 0;
         private Helpers.Rectanglei? rectangle = null;
 
+        public Vector2i GetRealLocation()
+        {
+            return new Vector2i(TileX*4, TileY*4);
+        }
+
         public Helpers.Rectanglei GetRectangle()
         {
             if (rectangle is null)
