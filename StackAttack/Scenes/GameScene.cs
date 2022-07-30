@@ -19,7 +19,24 @@ namespace StackAttack.Scenes
         public TileMap Foreground { get; set; } = new();
         public string LoadLevel { get; set; } = "";
         private static int _hp = 100;
-        public int HP { get { return _hp; } set { if (_hp > value) { HitAnimation = 20; } _hp = value; ShowHealthBar(); if (value <= 0) { Parent.SwitchScene(new DiedScene(Parent)); } } }
+        public int HP
+        {
+            get
+            {
+                return _hp;
+            }
+            set
+            {
+                if (_hp > value)
+                {
+                    HitAnimation = 20;
+                }
+                _hp = value; ShowHealthBar(); if (value <= 0)
+                {
+                    Parent.SwitchScene(new DiedScene(Parent));
+                }
+            }
+        }
         public int EnemiesLeft { get; set; } = 0;
         (int state, int timer) UIKey;
         (int state, int timer) UIScore;
@@ -27,7 +44,7 @@ namespace StackAttack.Scenes
         (int state, int timer) UIHealth;
         (int state, int timer) UIAmmo;
         (int state, int timer, string text) UIObjective;
-        List<string> UIObjectiveQueue = new();
+        readonly List<string> UIObjectiveQueue = new();
         const int UIVisibleTimerDefault = 300;
         int UIVisibleTimer = 0;
         int HitAnimation = 0;
@@ -603,7 +620,7 @@ namespace StackAttack.Scenes
             RenderTexture.End();
         }
 
-        private void DrawText(string text, int x, int y) => DrawText(text, x, y, 11);
+        private static void DrawText(string text, int x, int y) => DrawText(text, x, y, 11);
 
         private static void DrawText(string text, int x, int y, int widthoverride)
         {

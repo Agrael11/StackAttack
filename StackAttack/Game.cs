@@ -28,13 +28,19 @@ namespace StackAttack
 
         public void SwitchScene(Scenes.Scene scene)
         {
+            if (BackgroundMusic is not null)
+            {
+                BackgroundMusic.StopUseSound();
+                BackgroundMusic.Dispose();
+                BackgroundMusic = null;
+            }
             NextScene = scene;
         }
 
         public Game(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
-            CurrentScene = new Scenes.GameScene(this);
-            ((Scenes.GameScene)CurrentScene).LoadLevel = currentLevel;
+            CurrentScene = new Scenes.StartScene(this);
+            //((Scenes.GameScene)CurrentScene).LoadLevel = currentLevel;
             CurrentScene.Init();
             mainTexture = new(64, 64, "BaseShader");
         }

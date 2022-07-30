@@ -16,7 +16,7 @@ namespace StackAttack.Objects
     internal class Player : GameObject
     {
         public Vector2i LookingAt = new(0,0);
-        float speed = 0.25f;
+        readonly float speed = 0.25f;
         public int Reload { get; set; } = 20;
         float tempX;
         float tempY;
@@ -185,11 +185,11 @@ namespace StackAttack.Objects
                 if (Game.Ammo > 0)
                 {
                     Game.Ammo--;
-                    var result = ContentManager.Get<Sound>("Shoot");
+                    var (returnStatus, returnObject) = ContentManager.Get<Sound>("Shoot");
 
-                    if (result.returnStatus && result.returnObject is not null)
+                    if (returnStatus && returnObject is not null)
                     {
-                        result.returnObject.UseSound();
+                        returnObject.UseSound();
                     }
                     shoot = true;
                 }
@@ -238,9 +238,11 @@ namespace StackAttack.Objects
                         if (exit.IsOpen())
                         {
                             Scenes.GameScene gameScene = (Scenes.GameScene)(Parent.CurrentScene);
-                            string nextLevel = gameScene.Level.NextLevel;
-                            gameScene = new Scenes.GameScene(Parent);
-                            gameScene.LoadLevel = nextLevel;
+                            Parent.currentLevel = gameScene.Level.NextLevel;
+                            gameScene = new Scenes.GameScene(Parent)
+                            {
+                                LoadLevel = Parent.currentLevel
+                            };
                             Parent.SwitchScene(gameScene);
                         }
                         continue;
@@ -254,11 +256,11 @@ namespace StackAttack.Objects
                         scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(false,true, false, false);
 
-                        var result = ContentManager.Get<Sound>("Key");
+                        var (returnStatus, returnObject) = ContentManager.Get<Sound>("Key");
 
-                        if (result.returnStatus && result.returnObject is not null)
+                        if (returnStatus && returnObject is not null)
                         {
-                            result.returnObject.UseSound();
+                            returnObject.UseSound();
                         }
 
                         continue;
@@ -269,11 +271,11 @@ namespace StackAttack.Objects
                         scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(true, false, false, false);
 
-                        var result = ContentManager.Get<Sound>("Treasure");
+                        var (returnStatus, returnObject) = ContentManager.Get<Sound>("Treasure");
 
-                        if (result.returnStatus && result.returnObject is not null)
+                        if (returnStatus && returnObject is not null)
                         {
-                            result.returnObject.UseSound();
+                            returnObject.UseSound();
                         }
 
                         continue;
@@ -286,11 +288,11 @@ namespace StackAttack.Objects
                             scene.GameObjects.Remove(gameObject);
                             scene.ShowHealthBar();
 
-                            var result = ContentManager.Get<Sound>("Health");
+                            var (returnStatus, returnObject) = ContentManager.Get<Sound>("Health");
 
-                            if (result.returnStatus && result.returnObject is not null)
+                            if (returnStatus && returnObject is not null)
                             {
-                                result.returnObject.UseSound();
+                                returnObject.UseSound();
                             }
                         }
                         continue;
@@ -301,11 +303,11 @@ namespace StackAttack.Objects
                         scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(false, false, false, true);
 
-                        var result = ContentManager.Get<Sound>("Ammo");
+                        var (returnStatus, returnObject) = ContentManager.Get<Sound>("Ammo");
 
-                        if (result.returnStatus && result.returnObject is not null)
+                        if (returnStatus && returnObject is not null)
                         {
-                            result.returnObject.UseSound();
+                            returnObject.UseSound();
                         }
 
                         continue;
@@ -324,11 +326,11 @@ namespace StackAttack.Objects
                 shootingTarget = result.point;
                 if (result.result && result.resultObject is not null)
                 {
-                    var resultSnd = ContentManager.Get<Sound>("EnemyHit");
+                    var (returnStatus, returnObject) = ContentManager.Get<Sound>("EnemyHit");
 
-                    if (resultSnd.returnStatus && resultSnd.returnObject is not null)
+                    if (returnStatus && returnObject is not null)
                     {
-                        resultSnd.returnObject.UseSound();
+                        returnObject.UseSound();
                     }
 
                     ((Enemy)result.resultObject).Health -= 20;
@@ -414,7 +416,7 @@ namespace StackAttack.Objects
 
         public override int GetHashCode()
         {
-            HashCode hash = new HashCode();
+            HashCode hash = new();
             hash.Add(base.GetHashCode());
             hash.Add(X);
             hash.Add(Y);
