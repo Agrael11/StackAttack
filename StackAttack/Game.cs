@@ -127,6 +127,11 @@ namespace StackAttack
 
         protected override void OnUnload()
         {
+            if (BackgroundMusic is not null)
+            {
+                BackgroundMusic.StopUseSound();
+                BackgroundMusic.Dispose();
+            }
             CurrentScene.Dispose();
             ContentManager.RemoveAll();
             base.OnUnload();
