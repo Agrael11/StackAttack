@@ -17,6 +17,7 @@ namespace StackAttack.Objects
     {
         public Vector2i LookingAt = new(0,0);
         float speed = 0.25f;
+        public int Reload { get; set; } = 20;
         float tempX;
         float tempY;
         bool hasKey = false;
@@ -168,6 +169,16 @@ namespace StackAttack.Objects
             MouseState mouse = Parent.MouseState.GetSnapshot();
             LookingAt = new((int)(mouse.X / Scale)+scene.CameraX, (int)(mouse.Y / Scale) + scene.CameraY);
 
+            bool shoot = false;
+            if (Reload > 0) Reload--;
+            if (mouse.IsButtonDown(MouseButton.Left) && Reload == 0)
+            {
+                Reload = 100;
+                shoot = true;
+            }
+
+            List<GameObject> enemies = new ();
+
             for (int i = scene.GameObjects.Count - 1; i >= 0; i--)
             {
                 GameObject gameObject = scene.GameObjects[i];
@@ -213,6 +224,19 @@ namespace StackAttack.Objects
                         scene.ShowInventory(true, false, false, false);
                         continue;
                     }
+                }
+                if (gameObject.Location.Distance(Location) < 63 && gameObject.GetType() == typeof(Enemy) && shoot)
+                {
+                    enemies.Add(gameObject);
+                }
+            }
+
+            if (shoot)
+            {
+                 var result = RayCasting.CastRay(new Vector2i(Location.X + 2, Location.Y + 2), new Vector2i((int)(mouse.X / (Game.WindowWidth/Game.ViewportWidth)) + scene.CameraX, (int)(mouse.Y / (Game.WindowWidth / Game.ViewportWidth)) + scene.CameraY), this, scene.Foreground, enemies, false, 0, 0, typeof(Enemy));
+                if (result.result && result.resultObject != null)
+                {
+                    ((Enemy)result.resultObject).Health -= 20;
                 }
             }
 

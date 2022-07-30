@@ -27,6 +27,7 @@ namespace StackAttack.Objects
         Actions action = Actions.LookAround;
         string AngledSpriteID = "";
         int MemoryState = 0;
+        public int Health { get; set; } = 100;
 
         public Enemy() : base(0,0,0,Headings.North, null, "")
         {
@@ -131,7 +132,7 @@ namespace StackAttack.Objects
                 
                 //if (Math.Abs(playerAngle - lookingAngle) > MathHelper.DegreesToRadians(90) && Math.Abs(playerAngle - lookingAngle) < MathHelper.DegreesToRadians(270)) return false;
 
-                var result = RayCasting.CastRay(new(Location.X+2,Location.Y+2), scene.Player.Location, this, scene.Foreground, new() { gameobject }, false, 0, 0, gameobject.GetType());
+                var result = RayCasting.CastRay(new(Location.X+2,Location.Y+2), new Vector2i(scene.Player.Location.X+2, scene.Player.Location.Y+2), this, scene.Foreground, new() { gameobject }, false, 0, 0, gameobject.GetType());
                 return (result.result && result.resultObject is not null && result.resultObject.GetType() == gameobject.GetType());
             }
             return false;

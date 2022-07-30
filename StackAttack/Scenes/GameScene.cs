@@ -14,7 +14,7 @@ namespace StackAttack.Scenes
         public int CameraY { get; set; } = 0;
         public LevelData Level = new();
         public List<GameObject> GameObjects { get; set; } = new();
-        public GameObject? Player { get; set; }
+        public Player? Player { get; set; }
         public TileMap Background { get; set; } = new();
         public TileMap Foreground { get; set; } = new();
         public string LoadLevel { get; set; } = "";
@@ -79,15 +79,23 @@ namespace StackAttack.Scenes
 
         public override void Update(FrameEventArgs args)
         {
-            foreach (GameObject gameObject in GameObjects)
+            for (int i = GameObjects.Count - 1; i >= 0; i--)
             {
-                gameObject.Update(args);
+                GameObjects[i].Update(args);
+                if (GameObjects[i].GetType() == typeof(Enemy))
+                {
+                    Enemy enemy = (Enemy)GameObjects[i];
+                    if (enemy.Health <= 0)
+                    {
+                        GameObjects.RemoveAt(i);
+                    }
+                }
             }
 
             if (Player is null)
                 return;
 
-            if (Parent.KeyboardState.IsKeyPressed(OpenTK.Windowing.GraphicsLibraryFramework.Keys.Tab) || Parent.MouseState.IsButtonPressed(OpenTK.Windowing.GraphicsLibraryFramework.MouseButton.Button2))
+            if (Parent.KeyboardState.IsKeyPressed(OpenTK.Windowing.GraphicsLibraryFramework.Keys.Tab) || Parent.MouseState.IsButtonPressed(OpenTK.Windowing.GraphicsLibraryFramework.MouseButton.Right))
             {
                 ShowHealthBar();
                 ShowInventory(true, true, true, true);
@@ -240,6 +248,17 @@ namespace StackAttack.Scenes
 
             Player.Draw(args);
 
+            string ToDraw = "";
+            int x = (Game.ViewportHeight - ToDraw.Length) / 2;
+            int y = 2;
+            if (Player.Reload > 0)
+            {
+                ToDraw = "".PadLeft((int)(5*(Player.Reload/100f)),'$');
+                x = (Game.ViewportWidth - ToDraw.Length*5) / 2;
+                y = (Game.ViewportHeight - 7);
+                DrawText(ToDraw, x, y);
+            }
+
             //Blood
 
             if (UIVisibleTimer > 0)
@@ -247,11 +266,11 @@ namespace StackAttack.Scenes
                 UIVisibleTimer--;
             }
 
-            string ToDraw = "$:" + Ammo.ToString();
-            int x = Game.ViewportHeight - 2 - ToDraw.Length * 5;
-            int y = Game.ViewportHeight - 14;
             if (UIAmmo.state > 0)
             {
+                ToDraw = "$:" + Ammo.ToString();
+                x = Game.ViewportWidth - 2 - ToDraw.Length * 5;
+                y = Game.ViewportHeight - 14;
                 if (UIAmmo.state == 1)
                 {
                     UIAmmo.timer++;
@@ -265,7 +284,7 @@ namespace StackAttack.Scenes
                 }
                 if (UIAmmo.state == 2)
                 {
-                    x = Game.ViewportHeight - 2 - ToDraw.Length * 5;
+                    x = Game.ViewportWidth - 2 - ToDraw.Length * 5;
                     if (UIVisibleTimer <= 0)
                     {
                         UIAmmo.state = 3;
@@ -274,7 +293,7 @@ namespace StackAttack.Scenes
                 if (UIAmmo.state == 3)
                 {
                     UIAmmo.timer--;
-                    x = Game.ViewportHeight - 2 - ToDraw.Length * 5 + (int)(ToDraw.Length * 7 * ((20 - UIAmmo.timer) / 20f));
+                    x = Game.ViewportWidth - 2 - ToDraw.Length * 5 + (int)(ToDraw.Length * 7 * ((20 - UIAmmo.timer) / 20f));
                     if (UIAmmo.timer <= 0)
                     {
                         UIEnemy.timer = 0;
@@ -288,7 +307,7 @@ namespace StackAttack.Scenes
 
 
             ToDraw = "@:" + EnemiesLeft.ToString();
-            x = Game.ViewportHeight - 2 - ToDraw.Length * 5;
+            x = Game.ViewportWidth - 2 - ToDraw.Length * 5;
             y = Game.ViewportHeight - 7;
             if (UIEnemy.state > 0)
             {
