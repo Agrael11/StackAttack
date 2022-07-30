@@ -25,9 +25,9 @@ namespace LevelEdit
     {
         readonly int _saneMinimum = 16;
         readonly int _saneMaximum = 128;
-        List<StackAttack.Engine.Texture.TextureDefinition> textureDefinitions =  new();
-        List<StackAttack.Engine.Tile.TileDefinition> tileDefinitions = new();
-        List<StackAttack.Engine.Sprite.SpriteDefinition> spriteDefinitions = new();
+        readonly List<StackAttack.Engine.Texture.TextureDefinition> textureDefinitions =  new();
+        readonly List<StackAttack.Engine.Tile.TileDefinition> tileDefinitions = new();
+        readonly List<StackAttack.Engine.Sprite.SpriteDefinition> spriteDefinitions = new();
         TileMap foreground = new();
         TileMap background = new();
         PlayerStartData playerStart = new();
@@ -295,6 +295,8 @@ namespace LevelEdit
 
         public MainWindow()
         {
+            editorBitmap = new Bitmap(0, 0);
+            previewBitmap = new Bitmap(0, 0);
             StackAttack.Game.LoadDefinitionData("textureDefinitions.json", ref textureDefinitions);
             StackAttack.Game.LoadDefinitionData("tileDefinitions.json", ref tileDefinitions);
             StackAttack.Game.LoadDefinitionData("spriteDefinitions.json", ref spriteDefinitions);
@@ -385,8 +387,9 @@ namespace LevelEdit
                 }
                 if (LayerComboBox.SelectedIndex == 0)
                 {
-                    TileData data = new(((ComboBoxItem)TileComboBox.SelectedItem).Content.ToString(), X, Y, 0);
-                    if (background.Tiles.Select(t => (t.TileX == X && t.TileY == Y)).Count() > 0)
+                    string content = (string)(((ComboBoxItem)TileComboBox.SelectedItem).Content);
+                    TileData data = new(content.ToString(), X, Y, 0);
+                    if (background.Tiles.Select(t => (t.TileX == X && t.TileY == Y)).Any())
                     {
                         for (int i = background.Tiles.Count - 1; i >= 0; i--)
                         {
@@ -403,8 +406,9 @@ namespace LevelEdit
                 }
                 else if (LayerComboBox.SelectedIndex == 1)
                 {
-                    TileData data = new(((ComboBoxItem)TileComboBox.SelectedItem).Content.ToString(), X, Y, 0);
-                    if (foreground.Tiles.Select(t => (t.TileX == X && t.TileY == Y)).Count() > 0)
+                    string content = (string)(((ComboBoxItem)TileComboBox.SelectedItem).Content);
+                    TileData data = new(content.ToString(), X, Y, 0);
+                    if (foreground.Tiles.Select(t => (t.TileX == X && t.TileY == Y)).Any())
                     {
                         for (int i = foreground.Tiles.Count - 1; i >= 0; i--)
                         {
@@ -429,8 +433,12 @@ namespace LevelEdit
                         case 2: headings = StackAttack.Engine.Headings.East; break;
                         case 3: headings = StackAttack.Engine.Headings.West; break;
                     }
-                    GameObjectStartData startData = new GameObjectStartData(((ComboBoxItem)ObjectComboBox.SelectedItem).Content.ToString(), X * 4, Y * 4, headings, ((ComboBoxItem)ObjectComboBox.SelectedItem).Content.ToString());
-                    if (gameObjectStartDatas.Select(t => (t.ObjectX == X *4 && t.ObjectY == Y * 4)).Count() > 0)
+
+                    string content = (string)(((ComboBoxItem)ObjectComboBox.SelectedItem).Content);
+                    if (content is null)
+                        content = "";
+                    GameObjectStartData startData = new(content.ToString(), X * 4, Y * 4, headings, content.ToString());
+                    if (gameObjectStartDatas.Select(t => (t.ObjectX == X * 4 && t.ObjectY == Y * 4)).Any())
                     {
                         for (int i = gameObjectStartDatas.Count - 1; i >= 0; i--)
                         {

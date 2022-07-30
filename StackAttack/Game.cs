@@ -39,8 +39,8 @@ namespace StackAttack
 
         public Game(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
+            //CurrentScene = new Scenes.CreditsScene(this);
             CurrentScene = new Scenes.StartScene(this);
-            //((Scenes.GameScene)CurrentScene).LoadLevel = currentLevel;
             CurrentScene.Init();
             mainTexture = new(64, 64, "BaseShader");
         }

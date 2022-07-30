@@ -620,9 +620,9 @@ namespace StackAttack.Scenes
             RenderTexture.End();
         }
 
-        private static void DrawText(string text, int x, int y) => DrawText(text, x, y, 11);
+        public static void DrawText(string text, int x, int y) => DrawText(text, x, y, 11);
 
-        private static void DrawText(string text, int x, int y, int widthoverride)
+        public static void DrawText(string text, int x, int y, int widthoverride)
         {
             text = text.ToUpper();
             int rx = 0;

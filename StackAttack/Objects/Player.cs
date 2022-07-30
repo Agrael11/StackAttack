@@ -238,12 +238,20 @@ namespace StackAttack.Objects
                         if (exit.IsOpen())
                         {
                             Scenes.GameScene gameScene = (Scenes.GameScene)(Parent.CurrentScene);
-                            Parent.currentLevel = gameScene.Level.NextLevel;
-                            gameScene = new Scenes.GameScene(Parent)
+                            if (gameScene.Level.NextLevel == "Credits")
                             {
-                                LoadLevel = Parent.currentLevel
-                            };
-                            Parent.SwitchScene(gameScene);
+                                Parent.currentLevel = gameScene.Level.NextLevel;
+                                Parent.SwitchScene(new Scenes.CreditsScene(Parent));
+                            }
+                            else
+                            {
+                                Parent.currentLevel = gameScene.Level.NextLevel;
+                                gameScene = new Scenes.GameScene(Parent)
+                                {
+                                    LoadLevel = Parent.currentLevel
+                                };
+                                Parent.SwitchScene(gameScene);
+                            }
                         }
                         continue;
                     }

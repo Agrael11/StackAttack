@@ -21,8 +21,6 @@ namespace StackAttack.Engine
             }
         }
 
-        //public string ID = "NullTexture";
-        private string path = "";
         public bool playing = false;
         public SoundPlay? play;
         public float Volume { get; set; } = 0.5f;
@@ -45,11 +43,17 @@ namespace StackAttack.Engine
                     play.Play();
                 }
             }
+            else
+            {
+                if (!play.Playing())
+                {
+                    playing = false;
+                }
+            }
         }
 
         public Sound? Load(string path)
         {
-            this.path = path;
             if (Environment.OSVersion.Platform == PlatformID.Unix)
             {
                 play = new SoundPlayLinux(path, Volume, Looping);
@@ -71,11 +75,6 @@ namespace StackAttack.Engine
             }
             play.Init();
             return this;
-        }
-
-        public void Reload()
-        {
-
         }
 
         public void UseSound()

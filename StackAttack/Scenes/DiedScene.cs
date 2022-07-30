@@ -33,11 +33,11 @@ namespace StackAttack.Scenes
         {
             foreach (var soundDefinition in _soundDefinitions)
             {
-                var result = ContentManager.Load<Sound>(soundDefinition.SoundID, soundDefinition.FileName);
-                if (result.returnState && result.returnObject is not null)
+                var (returnState, returnObject) = ContentManager.Load<Sound>(soundDefinition.SoundID, soundDefinition.FileName);
+                if (returnState && returnObject is not null)
                 {
-                    result.returnObject.Volume = soundDefinition.Volume;
-                    result.returnObject.Looping = soundDefinition.Looping;
+                    returnObject.Volume = soundDefinition.Volume;
+                    returnObject.Looping = soundDefinition.Looping;
                 }
             }
 
@@ -62,8 +62,8 @@ namespace StackAttack.Scenes
         public override void Draw(FrameEventArgs args, ref RenderTexture texture)
         {
             timer++;
-            var baseShader = ContentManager.Get<Shader>("BaseShader");
-            if (!baseShader.returnStatus || baseShader.returnObject is null)
+            var (returnStatus, returnObject) = ContentManager.Get<Shader>("BaseShader");
+            if (!returnStatus || returnObject is null)
             {
                 Logger.Log(Logger.Levels.Error, "Could not load shader");
                 return;
@@ -98,7 +98,7 @@ namespace StackAttack.Scenes
             float time2 = 0.1f + time * 0.9f;
             Vector4 alphaColor = new Vector4(1, 1, 1, time2);
 
-            baseShader.returnObject.SetVector4("color", ref alphaColor);
+            returnObject.SetVector4("color", ref alphaColor);
 
             if (oldTexture is not null && oldTexture.Sprite.returnResult && oldTexture.Sprite.spriteResult is not null)
             {
@@ -111,7 +111,7 @@ namespace StackAttack.Scenes
 
             alphaColor = new Vector4(1, 1, 1, time);
 
-            baseShader.returnObject.SetVector4("color", ref alphaColor);
+            returnObject.SetVector4("color", ref alphaColor);
 
             Sprite.Draw("YouDied", new Rectangle(0,0,64,64));
             RenderTexture.End();
@@ -131,8 +131,8 @@ namespace StackAttack.Scenes
             Game.LoadDefinitionData("Textures/spriteDefinitions.json", ref _spriteDefinitions); 
             LoadDefinitions();
 
-            var baseShader = ContentManager.Get<Shader>("BaseShader");
-            if (!baseShader.returnStatus || baseShader.returnObject is null)
+            var (returnStatus, returnObject) = ContentManager.Get<Shader>("BaseShader");
+            if (!returnStatus || returnObject is null)
             {
                 Logger.Log(Logger.Levels.Error, "Could not load shader");
                 return;
@@ -140,7 +140,7 @@ namespace StackAttack.Scenes
 
             Vector4 alphaColor = new Vector4(1,1,1,1);
 
-            baseShader.returnObject.SetVector4("color", ref alphaColor);
+            returnObject.SetVector4("color", ref alphaColor);
 
         }
 
@@ -148,8 +148,10 @@ namespace StackAttack.Scenes
         {
             if (timer == 120)
             {
-                Scenes.GameScene gameScene = new Scenes.GameScene(Parent);
-                gameScene.LoadLevel = Parent.currentLevel;
+                GameScene gameScene = new(Parent)
+                {
+                    LoadLevel = Parent.currentLevel
+                };
                 Parent.SwitchScene(gameScene);
             }
         }

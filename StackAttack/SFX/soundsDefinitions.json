@@ -75,7 +75,7 @@
     "SoundID": "8BitSmoothPresentation",
     "FileName": "SFX/8 Bit Smooth Presentation - David Fesliyan.wav",
     "Volume": 0.05,
-    "Looping": true
+    "Looping": false
   },
   {
     "SoundID": "ABitOfHope",
