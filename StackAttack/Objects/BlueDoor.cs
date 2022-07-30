@@ -97,9 +97,20 @@ namespace StackAttack.Objects
             if (scene.Player is null)
                 return;
 
+            if (!IsOpen)
+            {
+                var result = ContentManager.Get<Sound>("Door");
+
+                if (result.returnStatus && result.returnObject is not null)
+                {
+                    result.returnObject.UseSound();
+                }
+            }
+
             scene.Foreground.Tiles.Remove(tile);
             IsOpen = true;
             Timer = DefaultTimer;
+
         }
 
         public bool TryClose()

@@ -37,6 +37,7 @@ namespace StackAttack.Scenes
         private List<Texture.TextureDefinition> _textureDefinitions = new();
         private List<Sprite.SpriteDefinition> _spriteDefinitions = new();
         private List<Tile.TileDefinition> _tileDefinitions = new();
+        private List<Sound.SoundDefinition> _soundDefinitions = new();
         private RenderTexture _rayCastRenderTexture = new();
         private RenderTexture _gameRenderTexture = new();
         private RenderTexture _tempRenderTexture = new();
@@ -48,6 +49,16 @@ namespace StackAttack.Scenes
 
         private void LoadDefinitions()
         {
+            foreach (var soundDefinition in _soundDefinitions)
+            {
+                var result = ContentManager.Load<Sound>(soundDefinition.SoundID, soundDefinition.FileName);
+                if (result.returnState && result.returnObject is not null)
+                {
+                    result.returnObject.Volume = soundDefinition.Volume;
+                    result.returnObject.Looping = soundDefinition.Looping;
+                }
+            }
+
             foreach (var shaderDefinition in _shaderDefinitions)
             {
                 ContentManager.Load<Shader>(shaderDefinition.ShaderID, shaderDefinition.FileName);
@@ -712,6 +723,7 @@ namespace StackAttack.Scenes
         {
             if (string.IsNullOrWhiteSpace(LoadLevel))
                 Logger.Log(Logger.Levels.Fatal, "Wrong Level Specified");
+            Game.LoadDefinitionData("SFX/soundsDefinitions.json", ref _soundDefinitions);
             Game.LoadDefinitionData("Shaders/shaderDefinitions.json", ref _shaderDefinitions);
             Game.LoadDefinitionData("Textures/textureDefinitions.json", ref _textureDefinitions);
             Game.LoadDefinitionData("Textures/spriteDefinitions.json", ref _spriteDefinitions);

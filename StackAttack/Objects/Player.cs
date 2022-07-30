@@ -173,6 +173,14 @@ namespace StackAttack.Objects
             if (Reload > 0) Reload--;
             if (mouse.IsButtonDown(MouseButton.Left) && Reload == 0)
             {
+
+                var result = ContentManager.Get<Sound>("Shoot");
+
+                if (result.returnStatus && result.returnObject is not null)
+                {
+                    result.returnObject.UseSound();
+                }
+
                 Reload = 100;
                 shoot = true;
             }
@@ -215,6 +223,14 @@ namespace StackAttack.Objects
                         hasKey = true;
                         scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(false,true, false, false);
+
+                        var result = ContentManager.Get<Sound>("Key");
+
+                        if (result.returnStatus && result.returnObject is not null)
+                        {
+                            result.returnObject.UseSound();
+                        }
+
                         continue;
                     }
                     if (gameObject.GetType() == typeof(Chest))
@@ -222,6 +238,14 @@ namespace StackAttack.Objects
                         scene.Score += 20;
                         scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(true, false, false, false);
+
+                        var result = ContentManager.Get<Sound>("Treasure");
+
+                        if (result.returnStatus && result.returnObject is not null)
+                        {
+                            result.returnObject.UseSound();
+                        }
+
                         continue;
                     }
                 }
@@ -233,9 +257,17 @@ namespace StackAttack.Objects
 
             if (shoot)
             {
-                 var result = RayCasting.CastRay(new Vector2i(Location.X + 2, Location.Y + 2), new Vector2i((int)(mouse.X / (Game.WindowWidth/Game.ViewportWidth)) + scene.CameraX, (int)(mouse.Y / (Game.WindowWidth / Game.ViewportWidth)) + scene.CameraY), this, scene.Foreground, enemies, false, 0, 0, typeof(Enemy));
+                var result = RayCasting.CastRay(new Vector2i(Location.X + 2, Location.Y + 2), new Vector2i((int)(mouse.X / (Game.WindowWidth/Game.ViewportWidth)) + scene.CameraX, (int)(mouse.Y / (Game.WindowWidth / Game.ViewportWidth)) + scene.CameraY), this, scene.Foreground, enemies, false, 0, 0, typeof(Enemy));
                 if (result.result && result.resultObject != null)
                 {
+
+                    var resultSnd = ContentManager.Get<Sound>("EnemyHit");
+
+                    if (resultSnd.returnStatus && resultSnd.returnObject is not null)
+                    {
+                        resultSnd.returnObject.UseSound();
+                    }
+
                     ((Enemy)result.resultObject).Health -= 20;
                 }
             }

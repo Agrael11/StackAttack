@@ -1,0 +1,50 @@
+[
+  {
+    "SoundID": "Ammo",
+    "FileName": "SFX/Ammo.wav",
+    "Volume": 0.3,
+    "Looping": false
+  },
+  {
+    "SoundID": "Door",
+    "FileName": "SFX/Door.wav",
+    "Volume": 0.3,
+    "Looping": false
+  },
+  {
+    "SoundID": "EnemyHit",
+    "FileName": "SFX/EnemyHit.wav",
+    "Volume": 0.3,
+    "Looping": false
+  },
+  {
+    "SoundID": "PlayerHit",
+    "FileName": "SFX/PlayerHit.wav",
+    "Volume": 0.3,
+    "Looping": false
+  },
+  {
+    "SoundID": "Health",
+    "FileName": "SFX/Health.wav",
+    "Volume": 0.3,
+    "Looping": false
+  },
+  {
+    "SoundID": "Key",
+    "FileName": "SFX/Key.wav",
+    "Volume": 0.3,
+    "Looping": false
+  },
+  {
+    "SoundID": "Treasure",
+    "FileName": "SFX/Treasure.wav",
+    "Volume": 0.3,
+    "Looping": false
+  },
+  {
+    "SoundID": "Shoot",
+    "FileName": "SFX/Shoot.wav",
+    "Volume": 0.3,
+    "Looping": false
+  }
+]
