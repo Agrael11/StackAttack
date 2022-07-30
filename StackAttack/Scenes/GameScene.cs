@@ -19,7 +19,7 @@ namespace StackAttack.Scenes
         public TileMap Foreground { get; set; } = new();
         public string LoadLevel { get; set; } = "";
         private int _hp = 100;
-        public int HP { get { return _hp; } set { _hp = value; ShowHealthBar(); } }
+        public int HP { get { return _hp; } set { if (_hp > value) { HitAnimation = 20; } _hp = value; ShowHealthBar(); } }
         public int EnemiesLeft { get; set; } = 0;
         public int Ammo { get; set; } = 0;
         public int Score { get; set; } = 0;
@@ -32,6 +32,7 @@ namespace StackAttack.Scenes
         List<string> UIObjectiveQueue = new();
         const int UIVisibleTimerDefault = 300;
         int UIVisibleTimer = 0;
+        int HitAnimation = 0;
 
         private List<Shader.ShaderDefinition> _shaderDefinitions = new();
         private List<Texture.TextureDefinition> _textureDefinitions = new();
@@ -104,12 +105,13 @@ namespace StackAttack.Scenes
                 }
                 if (GameObjects[i].GetType() == typeof(Exit))
                 {
-                    Exit goe = (Exit)GameObjects[i];
-                    if (Level.Goal == 0) goe.Open();
+                    Exit exit = (Exit)GameObjects[i];
+                    if (Level.Goal == 0) exit.Open();
                     else if (Level.Goal == 1 && EnemiesLeft == 0)
                     {
-                        ShowObjective("EXIT IS\nNOW OPEN");
-                        goe.Open();
+                        if (!exit.IsOpen())
+                            ShowObjective("EXIT IS\nNOW OPEN");
+                        exit.Open();
                     }
                 }
             }
@@ -139,7 +141,7 @@ namespace StackAttack.Scenes
             Player.Update(args);
         }
 
-        public override void Draw(FrameEventArgs args)
+        public override void Draw(FrameEventArgs args, ref RenderTexture texture)
         {
             if (Player is null)
                 return;
@@ -258,17 +260,42 @@ namespace StackAttack.Scenes
 
             _memoryRenderTexture.End();
 
+            texture.Begin();
+
             GL.ClearColor(0f, 0f, 0f, 1f);
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             if (!_memoryRenderTexture.Sprite.returnResult || _memoryRenderTexture.Sprite.spriteResult is null)
+            {
+                Logger.Log(Logger.Levels.Fatal, "Could not load render texture");
                 return;
+            }
 
-            //swSprite.DrawTexture(_gameRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             Sprite.DrawTexture(_memoryRenderTexture.Sprite.spriteResult.TextureID, "Desaturated", new Rectanglei(CameraX, -(CameraY - 48), 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             Sprite.DrawTexture(_tempRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
 
             Player.Draw(args);
+
+            var baseShader = ContentManager.Get<Shader>("BaseShader");
+            if (!baseShader.returnStatus || baseShader.returnObject is null)
+            {
+                Logger.Log(Logger.Levels.Error, "Could not load shader");
+                return;
+            }
+
+            Vector4 alphaColor = Vector4.One;
+
+            if (HitAnimation > 0)
+            {
+                float alpha = HitAnimation / 20f;
+                alphaColor = new(1, 1, 1, alpha);
+                baseShader.returnObject.SetVector4("color", ref alphaColor);
+                Sprite.Draw("Blood", new Vector2i(0, 0));
+                HitAnimation--;
+            }
+
+            alphaColor = new(1, 1, 1, 1);
+            baseShader.returnObject.SetVector4("color", ref alphaColor);
 
             string ToDraw = "";
             int x = (Game.ViewportHeight - ToDraw.Length) / 2;
@@ -280,8 +307,6 @@ namespace StackAttack.Scenes
                 y = (Game.ViewportHeight - 7);
                 DrawText(ToDraw, x, y);
             }
-
-            //Blood
 
             if (UIVisibleTimer > 0)
             {
@@ -324,7 +349,7 @@ namespace StackAttack.Scenes
                 }
 
                 DrawText(ToDraw, x, y);
-
+                
             }
 
 
@@ -448,6 +473,9 @@ namespace StackAttack.Scenes
                 DrawText(ToDraw, x, y);
             }
 
+            alphaColor = new(1, 1, 1, 0.5f);
+            baseShader.returnObject.SetVector4("color", ref alphaColor);
+
             if (UIObjective.state > 0)
             {
                 x = 0;
@@ -459,7 +487,7 @@ namespace StackAttack.Scenes
                     x = 0 + (int)(Game.ViewportWidth * ((50 - UIObjective.timer) / 50f));
                     if (UIObjective.timer >= 50)
                     {
-                        UIObjective.timer = UIVisibleTimerDefault-30;
+                        UIObjective.timer = UIVisibleTimerDefault/2;
                         UIObjective.state = 2;
                     }
                 }
@@ -490,6 +518,10 @@ namespace StackAttack.Scenes
                 ShowObjective(UIObjectiveQueue[0]);
                 UIObjectiveQueue.RemoveAt(0);
             }
+
+            alphaColor = new(1, 1, 1, 1f);
+            baseShader.returnObject.SetVector4("color", ref alphaColor);
+
 
             if (UIHealth.state != 0)
             {
@@ -559,6 +591,7 @@ namespace StackAttack.Scenes
                     Sprite.Draw("Health1On", new Rectanglei(0, 0, (int)(5 * HPP), 5), new Rectanglei(x, y, (int)(5 * HPP), 5));
                 }
             }
+            texture.End();
         }
 
         private void DrawText(string text, int x, int y) => DrawText(text, x, y, 11);
@@ -699,16 +732,17 @@ namespace StackAttack.Scenes
             }
         }
 
-        public void ShowHitAnimation()
-        {
-
-        }
-
         public void Unload()
         {
             _shaderDefinitions.Clear();
             _textureDefinitions.Clear();
             _spriteDefinitions.Clear();
+            _soundDefinitions.Clear();
+            var resultSound = ContentManager.Get<Sound>("RetroForest");
+            if (resultSound.returnStatus && resultSound.returnObject is not null)
+            {
+                resultSound.returnObject.StopUseSound();
+            }
             GameObjects.Clear();
             //level.Dispose();
             ContentManager.RemoveAll();
@@ -740,13 +774,9 @@ namespace StackAttack.Scenes
                     GameObjects.Add(go);
                     if (go.GetType() == typeof(Exit))
                     {
-                        Exit goe = (Exit)go;
-                        goe.Close();
-                        if (Level.Goal == 0) goe.Open();
-                        else if (Level.Goal == 1 && EnemiesLeft == 0)
-                        {
-                            goe.Open();
-                        }
+                        Exit exit = (Exit)go;
+                        exit.Close();
+                        if (Level.Goal == 0) exit.Open();
                     }
                 }
             }
@@ -772,6 +802,12 @@ namespace StackAttack.Scenes
                 case 2: objective = "FIND ALL\nTREASURE"; break;
             }
             ShowObjective("OBJECTIVE:\n"+ objective);
+
+            var resultSound = ContentManager.Get<Sound>("RetroForest");
+            if (resultSound.returnStatus && resultSound.returnObject is not null)
+            {
+                resultSound.returnObject.UseSound();
+            }
         }
     }
 }

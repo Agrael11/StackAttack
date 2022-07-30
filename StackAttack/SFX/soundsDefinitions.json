@@ -44,7 +44,13 @@
   {
     "SoundID": "Shoot",
     "FileName": "SFX/Shoot.wav",
-    "Volume": 0.3,
+    "Volume": 0.15,
     "Looping": false
+  },
+  {
+    "SoundID": "RetroForest",
+    "FileName": "SFX/Retro Forest - David Fesliyan.wav",
+    "Volume": 0.05,
+    "Looping": true
   }
 ]

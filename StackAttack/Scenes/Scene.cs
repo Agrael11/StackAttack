@@ -1,4 +1,5 @@
 ﻿using OpenTK.Windowing.Common;
+using StackAttack.Engine;
 
 namespace StackAttack.Scenes
 {
@@ -15,7 +16,7 @@ namespace StackAttack.Scenes
 
         public abstract void Update(FrameEventArgs args);
 
-        public abstract void Draw(FrameEventArgs args);
+        public abstract void Draw(FrameEventArgs args, ref RenderTexture texture);
 
         public abstract void Dispose();
     }

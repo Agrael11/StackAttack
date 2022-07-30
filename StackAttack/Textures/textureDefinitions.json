@@ -10,5 +10,9 @@
   {
     "TextureID": "GUI",
     "FileName": "Textures/GUI.png"
+  },
+  {
+    "TextureID": "Blood",
+    "FileName": "Textures/Blood.png"
   }
 ]

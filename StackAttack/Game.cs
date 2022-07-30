@@ -3,6 +3,7 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using StackAttack.Engine;
+using StackAttack.Engine.Helpers;
 
 namespace StackAttack
 {
@@ -18,11 +19,14 @@ namespace StackAttack
 
         public Scenes.Scene CurrentScene { get; private set; }
 
+        private RenderTexture mainTexture;
+
         public Game(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
             CurrentScene = new Scenes.GameScene(this);
             ((Scenes.GameScene)CurrentScene).LoadLevel = "AlphaLevel";
             CurrentScene.Init();
+            mainTexture = new(64, 64, "BaseShader");
         }
 
         public static void LoadDefinitionData<T>(string path, ref T data)
@@ -71,7 +75,12 @@ namespace StackAttack
                 return;
             }
 
-            CurrentScene.Draw(args);
+            CurrentScene.Draw(args, ref mainTexture);
+
+            if (mainTexture.Sprite.returnResult && mainTexture.Sprite.spriteResult is not null)
+            {
+                mainTexture.Sprite.spriteResult.Draw(new Rectanglei(0,0,64,64), 0, false, true);
+            }
 
             Context.SwapBuffers();
             base.OnRenderFrame(args);

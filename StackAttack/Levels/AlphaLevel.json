@@ -3768,25 +3768,25 @@
       "SpriteID": "Key"
     },
     {
-      "GameObjectTypeID": "Chest",
+      "GameObjectTypeID": "Health",
       "ObjectX": 4,
       "ObjectY": 80,
       "Heading": 0,
-      "SpriteID": "Chest"
+      "SpriteID": "Health"
     },
     {
-      "GameObjectTypeID": "Chest",
+      "GameObjectTypeID": "Ammo",
       "ObjectX": 8,
       "ObjectY": 80,
       "Heading": 0,
-      "SpriteID": "Chest"
+      "SpriteID": "Ammo"
     },
     {
-      "GameObjectTypeID": "Chest",
+      "GameObjectTypeID": "Ammo",
       "ObjectX": 4,
       "ObjectY": 56,
       "Heading": 0,
-      "SpriteID": "Chest"
+      "SpriteID": "Ammo"
     },
     {
       "GameObjectTypeID": "Chest",
@@ -3796,11 +3796,11 @@
       "SpriteID": "Chest"
     },
     {
-      "GameObjectTypeID": "Chest",
+      "GameObjectTypeID": "Health",
       "ObjectX": 80,
       "ObjectY": 104,
       "Heading": 0,
-      "SpriteID": "Chest"
+      "SpriteID": "Health"
     },
     {
       "GameObjectTypeID": "Chest",

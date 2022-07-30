@@ -23,8 +23,8 @@ namespace StackAttack.Engine
 
         //public string ID = "NullTexture";
         private string path = "";
-        private WaveOutEvent waveout;
-        private WaveFileReader reader;
+        public bool playing = false;
+        public SoundPlay? play;
         public float Volume { get; set; } = 0.5f;
         public bool Looping { get; set; }
 
@@ -33,9 +33,43 @@ namespace StackAttack.Engine
 
         }
 
+        public void Update()
+        {
+            if (play is null)
+                return;
+
+            if (Looping)
+            {
+                if (playing && !play.Playing())
+                {
+                    play.Play();
+                }
+            }
+        }
+
         public Sound? Load(string path)
         {
             this.path = path;
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                play = new SoundPlayLinux(path, Volume, Looping);
+            }
+            else if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+            {
+                if (Environment.OSVersion.Version.Major >= 6)
+                {
+                    play = new SoundPlayVista(path, Volume, Looping);
+                }
+                else
+                {
+                    play = new SoundPlayPreVista(path, Volume, Looping);
+                }
+            }
+            else
+            {
+                play = new SoundPlayNone(path, Volume, Looping);
+            }
+            play.Init();
             return this;
         }
 
@@ -46,31 +80,29 @@ namespace StackAttack.Engine
 
         public void UseSound()
         {
-            reader = new(path);
-            if (reader is null)
+            if (play is null)
                 return;
-            if (waveout is not null)
-            {
-                waveout.Stop();
-                waveout.Dispose();
-            }
-            waveout = new WaveOutEvent();
-            waveout.Init(reader);
-            waveout.Volume = Volume;
-            waveout.PlaybackStopped += Waveout_PlaybackStopped;
-            waveout.Play();
+
+            playing = true;
+            play.Play();
         }
 
-        private void Waveout_PlaybackStopped(object? sender, StoppedEventArgs e)
+
+        public void StopUseSound()
         {
-            if (Looping)
-            {
-                UseSound();
-            }
+            if (play is null)
+                return;
+
+            playing = false;
+            play.Stop();
         }
 
         public void Dispose()
         {
+            if (play is null)
+                return;
+
+            play.Dispose();
         }
     }
 }

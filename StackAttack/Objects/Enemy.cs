@@ -12,7 +12,7 @@ namespace StackAttack.Objects
 {
     internal class Enemy : GameObject
     {
-        private enum Actions { MoveToPosition, FollowMemory, LookAround, Engage, Strafe}
+        private enum Actions { MoveToPosition, FollowMemory, LookAround, Shoot, Engage}
 
         public Vector2i LookingAt = new(0, 0);
         public Vector2i Target = new(0, 0);
@@ -28,6 +28,7 @@ namespace StackAttack.Objects
         string AngledSpriteID = "";
         int MemoryState = 0;
         public int Health { get; set; } = 100;
+        public int shooting = 0;
 
         public Enemy() : base(0,0,0,Headings.North, null, "")
         {
@@ -109,6 +110,14 @@ namespace StackAttack.Objects
             {
                 enemySprite.Draw(new OpenTK.Mathematics.Vector2i(renderX, renderY), angle);
             }
+
+            if (shooting > 0)
+            {
+                shooting--;
+                Line.Color = new Vector4(1, 0, 0, 0.25f);
+                Line.Draw(new Vector2i(X + 2 - scene.CameraX, Y + 2 - scene.CameraY), new Vector2(LookingAt.X - scene.CameraX, LookingAt.Y - scene.CameraY), 0.5f);
+                Line.Color = new Vector4(1, 1, 1, 1);
+            }
         }
 
         public bool CanSeeObject(GameObject gameobject)
@@ -175,7 +184,7 @@ namespace StackAttack.Objects
                             MemoryState = 1;
                             //Engage
                             if (playerDistance < 16)
-                                action = Actions.Engage;
+                                action = Actions.Shoot;
                             else
                                 action = Actions.MoveToPosition;
                         }
@@ -225,7 +234,7 @@ namespace StackAttack.Objects
                             Memory.X = Target.X;
                             Memory.Y = Target.Y;
                             Path = null;
-                            action = Actions.Engage;
+                            action = Actions.Shoot;
                             break;
                         }
                         else if (canSeePlayer)
@@ -297,14 +306,41 @@ namespace StackAttack.Objects
                             break;
                         }
                         break;
-                    case Actions.Engage:
+                    case Actions.Shoot:
                         if (!canSeePlayer)
                         {
                             action = Actions.LookAround;
+                            break;
                         }
                         if (playerDistance > 16)
                         {
-                            action = Actions.MoveToPosition;
+                            action = Actions.Engage;
+                        }
+                        else
+                        {
+                            LookingAt = scene.Player.Location;
+                            scene.HP -= 15;
+                            var result = ContentManager.Get<Sound>("PlayerHit");
+                            if (result.returnStatus && result.returnObject is not null)
+                            {
+                                result.returnObject.UseSound();
+                            }
+                            shooting = 10;
+                            timer = 60;
+                            action = Actions.Engage;
+                        }
+                        break;
+                    case Actions.Engage:
+                        LookingAt = scene.Player.Location;
+                        if (!canSeePlayer)
+                        {
+                            action = Actions.LookAround;
+                            break;
+                        }
+                        if (timer <= 0)
+                        {
+                            action = Actions.Shoot;
+                            timer = 60;
                         }
                         break;
                 }

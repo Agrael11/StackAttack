@@ -87,7 +87,7 @@
     "Height": 4,
     "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
-    "SpriteID": "HealthPickup"
+    "SpriteID": "Health"
   },
   {
     "X": 12,
@@ -96,7 +96,7 @@
     "Height": 4,
     "TextureID": "TilesAndSprites",
     "ShaderID": "BaseShader",
-    "SpriteID": "AmmoPickup"
+    "SpriteID": "Ammo"
   },
   {
     "X": 0,
@@ -574,5 +574,14 @@
     "TextureID": "GUI",
     "ShaderID": "BaseShader",
     "SpriteID": "FontAmmo"
+  },
+  {
+    "X": 0,
+    "Y": 0,
+    "Width": 64,
+    "Height": 64,
+    "TextureID": "Blood",
+    "ShaderID": "BaseShader",
+    "SpriteID": "Blood"
   }
 ]

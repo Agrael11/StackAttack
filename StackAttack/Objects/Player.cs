@@ -24,6 +24,8 @@ namespace StackAttack.Objects
         string AngledSpriteID = "";
         string TargetSpriteID = "";
         static bool showedInfo = false;
+        int shooting = 0;
+        Vector2 shootingTarget = new(0, 0);
 
         public bool HasKey()
         {
@@ -115,6 +117,13 @@ namespace StackAttack.Objects
 
             targetSprite.Draw(new Vector2i(LookingAt.X-2 - scene.CameraX, LookingAt.Y-2 - scene.CameraY));
 
+            if (shooting > 0)
+            {
+                shooting--;
+                Line.Color = new Vector4(0, 1, 0, 0.25f);
+                Line.Draw(new Vector2i(X + 2 - scene.CameraX, Y + 2 - scene.CameraY), new Vector2(shootingTarget.X - scene.CameraX, shootingTarget.Y - scene.CameraY), 0.5f);
+                Line.Color = new Vector4(1, 1, 1, 1);
+            }
         }
 
         public override void Update(FrameEventArgs args)
@@ -173,16 +182,24 @@ namespace StackAttack.Objects
             if (Reload > 0) Reload--;
             if (mouse.IsButtonDown(MouseButton.Left) && Reload == 0)
             {
-
-                var result = ContentManager.Get<Sound>("Shoot");
-
-                if (result.returnStatus && result.returnObject is not null)
+                if (scene.Ammo > 0)
                 {
-                    result.returnObject.UseSound();
+                    scene.Ammo--;
+                    var result = ContentManager.Get<Sound>("Shoot");
+
+                    if (result.returnStatus && result.returnObject is not null)
+                    {
+                        result.returnObject.UseSound();
+                    }
+                    shoot = true;
+                }
+                else
+                {
+                    scene.ShowObjective("NO AMMO");
+                    scene.ShowInventory(false, false, false, true);
                 }
 
                 Reload = 100;
-                shoot = true;
             }
 
             List<GameObject> enemies = new ();
@@ -248,6 +265,38 @@ namespace StackAttack.Objects
 
                         continue;
                     }
+                    if (gameObject.GetType() == typeof(Health))
+                    {
+                        if (scene.HP < 100)
+                        {
+                            scene.HP += 33;
+                            scene.GameObjects.Remove(gameObject);
+                            scene.ShowHealthBar();
+
+                            var result = ContentManager.Get<Sound>("Health");
+
+                            if (result.returnStatus && result.returnObject is not null)
+                            {
+                                result.returnObject.UseSound();
+                            }
+                        }
+                        continue;
+                    }
+                    if (gameObject.GetType() == typeof(Ammo))
+                    {
+                        scene.Ammo += 10;
+                        scene.GameObjects.Remove(gameObject);
+                        scene.ShowInventory(false, false, false, true);
+
+                        var result = ContentManager.Get<Sound>("Ammo");
+
+                        if (result.returnStatus && result.returnObject is not null)
+                        {
+                            result.returnObject.UseSound();
+                        }
+
+                        continue;
+                    }
                 }
                 if (gameObject.Location.Distance(Location) < 63 && gameObject.GetType() == typeof(Enemy) && shoot)
                 {
@@ -257,10 +306,11 @@ namespace StackAttack.Objects
 
             if (shoot)
             {
+                shooting = 10;
                 var result = RayCasting.CastRay(new Vector2i(Location.X + 2, Location.Y + 2), new Vector2i((int)(mouse.X / (Game.WindowWidth/Game.ViewportWidth)) + scene.CameraX, (int)(mouse.Y / (Game.WindowWidth / Game.ViewportWidth)) + scene.CameraY), this, scene.Foreground, enemies, false, 0, 0, typeof(Enemy));
-                if (result.result && result.resultObject != null)
+                shootingTarget = result.point;
+                if (result.result && result.resultObject is not null)
                 {
-
                     var resultSnd = ContentManager.Get<Sound>("EnemyHit");
 
                     if (resultSnd.returnStatus && resultSnd.returnObject is not null)

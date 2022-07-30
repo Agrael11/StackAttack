@@ -37,6 +37,9 @@
     <None Update="SFX\PlayerHit.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SFX\Retro Forest - David Fesliyan.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SFX\Shoot.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -77,6 +80,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Shaders\shaderDefinitions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Textures\Blood.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Textures\Error.png">

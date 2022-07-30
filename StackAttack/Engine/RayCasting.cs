@@ -7,7 +7,7 @@ namespace StackAttack.Engine
     internal static class RayCasting
     {
 
-        public static (bool result, GameObject? resultObject, TileData? tile) CastRay(Vector2 sourcePosition, float angle, GameObject source, TileMap collisionMap, List<GameObject> gameObjects, bool draw, int CameraX, int CameraY, params Type[] TargetTypes)
+        public static (bool result, GameObject? resultObject, TileData? tile, Vector2 hit) CastRay(Vector2 sourcePosition, float angle, GameObject source, TileMap collisionMap, List<GameObject> gameObjects, bool draw, int CameraX, int CameraY, params Type[] TargetTypes)
         {
             Vector2 angleVector = ExtensionsAndHelpers.FromAngle(angle, 32);
             Vector2 destinationPosition = new(sourcePosition.X + angleVector.X, sourcePosition.Y + angleVector.Y);
@@ -124,14 +124,14 @@ namespace StackAttack.Engine
             {
                 if (closestTile is null)
                 {
-                    return (false, null, null);
+                    return (false, null, null, destinationPosition);
                 }
-                return (true, null, closestTile);
+                return (true, null, closestTile, destinationPosition);
             }
-            return (true, closestObject, null);
+            return (true, closestObject, null, destinationPosition);
         }
 
-        public static (bool result, GameObject? resultObject, TileData? tile) CastRay(Vector2 sourcePosition, Vector2 destinationPosition, GameObject source, TileMap collisionMap, List<GameObject> gameObjects, bool draw, int CameraX, int CameraY, params Type[] TargetTypes)
+        public static (bool result, GameObject? resultObject, TileData? tile, Vector2 point) CastRay(Vector2 sourcePosition, Vector2 destinationPosition, GameObject source, TileMap collisionMap, List<GameObject> gameObjects, bool draw, int CameraX, int CameraY, params Type[] TargetTypes)
         {
             Rectangle srcR = new(sourcePosition, destinationPosition.X - sourcePosition.X, destinationPosition.Y - sourcePosition.Y);
 
@@ -246,11 +246,11 @@ namespace StackAttack.Engine
             {
                 if (closestTile is null)
                 {
-                    return (false, null, null);
+                    return (false, null, null, destinationPosition);
                 }
-                return (true, null, closestTile);
+                return (true, null, closestTile, destinationPosition);
             }
-            return (true, closestObject, null);
+            return (true, closestObject, null, destinationPosition);
         }
 
         public static (bool intersects, Vector2 point) LinesCollisions(float x1, float x2, float y1, float y2, float x3, float x4, float y3, float y4)

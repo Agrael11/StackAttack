@@ -123,6 +123,13 @@ namespace StackAttack.Engine
             GL.UniformMatrix4(location, true, ref value);
         }
 
+        public void SetVector4(string name, ref Vector4 value)
+        {
+            UseShader();
+            int location = GL.GetUniformLocation(Handle, name);
+            GL.Uniform4(location, ref value);
+        }
+
         public void Dispose()
         {
             GL.DeleteProgram(Handle);

@@ -15,6 +15,11 @@ namespace StackAttack.Objects
         TileData td;
         bool open = false;
 
+        public bool IsOpen()
+        {
+            return open;
+        }
+
         public Exit() : base(0,0,0,Headings.North, null, "")
         {
         }
