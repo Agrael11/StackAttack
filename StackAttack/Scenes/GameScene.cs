@@ -29,6 +29,7 @@ namespace StackAttack.Scenes
         (int state, int timer) UIHealth;
         (int state, int timer) UIAmmo;
         (int state, int timer, string text) UIObjective;
+        List<string> UIObjectiveQueue = new();
         const int UIVisibleTimerDefault = 300;
         int UIVisibleTimer = 0;
 
@@ -443,7 +444,11 @@ namespace StackAttack.Scenes
                 }
                 DrawText(UIObjective.text, x, y, 12);
             }
-
+            else if (UIObjectiveQueue.Count>0)
+            {
+                ShowObjective(UIObjectiveQueue[0]);
+                UIObjectiveQueue.RemoveAt(0);
+            }
 
             if (UIHealth.state != 0)
             {
@@ -632,15 +637,24 @@ namespace StackAttack.Scenes
 
         public void ShowObjective(string text)
         {
-            UIObjective.text = text;
-            if (UIObjective.state != 2 && UIObjective.state != 1)
+            if (UIObjective.state == 0)
             {
+                UIObjective.text = text;
                 UIObjective.state = 1;
                 UIObjective.timer = 0;
             }
             else if (UIHealth.state == 2)
             {
-                UIObjective.timer = UIVisibleTimerDefault;
+                if (text != UIObjective.text)
+                {
+                    UIObjective.text = text;
+                    UIObjective.state = 1;
+                    UIObjective.timer = 45;
+                }
+            }
+            else
+            {
+                UIObjectiveQueue.Add(text);
             }
         }
 

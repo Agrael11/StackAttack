@@ -22,6 +22,7 @@ namespace StackAttack.Objects
         bool hasKey = false;
         string AngledSpriteID = "";
         string TargetSpriteID = "";
+        static bool showedInfo = false;
 
         public bool HasKey()
         {
@@ -170,22 +171,30 @@ namespace StackAttack.Objects
             for (int i = scene.GameObjects.Count - 1; i >= 0; i--)
             {
                 GameObject gameObject = scene.GameObjects[i];
-                if (input.IsKeyPressed(Keys.Space))
+                if (gameObject.Location.Distance(Location) < 8)
                 {
-                    if (gameObject.Location.Distance(Location) < 8)
+                    if (gameObject.GetType() == typeof(BlueDoor))
                     {
-                        if (gameObject.GetType() == typeof(BlueDoor))
+                        if (!showedInfo)
+                        {
+                            scene.ShowObjective("TO OPEN DOOR\nPRESS SPACE");
+                            showedInfo = true;
+                        }
+                        if (input.IsKeyPressed(Keys.Space))
                         {
                             BlueDoor blueDoor = (BlueDoor)gameObject;
                             blueDoor.Open();
-                            continue;
                         }
-                        if (hasKey && gameObject.GetType() == typeof(GoldDoor))
+                        continue;
+                    }
+                    if (hasKey && gameObject.GetType() == typeof(GoldDoor))
+                    {
+                        if (input.IsKeyPressed(Keys.Space))
                         {
                             GoldDoor goldDoor = (GoldDoor)gameObject;
                             goldDoor.Open();
-                            continue;
                         }
+                        continue;
                     }
                 }
                 if (gameObject.Location.Distance(Location) < 2)
