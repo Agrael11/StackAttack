@@ -10,6 +10,7 @@ namespace StackAttack.Engine.Map
     {
         public int LevelWidth { get; set; }
         public int LevelHeight { get; set; }
+        public string Music { get; set; } = "";
         public TileMap Background { get; set; }
         public TileMap Foreground { get; set; }
         public PlayerStartData PlayerStartData { get; set; }

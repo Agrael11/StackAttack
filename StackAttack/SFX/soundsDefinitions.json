@@ -52,5 +52,35 @@
     "FileName": "SFX/Retro Forest - David Fesliyan.wav",
     "Volume": 0.05,
     "Looping": true
+  },
+  {
+    "SoundID": "8BitMenu",
+    "FileName": "SFX/8 Bit Menu - David Renda.wav",
+    "Volume": 0.05,
+    "Looping": true
+  },
+  {
+    "SoundID": "8BitNostalgia",
+    "FileName": "SFX/8 Bit Nostalgia - David Renda.wav",
+    "Volume": 0.05,
+    "Looping": true
+  },
+  {
+    "SoundID": "8BitRetroFunk",
+    "FileName": "SFX/8 Bit Retro Funk - David Renda.wav",
+    "Volume": 0.05,
+    "Looping": true
+  },
+  {
+    "SoundID": "8BitSmoothPresentation",
+    "FileName": "SFX/8 Bit Smooth Presentation - David Fesliyan.wav",
+    "Volume": 0.05,
+    "Looping": true
+  },
+  {
+    "SoundID": "ABitOfHope",
+    "FileName": "SFX/A Bit Of Hope - David Fesliyan.wav",
+    "Volume": 0.05,
+    "Looping": true
   }
 ]

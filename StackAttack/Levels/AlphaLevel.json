@@ -2,6 +2,7 @@
   "LevelWidth": 22,
   "LevelHeight": 28,
   "Goal": 1,
+  "Music": "RetroForest" ,
   "Background": {
     "X": 0,
     "Y": 0,
@@ -3901,5 +3902,5 @@
       "SpriteID": "BlueDoor"
     }
   ],
-  "NextLevel": "AlphaLevel"
+  "NextLevel": "AlphaLevelCopy"
 }

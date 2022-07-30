@@ -23,8 +23,8 @@ namespace LevelEdit
     /// </summary>
     public partial class MainWindow : Window
     {
-        int _saneMinimum = 16;
-        int _saneMaximum = 128;
+        readonly int _saneMinimum = 16;
+        readonly int _saneMaximum = 128;
         List<StackAttack.Engine.Texture.TextureDefinition> textureDefinitions =  new();
         List<StackAttack.Engine.Tile.TileDefinition> tileDefinitions = new();
         List<StackAttack.Engine.Sprite.SpriteDefinition> spriteDefinitions = new();

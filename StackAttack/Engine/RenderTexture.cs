@@ -32,9 +32,11 @@ namespace StackAttack.Engine
         }
         public int Width { get; set; }
         public int Height { get; set; }
-        private int frameBuffer;
+        private readonly int frameBuffer;
         public (bool returnResult, Texture? textureResult) Texture => ContentManager.Get<Texture>(Name);
         public (bool returnResult, Sprite? spriteResult) Sprite => ContentManager.Get<Sprite>(Name);
+        private readonly int renderHandle;
+        private readonly string shader  = "";
 
         public RenderTexture()
         {
@@ -45,6 +47,7 @@ namespace StackAttack.Engine
         {
             Width = width;
             Height = height;
+            this.shader = shader;
             Name = "renderTexture_" + name;
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -56,9 +59,9 @@ namespace StackAttack.Engine
 
             frameBuffer = GL.GenFramebuffer();
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, frameBuffer);
-            int renderTexture = GL.GenTexture();
-            GL.BindTexture(TextureTarget.Texture2D, renderTexture);
-            byte[] pixels = new byte[0];
+            renderHandle = GL.GenTexture();
+            GL.BindTexture(TextureTarget.Texture2D, renderHandle);
+            byte[] pixels = Array.Empty<byte>();
             GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, PixelFormat.Rgba, PixelType.UnsignedByte, pixels);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
@@ -66,11 +69,17 @@ namespace StackAttack.Engine
             GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, depthrenderbuffer);
             GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferStorage.DepthComponent, width, height);
             GL.FramebufferRenderbuffer(FramebufferTarget.ReadFramebuffer, FramebufferAttachment.DepthAttachment, RenderbufferTarget.Renderbuffer, depthrenderbuffer);
-            GL.FramebufferTexture(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, renderTexture, 0);
+            GL.FramebufferTexture(FramebufferTarget.Framebuffer, FramebufferAttachment.ColorAttachment0, renderHandle, 0);
             DrawBuffersEnum[] DrawBuffers = { DrawBuffersEnum.ColorAttachment0 };
             GL.DrawBuffers(1, DrawBuffers);
-            ContentManager.Add(Name, new Texture(renderTexture, width, height));
+            ContentManager.Add(Name, new Texture(renderHandle, width, height));
             ContentManager.Add(Name, new Sprite(Name, shader, new Vector2i(0, 0), new Vector2i(width, height)));
+        }
+
+        public void Reregister()
+        {
+            ContentManager.Add(Name, new Texture(renderHandle, Width, Height));
+            ContentManager.Add(Name, new Sprite(Name, shader, new Vector2i(0, 0), new Vector2i(Width, Height)));
         }
 
         public void Begin()
@@ -79,7 +88,7 @@ namespace StackAttack.Engine
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, frameBuffer);
         }
 
-        public void End()
+        public static void End()
         {
             Game.SetViewport(0, 0, Game.WindowWidth, Game.WindowHeight, 64, 64);
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);

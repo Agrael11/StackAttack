@@ -182,9 +182,9 @@ namespace StackAttack.Objects
             if (Reload > 0) Reload--;
             if (mouse.IsButtonDown(MouseButton.Left) && Reload == 0)
             {
-                if (scene.Ammo > 0)
+                if (Game.Ammo > 0)
                 {
-                    scene.Ammo--;
+                    Game.Ammo--;
                     var result = ContentManager.Get<Sound>("Shoot");
 
                     if (result.returnStatus && result.returnObject is not null)
@@ -232,6 +232,19 @@ namespace StackAttack.Objects
                         }
                         continue;
                     }
+                    if (gameObject.GetType() == typeof(Exit))
+                    {
+                        Exit exit = (Exit)gameObject;
+                        if (exit.IsOpen())
+                        {
+                            Scenes.GameScene gameScene = (Scenes.GameScene)(Parent.CurrentScene);
+                            string nextLevel = gameScene.Level.NextLevel;
+                            gameScene = new Scenes.GameScene(Parent);
+                            gameScene.LoadLevel = nextLevel;
+                            Parent.SwitchScene(gameScene);
+                        }
+                        continue;
+                    }
                 }
                 if (gameObject.Location.Distance(Location) < 2)
                 {
@@ -252,7 +265,7 @@ namespace StackAttack.Objects
                     }
                     if (gameObject.GetType() == typeof(Chest))
                     {
-                        scene.Score += 20;
+                        Game.Score += 20;
                         scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(true, false, false, false);
 
@@ -284,7 +297,7 @@ namespace StackAttack.Objects
                     }
                     if (gameObject.GetType() == typeof(Ammo))
                     {
-                        scene.Ammo += 10;
+                        Game.Ammo += 10;
                         scene.GameObjects.Remove(gameObject);
                         scene.ShowInventory(false, false, false, true);
 

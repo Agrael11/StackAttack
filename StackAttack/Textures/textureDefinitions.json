@@ -14,5 +14,17 @@
   {
     "TextureID": "Blood",
     "FileName": "Textures/Blood.png"
+  },
+  {
+    "TextureID": "YouDied",
+    "FileName": "Textures/YouDied.png"
+  },
+  {
+    "TextureID": "GameOver",
+    "FileName": "Textures/GameOver.png"
+  },
+  {
+    "TextureID": "NewGame",
+    "FileName": "Textures/NewGame.png"
   }
 ]

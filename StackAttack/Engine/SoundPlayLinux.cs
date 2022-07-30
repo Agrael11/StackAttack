@@ -12,27 +12,21 @@ namespace StackAttack.Engine
         {
             if (!bassInit)
             {
-                //ManagedBass.Bass.Init();
-                //bassInit = true;
+                ManagedBass.Bass.Init();
+                bassInit = true;
             }
         }
 
         public override void Init()
         {
-            //Handle = ManagedBass.Bass.CreateStream(path);
+            Handle = ManagedBass.Bass.CreateStream(path);
         }
 
         public override void Play()
         {
-            if (Looping)
-            {
-                //soundPlayer.PlayLooping();
-            }
-            else
-            {
-                // ManagedBass.Bass.Volume = Volume;
-                //ManagedBass.Bass.ChannelPlay(Handle, true);
-            }
+            ManagedBass.Bass.Volume = Volume;
+
+            ManagedBass.Bass.ChannelPlay(Handle, true);
         }
 
         public override void Dispose()
@@ -41,12 +35,12 @@ namespace StackAttack.Engine
 
         public override bool Playing()
         {
-            return false;//ManagedBass.Bass.ChannelIsActive(Handle) == ManagedBass.PlaybackState.Playing;
+            return ManagedBass.Bass.ChannelIsActive(Handle) == ManagedBass.PlaybackState.Playing;
         }
 
         public override void Stop()
         {
-            // ManagedBass.Bass.ChannelStop(Handle);
+            ManagedBass.Bass.ChannelStop(Handle);
         }
     }
 }

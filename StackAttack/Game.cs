@@ -16,15 +16,25 @@ namespace StackAttack
         public static int WindowWidth { get; set; } = 512;
         public static int WindowHeight { get; set; } = 512;
         public static bool Fullscreen { get; set; } = false;
+        public static Sound? BackgroundMusic { get; set; } = null;
+        public static int Ammo { get; set; } = 0;
+        public static int Score { get; set; } = 0;
 
         public Scenes.Scene CurrentScene { get; private set; }
+        private Scenes.Scene? NextScene { get; set; }
 
         private RenderTexture mainTexture;
+        public string currentLevel = "AlphaLevel";
+
+        public void SwitchScene(Scenes.Scene scene)
+        {
+            NextScene = scene;
+        }
 
         public Game(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
             CurrentScene = new Scenes.GameScene(this);
-            ((Scenes.GameScene)CurrentScene).LoadLevel = "AlphaLevel";
+            ((Scenes.GameScene)CurrentScene).LoadLevel = currentLevel;
             CurrentScene.Init();
             mainTexture = new(64, 64, "BaseShader");
         }
@@ -65,6 +75,20 @@ namespace StackAttack
             base.OnUpdateFrame(args);
 
             CurrentScene.Update(args);
+
+            if (NextScene is not null)
+            {
+                CurrentScene.Dispose();
+                CurrentScene = NextScene;
+                CurrentScene.Init();
+                mainTexture.Reregister();
+                NextScene = null;
+            }
+
+            if (BackgroundMusic is not null)
+            {
+                BackgroundMusic.Update();
+            }
         }
 
         protected override void OnRenderFrame(FrameEventArgs args)

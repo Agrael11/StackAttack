@@ -583,5 +583,32 @@
     "TextureID": "Blood",
     "ShaderID": "BaseShader",
     "SpriteID": "Blood"
+  },
+  {
+    "X": 0,
+    "Y": 0,
+    "Width": 64,
+    "Height": 64,
+    "TextureID": "YouDied",
+    "ShaderID": "BaseShader",
+    "SpriteID": "YouDied"
+  },
+  {
+    "X": 0,
+    "Y": 0,
+    "Width": 64,
+    "Height": 64,
+    "TextureID": "GameOver",
+    "ShaderID": "BaseShader",
+    "SpriteID": "GameOver"
+  },
+  {
+    "X": 0,
+    "Y": 0,
+    "Width": 64,
+    "Height": 64,
+    "TextureID": "NewGame",
+    "ShaderID": "BaseShader",
+    "SpriteID": "NewGame"
   }
 ]
