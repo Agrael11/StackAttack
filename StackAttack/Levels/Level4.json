@@ -1,0 +1,8378 @@
+{
+  "LevelWidth": 55,
+  "LevelHeight": 43,
+  "Music": "8BitRetroFunk",
+  "Background": {
+    "X": 0,
+    "Y": 0,
+    "Tiles": [
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 18,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 27,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 18,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 27,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 10,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 17,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 16,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 15,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 14,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 13,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 12,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 11,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 18,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 27,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 28,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 35,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 34,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 33,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 32,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 31,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 30,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 29,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 19,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 26,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 20,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 21,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 22,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 23,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 24,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodFloor",
+        "TileX": 25,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 1,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 1,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 2,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 3,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 4,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 5,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 6,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 7,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 8,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 8,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 8,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 8,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 9,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 8,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 8,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 7,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 6,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 5,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 4,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 3,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 2,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 1,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 1,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 1,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 1,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 2,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 2,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 3,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 4,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 6,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 7,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 7,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 7,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 7,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 6,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 6,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 6,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 5,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 5,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 4,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 3,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 2,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 2,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 5,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 4,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 3,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 3,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 4,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 5,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 10,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 11,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 12,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 13,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 14,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 16,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 17,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 17,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 17,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 17,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 17,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 16,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 15,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 14,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 13,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 12,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 11,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 10,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 10,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 11,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 12,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 13,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 14,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 15,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 16,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 16,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 15,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 14,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 13,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 12,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 11,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 10,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 10,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 10,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 11,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 12,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 13,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 14,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 15,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 16,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 16,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 15,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 14,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 13,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 12,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 11,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 17,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 18,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 26,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 19,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 25,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 24,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 23,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 22,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 21,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 20,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 36,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 43,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 44,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 44,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 44,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 43,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 43,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 43,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 44,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 44,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 44,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 43,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 43,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 43,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 37,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 43,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 39,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 40,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 41,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 42,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 46,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 47,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 48,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 51,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 52,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 53,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 53,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 53,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 53,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 53,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 52,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 51,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 50,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 49,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 48,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 47,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 46,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 46,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 46,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 51,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 49,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 50,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 50,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 49,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 53,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 15,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 43,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 42,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 43,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 44,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 44,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 44,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 44,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 43,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 42,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 43,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 43,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 47,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 47,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 47,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 47,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 48,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 49,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 50,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 51,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 52,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 52,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 52,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 52,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 51,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 48,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 48,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 49,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 50,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 51,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 54,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      }
+    ]
+  },
+  "Foreground": {
+    "X": 0,
+    "Y": 0,
+    "Tiles": [
+      {
+        "TileID": "BrickWall",
+        "TileX": 9,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 9,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 9,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 9,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 9,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 9,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 10,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 11,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 12,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 13,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 14,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 15,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 16,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 17,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 17,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 15,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 14,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 13,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 12,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 11,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 10,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 9,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 16,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 18,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 19,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 20,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 21,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 22,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 23,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 24,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 19,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 20,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 21,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 22,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 23,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 24,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 25,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 26,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 0,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 1,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 26,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 27,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 0,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 0,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 0,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 0,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 0,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 0,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 0,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 1,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 2,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 3,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 4,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 5,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 6,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 7,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 8,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 7,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 6,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 5,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 4,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 3,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 2,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 1,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 0,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 8,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 10,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 11,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 12,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 13,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 14,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 15,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 17,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 19,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 21,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 22,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 23,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 25,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 26,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 28,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 29,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 30,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 31,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 32,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 33,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 34,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 35,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 19,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 20,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 21,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 22,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 23,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 26,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 34,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 29,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 28,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 29,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 30,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 31,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 32,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 33,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 34,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 35,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 35,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 34,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 32,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 31,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 30,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 29,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 28,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 26,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 25,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 23,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 22,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 21,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 20,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 19,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 17,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 15,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 14,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 13,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 12,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 11,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 10,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 10,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 11,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 12,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 13,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 14,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 15,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 17,
+        "TileY": 35,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 40,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 41,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 36,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 37,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 33,
+        "TileY": 42,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 10,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 12,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 13,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 17,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 15,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 14,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 26,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 25,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 23,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 22,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 21,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 20,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 19,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 28,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 29,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 30,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 33,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 34,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 35,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 22,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 28,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 36,
+        "TileY": 27,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 32,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 31,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 35,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 34,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 33,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 32,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 31,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 30,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 29,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 28,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 26,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 25,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 23,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 22,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 21,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 19,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 17,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 15,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 14,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 13,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 12,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 11,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 10,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 9,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 18,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 27,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 54,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 53,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 52,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 51,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 50,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 49,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 48,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 47,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 46,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 46,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 47,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 48,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 49,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 50,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 51,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 52,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 53,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 54,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 54,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 54,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 54,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 54,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 44,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 43,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 42,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 41,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 40,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 39,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 38,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 37,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 7,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 37,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 39,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 40,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 41,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 42,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 44,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 15,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 45,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 44,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 43,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 42,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 41,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 40,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 39,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 38,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 37,
+        "TileY": 21,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 20,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 36,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 30,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 30,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 33,
+        "TileY": 38,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 33,
+        "TileY": 39,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 22,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 23,
+        "TileY": 30,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 23,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 23,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 23,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 22,
+        "TileY": 33,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 22,
+        "TileY": 32,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 22,
+        "TileY": 31,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 20,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 20,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 25,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 25,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 13,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 13,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 14,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 14,
+        "TileY": 24,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 14,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 13,
+        "TileY": 25,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 29,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 34,
+        "TileY": 23,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 34,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 29,
+        "TileY": 26,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 29,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 34,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 29,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 34,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 25,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 24,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 20,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 21,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 20,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 21,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 24,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 25,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 13,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 13,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 14,
+        "TileY": 18,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 14,
+        "TileY": 17,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 19,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 19,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 19,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 22,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 22,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 26,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 26,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 20,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 21,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 20,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 20,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 20,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 21,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 25,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 25,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 25,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 25,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 24,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 12,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 13,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 14,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 15,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 2,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 3,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 4,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 16,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 15,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 14,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 13,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "StoneWall",
+        "TileX": 12,
+        "TileY": 5,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 38,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 40,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 42,
+        "TileY": 16,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 43,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 41,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 39,
+        "TileY": 19,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 42,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 43,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 44,
+        "TileY": 13,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 44,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 39,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 38,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 37,
+        "TileY": 8,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 37,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 37,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 44,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 46,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 52,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 47,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 48,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 49,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 50,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 51,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 47,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 52,
+        "TileY": 10,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 52,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 51,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 50,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 49,
+        "TileY": 11,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 48,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BrickWall",
+        "TileX": 49,
+        "TileY": 12,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "WoodWall",
+        "TileX": 54,
+        "TileY": 9,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 16,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 15,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 14,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 13,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 12,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 11,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "GreenFloor",
+        "TileX": 10,
+        "TileY": 6,
+        "TileRotationDeg": 0
+      },
+      {
+        "TileID": "BlueFloor",
+        "TileX": 38,
+        "TileY": 14,
+        "TileRotationDeg": 0
+      }
+    ]
+  },
+  "PlayerStartData": {
+    "GameObjectTypeID": "Player",
+    "PlayerX": 88,
+    "PlayerY": 160,
+    "Heading": 0,
+    "SpriteID": "Player"
+  },
+  "GameObjectStartDatas": [
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 108,
+      "ObjectY": 160,
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 72,
+      "ObjectY": 148,
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 36,
+      "ObjectY": 64,
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 72,
+      "ObjectY": 76,
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 108,
+      "ObjectY": 64,
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 72,
+      "ObjectY": 20,
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 72,
+      "ObjectY": 92,
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 108,
+      "ObjectY": 104,
+      "Heading": 0,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 100,
+      "ObjectY": 140,
+      "Heading": 1,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 80,
+      "ObjectY": 112,
+      "Heading": 1,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 44,
+      "ObjectY": 84,
+      "Heading": 1,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 80,
+      "ObjectY": 56,
+      "Heading": 1,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "BlueDoor",
+      "ObjectX": 100,
+      "ObjectY": 28,
+      "Heading": 1,
+      "SpriteID": "BlueDoor"
+    },
+    {
+      "GameObjectTypeID": "GoldDoor",
+      "ObjectX": 144,
+      "ObjectY": 64,
+      "Heading": 0,
+      "SpriteID": "GoldDoor"
+    },
+    {
+      "GameObjectTypeID": "Key",
+      "ObjectX": 56,
+      "ObjectY": 12,
+      "Heading": 0,
+      "SpriteID": "Key"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 44,
+      "ObjectY": 16,
+      "Heading": 1,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 92,
+      "ObjectY": 4,
+      "Heading": 2,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 84,
+      "ObjectY": 36,
+      "Heading": 2,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 128,
+      "ObjectY": 152,
+      "Heading": 3,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 56,
+      "ObjectY": 156,
+      "Heading": 1,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 132,
+      "ObjectY": 100,
+      "Heading": 3,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 128,
+      "ObjectY": 72,
+      "Heading": 3,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 164,
+      "ObjectY": 72,
+      "Heading": 3,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 80,
+      "ObjectY": 24,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 92,
+      "ObjectY": 52,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 4,
+      "ObjectY": 80,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 8,
+      "ObjectY": 80,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 28,
+      "ObjectY": 80,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 32,
+      "ObjectY": 80,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 92,
+      "ObjectY": 108,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 96,
+      "ObjectY": 108,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 132,
+      "ObjectY": 80,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 160,
+      "ObjectY": 80,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 96,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Ammo",
+      "ObjectX": 80,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Ammo"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 120,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 124,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 128,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 132,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 56,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 52,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 48,
+      "ObjectY": 164,
+      "Heading": 0,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 48,
+      "ObjectY": 96,
+      "Heading": 1,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 4,
+      "ObjectY": 60,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 8,
+      "ObjectY": 60,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 32,
+      "ObjectY": 60,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 28,
+      "ObjectY": 60,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 24,
+      "ObjectY": 60,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 20,
+      "ObjectY": 60,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 16,
+      "ObjectY": 60,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 12,
+      "ObjectY": 60,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 120,
+      "ObjectY": 88,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 124,
+      "ObjectY": 88,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 128,
+      "ObjectY": 88,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Chest",
+      "ObjectX": 132,
+      "ObjectY": 88,
+      "Heading": 2,
+      "SpriteID": "Chest"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 80,
+      "ObjectY": 136,
+      "Heading": 0,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 84,
+      "ObjectY": 136,
+      "Heading": 0,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 96,
+      "ObjectY": 116,
+      "Heading": 2,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 100,
+      "ObjectY": 116,
+      "Heading": 2,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 4,
+      "ObjectY": 64,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 4,
+      "ObjectY": 68,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 4,
+      "ObjectY": 72,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 4,
+      "ObjectY": 76,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 40,
+      "ObjectY": 4,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 40,
+      "ObjectY": 8,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 40,
+      "ObjectY": 20,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 40,
+      "ObjectY": 24,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 148,
+      "ObjectY": 36,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 148,
+      "ObjectY": 40,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 148,
+      "ObjectY": 44,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "Health",
+      "ObjectX": 148,
+      "ObjectY": 48,
+      "Heading": 1,
+      "SpriteID": "Health"
+    },
+    {
+      "GameObjectTypeID": "GoldDoor",
+      "ObjectX": 152,
+      "ObjectY": 56,
+      "Heading": 1,
+      "SpriteID": "GoldDoor"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 168,
+      "ObjectY": 36,
+      "Heading": 3,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "Enemy",
+      "ObjectX": 168,
+      "ObjectY": 48,
+      "Heading": 3,
+      "SpriteID": "Enemy"
+    },
+    {
+      "GameObjectTypeID": "GoldDoor",
+      "ObjectX": 180,
+      "ObjectY": 44,
+      "Heading": 0,
+      "SpriteID": "GoldDoor"
+    },
+    {
+      "GameObjectTypeID": "Exit",
+      "ObjectX": 204,
+      "ObjectY": 40,
+      "Heading": 3,
+      "SpriteID": "Exit"
+    }
+  ],
+  "NextLevel": "Credits",
+  "Goal": 1
+}
