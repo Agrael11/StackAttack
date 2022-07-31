@@ -24,7 +24,7 @@ namespace StackAttack
         private Scenes.Scene? NextScene { get; set; }
 
         private RenderTexture mainTexture;
-        public string currentLevel = "AlphaLevel";
+        public string currentLevel = "Level1";
 
         public void SwitchScene(Scenes.Scene scene)
         {

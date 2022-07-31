@@ -116,6 +116,7 @@ namespace StackAttack.Scenes
                     {
                         GameObjects.RemoveAt(i);
                         EnemiesLeft = GameObjects.Where(t => t.GetType() == typeof(Enemy)).Count();
+                        continue;
                     }
                 }
                 if (GameObjects[i].GetType() == typeof(Exit))
@@ -282,7 +283,7 @@ namespace StackAttack.Scenes
             if (!_tempRenderTexture.Sprite.returnResult || _tempRenderTexture.Sprite.spriteResult is null)
                 return;
 
-            Sprite.DrawTexture(_tempRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(CameraX, CameraY - 48, 64, 64), 0, false, true);
+            Sprite.DrawTexture(_tempRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(CameraX, CameraY - 4*(Level.LevelHeight-16), 64, 64), 0, false, true);
 
             RenderTexture.End();
 
@@ -297,7 +298,7 @@ namespace StackAttack.Scenes
                 return;
             }
 
-            Sprite.DrawTexture(_memoryRenderTexture.Sprite.spriteResult.TextureID, "Desaturated", new Rectanglei(CameraX, -(CameraY - 48), 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
+            Sprite.DrawTexture(_memoryRenderTexture.Sprite.spriteResult.TextureID, "Desaturated", new Rectanglei(CameraX, -(CameraY - 4 * (Level.LevelHeight - 16)), 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
             Sprite.DrawTexture(_tempRenderTexture.Sprite.spriteResult.TextureID, "BaseShader", new Rectanglei(0, 0, 64, 64), new Rectanglei(0, 0, 64, 64), 0, false, true);
 
             Player.Draw(args);
