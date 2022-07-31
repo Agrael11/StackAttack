@@ -4,11 +4,27 @@
     "FileName": "Textures/Error.png"
   },
   {
-    "TextureID": "IdeaV1",
-    "FileName": "Textures/IdeaV1.png"
+    "TextureID": "TilesAndSprites",
+    "FileName": "Textures/TilesAndSprites.png"
   },
   {
-    "TextureID": "TempCircle",
-    "FileName": "Textures/CircleTemp.png"
+    "TextureID": "GUI",
+    "FileName": "Textures/GUI.png"
+  },
+  {
+    "TextureID": "Blood",
+    "FileName": "Textures/Blood.png"
+  },
+  {
+    "TextureID": "YouDied",
+    "FileName": "Textures/YouDied.png"
+  },
+  {
+    "TextureID": "GameOver",
+    "FileName": "Textures/GameOver.png"
+  },
+  {
+    "TextureID": "NewGame",
+    "FileName": "Textures/NewGame.png"
   }
 ]

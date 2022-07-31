@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static StackAttack.Engine.Sprite;
+using static StackAttack.Engine.Tile;
 
 namespace LevelEdit
 {
@@ -32,278 +34,37 @@ namespace LevelEdit
         TileMap background = new();
         PlayerStartData playerStart = new();
         List<GameObjectStartData> gameObjectStartDatas = new();
-        Bitmap editorBitmap;
-        Bitmap previewBitmap;
         private bool placeplayer = false;
-        int stimer = 0;
+        int active = 1;
 
-        public void UpdateBitmaps()
-        {
-            int width = int.Parse(WidthTextBox.Text);
-            int height = int.Parse(HeightTextBox.Text);
-            previewBitmap = new Bitmap(width * 16, height * 16);
-            using (Graphics g = Graphics.FromImage(previewBitmap))
-            {
-                g.Clear(System.Drawing.Color.Transparent);
-                for (int x = 0; x < width; x++)
-                {
-                    for (int y = 0; y < height; y++)
-                    {
-                        g.DrawRectangle(Pens.Black, new System.Drawing.Rectangle(x * 16, y * 16, 16, 16));
-                    }
-                }
-                foreach (TileData tile in background.Tiles)
-                {
-                    string id = tile.TileID;
-                    int X = tile.TileX;
-                    int Y = tile.TileY;
-                    var tileDefinition = tileDefinitions.Where(t => t.TileID == id).ToList()[0];
-                    id = tileDefinition.TextureID;
-                    var textureDefinition = textureDefinitions.Where(t => t.TextureID == id).ToList()[0];
-                    Bitmap img = (Bitmap)Bitmap.FromFile(textureDefinition.FileName);
-                    for (int y = 0; y < 4; y++)
-                    {
-                        for (int x = 0; x < 4; x++)
-                        {
-                            System.Drawing.Color c = img.GetPixel(tileDefinition.X + x, tileDefinition.Y + y);
-                            g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 16 + x * 4, Y * 16 + y * 4, 4, 4));
-                        }
-                    }
-                }
-                foreach (TileData tile in foreground.Tiles)
-                {
-                    string id = tile.TileID;
-                    int X = tile.TileX;
-                    int Y = tile.TileY;
-                    var tileDefinition = tileDefinitions.Where(t => t.TileID == id).ToList()[0];
-                    id = tileDefinition.TextureID;
-                    var textureDefinition = textureDefinitions.Where(t => t.TextureID == id).ToList()[0];
-                    Bitmap img = (Bitmap)Bitmap.FromFile(textureDefinition.FileName);
-                    for (int y = 0; y < 4; y++)
-                    {
-                        for (int x = 0; x < 4; x++)
-                        {
-                            System.Drawing.Color c = img.GetPixel(tileDefinition.X + x, tileDefinition.Y + y);
-                            g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 16 + x * 4, Y * 16 + y * 4, 4, 4));
-                        }
-                    }
-                }
-                foreach (GameObjectStartData gameObject in gameObjectStartDatas)
-                {
-                    string id = gameObject.SpriteID;
-                    var spriteDefinition = spriteDefinitions.Where(t => t.SpriteID == id).ToList()[0];
-                    int X = gameObject.ObjectX;
-                    int Y = gameObject.ObjectY;
-                    id = spriteDefinition.TextureID;
-                    var textureDefinition = textureDefinitions.Where(t => t.TextureID == id).ToList()[0];
-                    Bitmap img = (Bitmap)Bitmap.FromFile(textureDefinition.FileName);
-                    for (int y = 0; y < 4; y++)
-                    {
-                        for (int x = 0; x < 4; x++)
-                        {
-                            if (gameObject.Heading == StackAttack.Engine.Headings.North)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + x, spriteDefinition.Y + y);
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (gameObject.Heading == StackAttack.Engine.Headings.South)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + x, spriteDefinition.Y + (3 - y));
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (gameObject.Heading == StackAttack.Engine.Headings.West)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + y, spriteDefinition.Y + x);
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (gameObject.Heading == StackAttack.Engine.Headings.East)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + y, spriteDefinition.Y + (3 - x));
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                        }
-                    }
-                }
-                {
-                    string id = "Player";
-                    var spriteDefinition = spriteDefinitions.Where(t => t.SpriteID == id).ToList()[0];
-                    int X = playerStart.PlayerX;
-                    int Y = playerStart.PlayerY;
-                    id = spriteDefinition.TextureID;
-                    var textureDefinition = textureDefinitions.Where(t => t.TextureID == id).ToList()[0];
-                    Bitmap img = (Bitmap)Bitmap.FromFile(textureDefinition.FileName);
-                    for (int y = 0; y < 4; y++)
-                    {
-                        for (int x = 0; x < 4; x++)
-                        {
-                            if (playerStart.Heading == StackAttack.Engine.Headings.North)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + x, spriteDefinition.Y + y);
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (playerStart.Heading == StackAttack.Engine.Headings.South)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + x, spriteDefinition.Y + (3 - y));
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (playerStart.Heading == StackAttack.Engine.Headings.West)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + y, spriteDefinition.Y + x);
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (playerStart.Heading == StackAttack.Engine.Headings.East)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + y, spriteDefinition.Y + (3 - x));
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                        }
-                    }
-                }
-            }
-            PreviewImage.Image = previewBitmap;
-            editorBitmap = new Bitmap(width * 16, height * 16);
-            using (Graphics g = Graphics.FromImage(editorBitmap))
-            {
-                g.Clear(System.Drawing.Color.Transparent);
-                g.DrawImage(previewBitmap, new System.Drawing.Point(0, 0));
-                for (int x = 0; x < width; x++)
-                {
-                    for (int y = 0; y < height; y++)
-                    {
-                        g.DrawRectangle(Pens.Black, new System.Drawing.Rectangle(x * 16, y * 16, 16, 16));
-                    }
-                }
-                switch (LayerComboBox.SelectedIndex)
-                {
-                    case 0:
-                        foreach (TileData tile in background.Tiles)
-                        {
-                            string id = tile.TileID;
-                            int X = tile.TileX;
-                            int Y = tile.TileY;
-                            var tileDefinition = tileDefinitions.Where(t => t.TileID == id).ToList()[0];
-                            id = tileDefinition.TextureID;
-                            var textureDefinition = textureDefinitions.Where(t => t.TextureID == id).ToList()[0];
-                            Bitmap img = (Bitmap)Bitmap.FromFile(textureDefinition.FileName);
-                            for (int y = 0; y < 4; y++)
-                            {
-                                for (int x = 0; x < 4; x++)
-                                {
-                                    System.Drawing.Color c = img.GetPixel(tileDefinition.X + x, tileDefinition.Y + y);
-                                    g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 16 + x * 4, Y * 16 + y * 4, 4, 4));
-                                }
-                            }
-                        }
-                        break;
-                    case 1:
-                        foreach (TileData tile in foreground.Tiles)
-                        {
-                            string id = tile.TileID;
-                            int X = tile.TileX;
-                            int Y = tile.TileY;
-                            var tileDefinition = tileDefinitions.Where(t => t.TileID == id).ToList()[0];
-                            id = tileDefinition.TextureID;
-                            var textureDefinition = textureDefinitions.Where(t => t.TextureID == id).ToList()[0];
-                            Bitmap img = (Bitmap)Bitmap.FromFile(textureDefinition.FileName);
-                            for (int y = 0; y < 4; y++)
-                            {
-                                for (int x = 0; x < 4; x++)
-                                {
-                                    System.Drawing.Color c = img.GetPixel(tileDefinition.X + x, tileDefinition.Y + y);
-                                    g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 16 + x * 4, Y * 16 + y * 4, 4, 4));
-                                }
-                            }
-                        }
-                        break;
-                    case 2:
-                        foreach (GameObjectStartData gameObject in gameObjectStartDatas)
-                        {
-                            string id = gameObject.SpriteID;
-                            var spriteDefinition = spriteDefinitions.Where(t => t.SpriteID == id).ToList()[0];
-                            int X = gameObject.ObjectX;
-                            int Y = gameObject.ObjectY;
-                            id = spriteDefinition.TextureID;
-                            var textureDefinition = textureDefinitions.Where(t => t.TextureID == id).ToList()[0];
-                            Bitmap img = (Bitmap)Bitmap.FromFile(textureDefinition.FileName);
-                            for (int y = 0; y < 4; y++)
-                            {
-                                for (int x = 0; x < 4; x++)
-                                {
-                                    if (gameObject.Heading == StackAttack.Engine.Headings.North)
-                                    {
-                                        System.Drawing.Color c = img.GetPixel(spriteDefinition.X + x, spriteDefinition.Y + y);
-                                        g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                                    }
-                                    else if (gameObject.Heading == StackAttack.Engine.Headings.South)
-                                    {
-                                        System.Drawing.Color c = img.GetPixel(spriteDefinition.X + x, spriteDefinition.Y + (3 - y));
-                                        g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                                    }
-                                    else if (gameObject.Heading == StackAttack.Engine.Headings.West)
-                                    {
-                                        System.Drawing.Color c = img.GetPixel(spriteDefinition.X + y, spriteDefinition.Y + x);
-                                        g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                                    }
-                                    else if (gameObject.Heading == StackAttack.Engine.Headings.East)
-                                    {
-                                        System.Drawing.Color c = img.GetPixel(spriteDefinition.X + y, spriteDefinition.Y + (3-x));
-                                        g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                                    }
-                                }
-                            }
-                        }
-                        break;
-                }
-                {
-                    string id = "Player";
-                    var spriteDefinition = spriteDefinitions.Where(t => t.SpriteID == id).ToList()[0];
-                    int X = playerStart.PlayerX;
-                    int Y = playerStart.PlayerY;
-                    id = spriteDefinition.TextureID;
-                    var textureDefinition = textureDefinitions.Where(t => t.TextureID == id).ToList()[0];
-                    Bitmap img = (Bitmap)Bitmap.FromFile(textureDefinition.FileName);
-                    for (int y = 0; y < 4; y++)
-                    {
-                        for (int x = 0; x < 4; x++)
-                        {
-                            if (playerStart.Heading == StackAttack.Engine.Headings.North)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + x, spriteDefinition.Y + y);
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (playerStart.Heading == StackAttack.Engine.Headings.South)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + x, spriteDefinition.Y + (3 - y));
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (playerStart.Heading == StackAttack.Engine.Headings.West)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + y, spriteDefinition.Y + x);
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                            else if (playerStart.Heading == StackAttack.Engine.Headings.East)
-                            {
-                                System.Drawing.Color c = img.GetPixel(spriteDefinition.X + y, spriteDefinition.Y + (3 - x));
-                                g.FillRectangle(new System.Drawing.SolidBrush(c), new System.Drawing.Rectangle(X * 4 + x * 4, Y * 4 + y * 4, 4, 4));
-                            }
-                        }
-                    }
-                }
-            }
-            Editor.Image = editorBitmap;
-        }
+        TileMapView backgroundView;
+        TileMapView foregroundView;
+        TileMapView objectView;
 
         public MainWindow()
         {
-            editorBitmap = new Bitmap(0, 0);
-            previewBitmap = new Bitmap(0, 0);
             StackAttack.Game.LoadDefinitionData("textureDefinitions.json", ref textureDefinitions);
             StackAttack.Game.LoadDefinitionData("tileDefinitions.json", ref tileDefinitions);
             StackAttack.Game.LoadDefinitionData("spriteDefinitions.json", ref spriteDefinitions);
             InitializeComponent();
-            UpdateBitmaps();
-        }
+            
+            backgroundView = new();
+            backgroundView.GridZoom = 8;
+            backgroundView.TilePressed += StandardView_TilePressed;
+            
+            foregroundView = new();
+            foregroundView.GridZoom = 8;
+            foregroundView.TilePressed += StandardView_TilePressed;
+            
+            objectView = new();
+            objectView.GridZoom = 8;
+            objectView.TilePressed += ObjectView_TilePressed;
 
+            gridEditor.Children.Add(foregroundView);
+            gridEditor.Children.Add(objectView);
+            gridEditor.Children.Add(backgroundView);
+            WindowState = WindowState.Maximized;
+        }
         private void CheckSaneNumber(ref object sender)
         {
             if (sender is not TextBox textBox)
@@ -313,11 +74,12 @@ namespace LevelEdit
             if (number < _saneMinimum) number = _saneMinimum;
             else if (number > _saneMaximum) number = _saneMaximum;
             textBox.Text = number.ToString();
-            EditorHost.Width = int.Parse(WidthTextBox.Text) * 16;
-            EditorHost.Height = int.Parse(HeightTextBox.Text) * 16;
-            PreviewImageHost.Width = int.Parse(WidthTextBox.Text) * 16;
-            PreviewImageHost.Height = int.Parse(HeightTextBox.Text) * 16;
-            UpdateBitmaps();
+            backgroundView.GridWidth = int.Parse(WidthTextBox.Text);
+            backgroundView.GridHeight = int.Parse(HeightTextBox.Text);
+            foregroundView.GridWidth = int.Parse(WidthTextBox.Text);
+            foregroundView.GridHeight = int.Parse(HeightTextBox.Text);
+            objectView.GridWidth = int.Parse(WidthTextBox.Text);
+            objectView.GridHeight = int.Parse(HeightTextBox.Text);
         }
 
         private void CheckKeyIsNum(ref object sender, ref KeyEventArgs e)
@@ -347,142 +109,36 @@ namespace LevelEdit
             CheckSaneNumber(ref sender);
         }
 
-        bool editor = false;
-        bool editorDown = false;
-        int lastX = -1;
-        int lastY = -1;
-
-        private void Editor_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (editor)
-            {
-                editorDown = true;
-                Editor_MouseMove(sender, e);
-            }
-        }
-
-        private void Editor_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (editor && editorDown)
-            {
-                int X = (e.X / 16);
-                int Y = (e.Y / 16);
-                if (X == lastX && Y == lastY)
-                    return;
-                lastX = X;
-                lastY = Y;
-                if (placeplayer)
-                {
-                    StackAttack.Engine.Headings headings = StackAttack.Engine.Headings.North;
-                    switch (HeadingComboBox.SelectedIndex)
-                    {
-                        case 0: headings = StackAttack.Engine.Headings.North; break;
-                        case 1: headings = StackAttack.Engine.Headings.South; break;
-                        case 2: headings = StackAttack.Engine.Headings.East; break;
-                        case 3: headings = StackAttack.Engine.Headings.West; break;
-                    }
-                    playerStart = new PlayerStartData(X * 4, Y * 4, headings);
-                    placeplayer = false;
-                    return;
-                }
-                if (LayerComboBox.SelectedIndex == 0)
-                {
-                    string content = (string)(((ComboBoxItem)TileComboBox.SelectedItem).Content);
-                    TileData data = new(content.ToString(), X, Y, 0);
-                    if (background.Tiles.Select(t => (t.TileX == X && t.TileY == Y)).Any())
-                    {
-                        for (int i = background.Tiles.Count - 1; i >= 0; i--)
-                        {
-                            if (background.Tiles[i].TileX == X && background.Tiles[i].TileY == Y)
-                            {
-                                background.Tiles.RemoveAt(i);
-                            }
-                        }
-                    }
-                    if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                    {
-                        background.Tiles.Add(data);
-                    }
-                }
-                else if (LayerComboBox.SelectedIndex == 1)
-                {
-                    string content = (string)(((ComboBoxItem)TileComboBox.SelectedItem).Content);
-                    TileData data = new(content.ToString(), X, Y, 0);
-                    if (foreground.Tiles.Select(t => (t.TileX == X && t.TileY == Y)).Any())
-                    {
-                        for (int i = foreground.Tiles.Count - 1; i >= 0; i--)
-                        {
-                            if (foreground.Tiles[i].TileX == X && foreground.Tiles[i].TileY == Y)
-                            {
-                                foreground.Tiles.RemoveAt(i);
-                            }
-                        }
-                    }
-                    if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                    {
-                        foreground.Tiles.Add(data);
-                    }
-                }
-                else if (LayerComboBox.SelectedIndex == 2)
-                {
-                    StackAttack.Engine.Headings headings = StackAttack.Engine.Headings.North;
-                    switch (HeadingComboBox.SelectedIndex)
-                    {
-                        case 0: headings = StackAttack.Engine.Headings.North; break;
-                        case 1: headings = StackAttack.Engine.Headings.South; break;
-                        case 2: headings = StackAttack.Engine.Headings.East; break;
-                        case 3: headings = StackAttack.Engine.Headings.West; break;
-                    }
-
-                    string content = (string)(((ComboBoxItem)ObjectComboBox.SelectedItem).Content);
-                    if (content is null)
-                        content = "";
-                    GameObjectStartData startData = new(content.ToString(), X * 4, Y * 4, headings, content.ToString());
-                    if (gameObjectStartDatas.Select(t => (t.ObjectX == X * 4 && t.ObjectY == Y * 4)).Any())
-                    {
-                        for (int i = gameObjectStartDatas.Count - 1; i >= 0; i--)
-                        {
-                            if (gameObjectStartDatas[i].ObjectX == X * 4&& gameObjectStartDatas[i].ObjectY == Y *4)
-                            {
-                                gameObjectStartDatas.RemoveAt(i);
-                            }
-                        }
-                    }
-                    if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                    {
-                        gameObjectStartDatas.Add(startData);
-                    }
-                }
-                stimer++;
-                if (stimer == 10)
-                {
-                    stimer = 0;
-                    UpdateBitmaps();
-                }
-            }
-        }
-
-        private void Editor_MouseEnter(object sender, EventArgs e)
-        {
-            editor = true;
-        }
-
-        private void Editor_MouseLeave(object sender, EventArgs e)
-        {
-            editor = false;
-            editorDown = false;
-            UpdateBitmaps();
-        }
-
-        private void Editor_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            editorDown = false;
-            UpdateBitmaps();
-        }
-
         private void LayerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateBitmaps();
+            if (foregroundView != null && foregroundView != null && objectView != null)
+            {
+                gridEditor.Children.Clear();
+                //0 BG
+                if (LayerComboBox.SelectedIndex == 0)
+                {
+                    gridEditor.Children.Add(foregroundView);
+                    gridEditor.Children.Add(objectView);
+                    gridEditor.Children.Add(backgroundView);
+                    active = 1;
+                }
+                //1 FG
+                else if (LayerComboBox.SelectedIndex == 1)
+                {
+                    gridEditor.Children.Add(backgroundView);
+                    gridEditor.Children.Add(objectView);
+                    gridEditor.Children.Add(foregroundView);
+                    active = 2;
+                }
+                //2 OBJ
+                else if (LayerComboBox.SelectedIndex == 2)
+                {
+                    gridEditor.Children.Add(backgroundView);
+                    gridEditor.Children.Add(foregroundView);
+                    gridEditor.Children.Add(objectView);
+                    active = 3;
+                }
+            }
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
@@ -502,11 +158,111 @@ namespace LevelEdit
                 background = level.Background;
                 gameObjectStartDatas = level.GameObjectStartDatas;
                 playerStart = level.PlayerStartData;
-                EditorHost.Width = int.Parse(WidthTextBox.Text) * 16;
-                EditorHost.Height = int.Parse(HeightTextBox.Text) * 16;
-                PreviewImageHost.Width = int.Parse(WidthTextBox.Text) * 16;
-                PreviewImageHost.Height = int.Parse(HeightTextBox.Text) * 16;
-                UpdateBitmaps();
+                LevelTextBox.Text = level.NextLevel;
+                for (int i = 0; i < MusicComboBox.Items.Count; i++)
+                {
+                    string content = (string)((ComboBoxItem)MusicComboBox.Items[i]).Content;
+                    if (content == level.Music)
+                    {
+                        MusicComboBox.SelectedIndex = i;
+                        break;
+                    }
+                }
+                GoalComboBox.SelectedIndex = level.Goal;
+                backgroundView.GridWidth = int.Parse(WidthTextBox.Text);
+                backgroundView.GridHeight = int.Parse(HeightTextBox.Text);
+                foregroundView.GridWidth = int.Parse(WidthTextBox.Text);
+                foregroundView.GridHeight = int.Parse(HeightTextBox.Text);
+                objectView.GridWidth = int.Parse(WidthTextBox.Text);
+                objectView.GridHeight = int.Parse(HeightTextBox.Text);
+                string item = "";
+                TileDefinition[] selectedDefs;
+                int X;
+                int Y;
+                TileView view;
+                System.Drawing.Image bmp = System.Drawing.Image.FromFile("Textures\\TilesAndSprites.png");
+                foreach (TileData data in background.Tiles)
+                {
+                    item = data.TileID;
+                    selectedDefs = tileDefinitions.Where(t => t.TileID == item).ToArray();
+                    if (selectedDefs.Length <= 0)
+                        return;
+
+                    X = selectedDefs[0].X;
+                    Y = selectedDefs[0].Y;
+                    view = backgroundView.GetAt(data.TileX, data.TileY);
+                    view.SetTile((Bitmap)bmp, X, Y, 0);
+                }
+                foreach (TileData data in foreground.Tiles)
+                {
+                    item = data.TileID;
+                    selectedDefs = tileDefinitions.Where(t => t.TileID == item).ToArray();
+                    if (selectedDefs.Length <= 0)
+                        return;
+
+                    X = selectedDefs[0].X;
+                    Y = selectedDefs[0].Y;
+                    view = foregroundView.GetAt(data.TileX, data.TileY);
+                    view.SetTile((Bitmap)bmp, X, Y, 0);
+                }
+                SpriteDefinition[] spriteDefs;
+                int rotation;
+                foreach (GameObjectStartData data in gameObjectStartDatas)
+                {
+                    view = objectView.GetAt(data.ObjectX/4, data.ObjectY/4);
+                    item = data.GameObjectTypeID;
+                    spriteDefs = spriteDefinitions.Where(t => t.SpriteID == item).ToArray();
+
+                    if (spriteDefs.Length <= 0)
+                        return;
+
+                    X = spriteDefs[0].X;
+                    Y = spriteDefs[0].Y;
+                    switch (data.Heading)
+                    {
+                        case StackAttack.Engine.Headings.South:
+                            rotation = 180;
+                            break;
+                        case StackAttack.Engine.Headings.East:
+                            rotation = 90;
+                            break;
+                        case StackAttack.Engine.Headings.West:
+                            rotation = 270;
+                            break;
+                        case StackAttack.Engine.Headings.North:
+                        default:
+                            rotation = 0;
+                            break;
+                    }
+                    view.SetTile((Bitmap)bmp, X, Y, rotation);
+                }
+
+                view = objectView.GetAt(playerStart.PlayerX / 4, playerStart.PlayerY / 4);
+
+                item = "Player";
+                spriteDefs = spriteDefinitions.Where(t => t.SpriteID == item).ToArray();
+                if (spriteDefs.Length <= 0)
+                    return;
+
+                X = spriteDefs[0].X;
+                Y = spriteDefs[0].Y;
+                switch (playerStart.Heading)
+                {
+                    case StackAttack.Engine.Headings.South:
+                        rotation = 180;
+                        break;
+                    case StackAttack.Engine.Headings.East:
+                        rotation = 90;
+                        break;
+                    case StackAttack.Engine.Headings.West:
+                        rotation = 270;
+                        break;
+                    case StackAttack.Engine.Headings.North:
+                    default:
+                        rotation = 0;
+                        break;
+                }
+                view.SetTile((Bitmap)bmp, X, Y, rotation);
             }
         }
 
@@ -525,7 +281,10 @@ namespace LevelEdit
                     Foreground = foreground,
                     Background = background,
                     GameObjectStartDatas = gameObjectStartDatas,
-                    PlayerStartData = playerStart
+                    PlayerStartData = playerStart,
+                    NextLevel = LevelTextBox.Text,
+                    Music = (string)((ComboBoxItem)MusicComboBox.SelectedItem).Content,
+                    Goal = GoalComboBox.SelectedIndex
                 };
                 StackAttack.Game.SaveDefintionData(dialog.FileName, level);
             }
@@ -534,6 +293,200 @@ namespace LevelEdit
         private void PlacePlayerButton_Click(object sender, RoutedEventArgs e)
         {
             placeplayer = true;
+        }
+
+        private void zoom_plus_Click(object sender, RoutedEventArgs e)
+        {
+            backgroundView.GridZoom++;
+            foregroundView.GridZoom++;
+            objectView.GridZoom++;
+        }
+
+        private void zoom_minus_Click(object sender, RoutedEventArgs e)
+        {
+            backgroundView.GridZoom--;
+            foregroundView.GridZoom--;
+            objectView.GridZoom--;
+        }
+
+        private void StandardView_TilePressed(object? sender, MouseEventArgs e)
+        {
+            if (sender is null)
+                return;
+
+            if (active <= 2)
+            {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    string item = (string)((ComboBoxItem)TileComboBox.SelectedItem).Content;
+                    TileDefinition[] selectedDefs = tileDefinitions.Where(t => t.TileID == item).ToArray();
+                    if (selectedDefs.Length <= 0)
+                        return;
+                    
+                    int X = selectedDefs[0].X;
+                    int Y = selectedDefs[0].Y;
+                    TileView view = (TileView)sender;
+                    System.Drawing.Image bmp = System.Drawing.Image.FromFile("Textures\\TilesAndSprites.png");
+                    view.SetTile((Bitmap)bmp, X, Y, 0);
+                    if (active <= 1)
+                    {
+                        for (int i = foreground.Tiles.Count - 1; i >= 0; i--)
+                        {
+                            if (foreground.Tiles[i].TileX == view.MyX && foreground.Tiles[i].TileY == view.MyY)
+                            {
+                                foreground.Tiles.RemoveAt(i);
+                            }
+                        }
+                        foreground.Tiles.Add(new TileData(item, view.MyX, view.MyY, 0));
+                    }
+                    else if (active == 2)
+                    {
+                        for (int i = background.Tiles.Count - 1; i >= 0; i--)
+                        {
+                            if (background.Tiles[i].TileX == view.MyX && background.Tiles[i].TileY == view.MyY)
+                            {
+                                background.Tiles.RemoveAt(i);
+                            }
+                        }
+                        background.Tiles.Add(new TileData(item, view.MyX, view.MyY, 0));
+                    }
+                }
+                else if (e.RightButton == MouseButtonState.Pressed)
+                {
+                    TileView view = (TileView)sender;
+                    view.ResetTile();
+                    if (active <= 1)
+                    {
+                        for (int i = foreground.Tiles.Count-1; i >= 0; i--)
+                        {
+                            if (foreground.Tiles[i].TileX == view.MyX && foreground.Tiles[i].TileY == view.MyY)
+                            {
+                                foreground.Tiles.RemoveAt(i);
+                            }
+                        }
+                    }
+                    else if (active == 2)
+                    {
+                        for (int i = background.Tiles.Count - 1; i >= 0; i--)
+                        {
+                            if (background.Tiles[i].TileX == view.MyX && background.Tiles[i].TileY == view.MyY)
+                            {
+                                background.Tiles.RemoveAt(i);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ObjectView_TilePressed(object? sender, MouseEventArgs e)
+        {
+            if (sender is null)
+                return;
+            if (active == 3)
+            {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                {
+                    if (!placeplayer)
+                    {
+                        TileView view = (TileView)sender;
+                        if (playerStart.PlayerX == view.MyX * 4 && playerStart.PlayerY == view.MyY)
+                            return;
+
+                        string item = (string)((ComboBoxItem)ObjectComboBox.SelectedItem).Content;
+                        SpriteDefinition[] selectedDefs = spriteDefinitions.Where(t => t.SpriteID == item).ToArray();
+                        if (selectedDefs.Length <= 0)
+                            return;
+
+                        int X = selectedDefs[0].X;
+                        int Y = selectedDefs[0].Y;
+                        System.Drawing.Image bmp = System.Drawing.Image.FromFile("Textures\\TilesAndSprites.png");
+                        StackAttack.Engine.Headings heading;
+                        int rotation;
+                        switch (HeadingComboBox.SelectedIndex)
+                        {
+                            case 1:
+                                rotation = 180;
+                                heading = StackAttack.Engine.Headings.South;
+                                break;
+                            case 2:
+                                rotation = 90;
+                                heading = StackAttack.Engine.Headings.East;
+                                break;
+                            case 3:
+                                rotation = 270;
+                                heading = StackAttack.Engine.Headings.West;
+                                break;
+                            case 0:
+                            default:
+                                rotation = 0; heading = StackAttack.Engine.Headings.North;
+                                break;
+                        }
+
+                        for (int i = gameObjectStartDatas.Count - 1; i >= 0; i--)
+                        {
+                            if ((gameObjectStartDatas[i].ObjectX == view.MyX * 4) && (gameObjectStartDatas[i].ObjectY == view.MyY * 4))
+                            {
+                                gameObjectStartDatas.RemoveAt(i);
+                            }
+                        }
+
+                        gameObjectStartDatas.Add(new GameObjectStartData(item, view.MyX * 4, view.MyY * 4, heading, item));
+                        view.SetTile((Bitmap)bmp, X, Y, rotation);
+                    }
+                    else
+                    {
+                        placeplayer = false;
+                        SpriteDefinition[] selectedDefs = spriteDefinitions.Where(t => t.SpriteID == "Player").ToArray();
+                        if (selectedDefs.Length <= 0)
+                            return;
+
+                        int X = selectedDefs[0].X;
+                        int Y = selectedDefs[0].Y;
+                        TileView view = (TileView)sender;
+                        System.Drawing.Image bmp = System.Drawing.Image.FromFile("Textures\\TilesAndSprites.png");
+                        StackAttack.Engine.Headings heading;
+                        int rotation;
+                        switch (HeadingComboBox.SelectedIndex)
+                        {
+                            case 1:
+                                rotation = 180;
+                                heading = StackAttack.Engine.Headings.South;
+                                break;
+                            case 2:
+                                rotation = 90;
+                                heading = StackAttack.Engine.Headings.East;
+                                break;
+                            case 3:
+                                rotation = 270;
+                                heading = StackAttack.Engine.Headings.West;
+                                break;
+                            case 0:
+                            default:
+                                rotation = 0; heading = StackAttack.Engine.Headings.North;
+                                break;
+                        }
+
+                        playerStart = new PlayerStartData(view.MyX * 4, view.MyY * 4, heading);
+                        view.SetTile((Bitmap)bmp, X, Y, rotation);
+                    }
+                }
+                else if (e.RightButton == MouseButtonState.Pressed)
+                {
+                    TileView view = (TileView)sender;
+                    if (playerStart.PlayerX == view.MyX * 4 && playerStart.PlayerY == view.MyY)
+                        return;
+
+                    view.ResetTile();
+                    for (int i = gameObjectStartDatas.Count - 1; i >= 0; i--)
+                    {
+                        if ((gameObjectStartDatas[i].ObjectX == view.MyX * 4) && (gameObjectStartDatas[i].ObjectY == view.MyY * 4))
+                        {
+                            gameObjectStartDatas.RemoveAt(i);
+                        }
+                    }
+                }
+            }
         }
     }
 }
