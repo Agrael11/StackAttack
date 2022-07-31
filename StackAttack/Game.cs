@@ -54,13 +54,11 @@ namespace StackAttack
             data = output;
         }
 
-#if DEBUG
         public static void SaveDefintionData<T>(string path, T data)
         {
             string result = System.Text.Json.JsonSerializer.Serialize(data, typeof(T), new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, result);
         }
-#endif
 
         protected override void OnResize(ResizeEventArgs e)
         {
