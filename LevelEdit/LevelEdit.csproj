@@ -17,9 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AlphaLevel.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="spriteDefinitions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

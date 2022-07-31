@@ -390,7 +390,7 @@ namespace LevelEdit
                     if (!placeplayer)
                     {
                         TileView view = (TileView)sender;
-                        if (playerStart.PlayerX == view.MyX * 4 && playerStart.PlayerY == view.MyY)
+                        if (playerStart.PlayerX == view.MyX * 4 && playerStart.PlayerY == view.MyY * 4)
                             return;
 
                         string item = (string)((ComboBoxItem)ObjectComboBox.SelectedItem).Content;
