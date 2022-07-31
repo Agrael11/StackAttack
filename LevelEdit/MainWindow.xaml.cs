@@ -330,17 +330,6 @@ namespace LevelEdit
                     view.SetTile((Bitmap)bmp, X, Y, 0);
                     if (active <= 1)
                     {
-                        for (int i = foreground.Tiles.Count - 1; i >= 0; i--)
-                        {
-                            if (foreground.Tiles[i].TileX == view.MyX && foreground.Tiles[i].TileY == view.MyY)
-                            {
-                                foreground.Tiles.RemoveAt(i);
-                            }
-                        }
-                        foreground.Tiles.Add(new TileData(item, view.MyX, view.MyY, 0));
-                    }
-                    else if (active == 2)
-                    {
                         for (int i = background.Tiles.Count - 1; i >= 0; i--)
                         {
                             if (background.Tiles[i].TileX == view.MyX && background.Tiles[i].TileY == view.MyY)
@@ -350,6 +339,17 @@ namespace LevelEdit
                         }
                         background.Tiles.Add(new TileData(item, view.MyX, view.MyY, 0));
                     }
+                    else if (active == 2)
+                    {
+                        for (int i = foreground.Tiles.Count - 1; i >= 0; i--)
+                        {
+                            if (foreground.Tiles[i].TileX == view.MyX && foreground.Tiles[i].TileY == view.MyY)
+                            {
+                                foreground.Tiles.RemoveAt(i);
+                            }
+                        }
+                        foreground.Tiles.Add(new TileData(item, view.MyX, view.MyY, 0));
+                    }
                 }
                 else if (e.RightButton == MouseButtonState.Pressed)
                 {
@@ -357,21 +357,21 @@ namespace LevelEdit
                     view.ResetTile();
                     if (active <= 1)
                     {
-                        for (int i = foreground.Tiles.Count-1; i >= 0; i--)
+                        for (int i = background.Tiles.Count-1; i >= 0; i--)
                         {
-                            if (foreground.Tiles[i].TileX == view.MyX && foreground.Tiles[i].TileY == view.MyY)
+                            if (background.Tiles[i].TileX == view.MyX && background.Tiles[i].TileY == view.MyY)
                             {
-                                foreground.Tiles.RemoveAt(i);
+                                background.Tiles.RemoveAt(i);
                             }
                         }
                     }
                     else if (active == 2)
                     {
-                        for (int i = background.Tiles.Count - 1; i >= 0; i--)
+                        for (int i = foreground.Tiles.Count - 1; i >= 0; i--)
                         {
-                            if (background.Tiles[i].TileX == view.MyX && background.Tiles[i].TileY == view.MyY)
+                            if (foreground.Tiles[i].TileX == view.MyX && foreground.Tiles[i].TileY == view.MyY)
                             {
-                                background.Tiles.RemoveAt(i);
+                                foreground.Tiles.RemoveAt(i);
                             }
                         }
                     }
