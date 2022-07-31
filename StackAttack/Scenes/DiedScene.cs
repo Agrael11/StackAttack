@@ -152,6 +152,7 @@ namespace StackAttack.Scenes
                 {
                     LoadLevel = Parent.currentLevel
                 };
+                gameScene.HP = 100;
                 Parent.SwitchScene(gameScene);
             }
         }
